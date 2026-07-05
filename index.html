@@ -4,15 +4,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assest/css/main.css">
+    <link rel="stylesheet" href="assest/css/socheat.css">
+    <title>Page dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assest/vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <title>Frist Bootsrap</title>
+    <!-- hover.css CDN, required for the hvr-* classes used below -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
 </head>
 
 <body>
-   
+    <!-- <section>
+        <div class="container-fluid bg-dark text-white py-3 overflow-hidden">
+            <div class="d-flex marquee-wrapper">
+
+                <div class="d-flex space-nowrap marquee-content">
+                   
+                    <span class="mx-5">A</span>
+                    <span class="mx-5">B</span>
+                    <span class="mx-5">C</span>
+                    <span class="mx-5">D</span>
+                </div>
+
+                <div class="d-flex space-nowrap marquee-content" aria-hidden="true">
+                    <span class="mx-5">A</span>
+                    <span class="mx-5">B</span>
+                    <span class="mx-5">C</span>
+                    <span class="mx-5">D</span>
+                </div>
+
+            </div>
+        </div>
+    </section> -->
+    <nav class="navbar navbar-expand-lg body-bg">
+        <div class="container">
+            <a class="navbar-brand " href="#">
+                <h3 class="mb-0 fs-4 fw-bold">
+                    <img src="assest/image/logos.png" class="logos" alt="">
+                    <!-- <i class="bi bi-gem text-warning"></i> -->
+                    <span class="">IAM</span>
+                </h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-3 ">
+                    <h5 class="fw-bold ">Inventory & Accounting Manager</h5>
+                </ul>
+                <!-- <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">គ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            ឃ
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item hvr-wobble-to-bottom-right" href="#">A</a></li>
+                            <li><a class="dropdown-item hvr-wobble-to-bottom-right" href="#">B</a></li>
+                            <li><a class="dropdown-item hvr-wobble-to-bottom-right" href="#">C</a></li>
+                            <li><a class="dropdown-item hvr-wobble-to-bottom-right" href="#">D</a></li>
+                            <li><a class="dropdown-item hvr-wobble-to-bottom-right" href="#">E</a></li>
+                            <li><a class="dropdown-item hvr-wobble-to-bottom-right" href="#">F</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">ង</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">ច</a>
+                    </li>
+                </ul> -->
+                <form class="d-flex" role="search">
+                    <div class="d-flex align-items-center gap-2 ">
+                        <!-- <a href="#" class="cart-badge hvr-grow-shadow">
+                            <i class="bi bi-bag"></i>
+                            <span class="badge">3</span>
+                        </a> -->
+                        <button class="btn btn-dark hvr-wobble-to-bottom-right" type="button"><i
+                                class="bi bi-person-fill me-1"></i>Contact Me</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-between align-items-center gy-4">
+                <div class="col-12 col-md-6 d-flex justify-content-center align-items-center text-center">
+                    <div class="hero-content text-white">
+                        <h1 class=" fw-bold">Welcome to <span class="text-warning">Inventory Accounting Manager</span>
+                        </h1>
+                        <p class="lead">Discover the latest trends in fashion and elevate your style with our curated
+                            collection.</p>
+                        <!-- <a href="#" class="btn btn-warning btn-lg hvr-wobble-to-bottom-right">Shop Now</a> -->
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-5 col-lg-4">
+                    <!-- Role picker: routes to the staff/admin login -->
+                    <div class="role-select-card text-start ">
+                        <p class="role-select-eyebrow">Team Access</p>
+                        <h2 class="role-select-title">Who's signing in?</h2>
+                        <p class="role-select-sub">Pick your role to continue to sign in.</p>
+
+                        <div class="d-flex flex-column gap-3 mt-3">
+                            <a href="assest/pages/Forms/login.html" class="role-option role-option-admin">
+                                <span class="role-option-icon"><i class="bi bi-shield-lock"></i></span>
+                                <span class="role-option-text">
+                                    <span class="role-option-label">Business Owner</span>
+                                    <span class="role-option-desc">Full admin access</span>
+                                </span>
+                                <i class="bi bi-arrow-right role-option-arrow"></i>
+                            </a>
+                            <a href="assest/pages/Forms/login.html" class="role-option role-option-staff">
+                                <span class="role-option-icon"><i class="bi bi-person-badge"></i></span>
+                                <span class="role-option-text">
+                                    <span class="role-option-label">Staff</span>
+                                    <span class="role-option-desc">Day-to-day operations</span>
+                                </span>
+                                <i class="bi bi-arrow-right role-option-arrow"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- <section class="py-5">
+        <div class="container">
+            <h1 class="mb-5">News</h1>
+        </div>
+        <div class="slides">
+            <div class="d-flex marquee-wrapper ">
+                <div class="d-flex space-nowrap marquee-content">
+                    <div class="img-slide">
+                        <img src="../../image/slide01.jpg" alt="AURA Fashion look 1">
+                        <img src="../../image/slide02.jpg" alt="AURA Fashion look 2">
+                        <img src="../../image/slide03.jpg" alt="AURA Fashion look 3">
+                        <img src="../../image/slide04.jpg" alt="AURA Fashion look 4">
+                    </div>
+                </div>
+
+                <div class="d-flex space-nowrap marquee-content" aria-hidden="true">
+                    <div class="img-slide">
+                        <img src="../../image/slide01.jpg" alt="">
+                        <img src="../../image/slide02.jpg" alt="">
+                        <img src="../../image/slide03.jpg" alt="">
+                        <img src="../../image/slide04.jpg" alt="">
+                    </div>
+                </div>
+                <div class="d-flex space-nowrap marquee-content" aria-hidden="true">
+                    <div class="img-slide">
+                        <img src="../../image/slide01.jpg" alt="">
+                        <img src="../../image/slide02.jpg" alt="">
+                        <img src="../../image/slide03.jpg" alt="">
+                        <img src="../../image/slide04.jpg" alt="">
+                    </div>
+                </div>
+                <div class="d-flex space-nowrap marquee-content" aria-hidden="true">
+                    <div class="img-slide">
+                        <img src="../../image/slide01.jpg" alt="">
+                        <img src="../../image/slide02.jpg" alt="">
+                        <img src="../../image/slide03.jpg" alt="">
+                        <img src="../../image/slide04.jpg" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </section> -->
+    <section class="py-5 features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-eyebrow">សេវាកម្មរបស់យើង</p>
+                <h2 class="section-title">អ្វីដែល IAM អាចជួយអ្នកបាន</h2>
+                <p class="section-sub">គ្រប់គ្រងស្តុក វិក្កយបត្រ និងហិរញ្ញវត្ថុហាងរបស់អ្នក ក្នុងកន្លែងតែមួយ</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-box-seam"></i></div>
+                        <h5 class="feature-title">ត្រួតពិនិត្យស្តុកទំនិញ</h5>
+                        <p class="feature-desc">តាមដានចំនួនស្តុកជាបន្តបន្ទាប់ ដឹងច្បាស់ថាតើទំនិញអ្វីនៅសល់ប៉ុន្មាន។</p>
+                        <button type="button" class="feature-link" data-bs-toggle="modal" data-bs-target="#featureModal"
+                            data-title="ត្រួតពិនិត្យស្តុកទំនិញ" data-icon="bi-box-seam"
+                            data-detail="តាមដានស្តុកទំនិញរបស់អ្នកគ្រប់ពេលវេលា ជាមួយប្រព័ន្ធកត់ត្រាចូល-ចេញដោយស្វ័យប្រវត្តិ។ អាចមើលប្រវត្តិចលនាទំនិញ ត្រួតពិនិត្យតាមប្រភេទ ឬតាមឃ្លាំង ដើម្បីកាត់បន្ថយការខាតបង់ និងភាពមិនត្រឹមត្រូវក្នុងការរាប់ស្តុក។">
+                            មើលបន្ថែម <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-receipt"></i></div>
+                        <h5 class="feature-title">វិក្កយបត្រលក់ និងទិញ</h5>
+                        <p class="feature-desc">បង្កើតវិក្កយបត្រយ៉ាងរហ័ស ព្រមទាំងតាមដានការបញ្ជាទិញពីអ្នកផ្គត់ផ្គង់។</p>
+                        <button type="button" class="feature-link" data-bs-toggle="modal" data-bs-target="#featureModal"
+                            data-title="វិក្កយបត្រលក់ និងទិញ" data-icon="bi-receipt"
+                            data-detail="បង្កើត និងបោះពុម្ពវិក្កយបត្រលក់ក្នុងរយៈពេលឆាប់រហ័ស ជាមួយលេខរៀងស្វ័យប្រវត្តិ។ គ្រប់គ្រងការបញ្ជាទិញពីអ្នកផ្គត់ផ្គង់ តាមដានស្ថានភាពបង់ប្រាក់ និងភ្ជាប់ជាមួយប្រព័ន្ធស្តុកដោយស្វ័យប្រវត្តិនៅពេលមានប្រតិបត្តិការ។">
+                            មើលបន្ថែម <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h5 class="feature-title">របាយការណ៍ហិរញ្ញវត្ថុ</h5>
+                        <p class="feature-desc">មើលចំណេញ-ខាត ចំណូល-ចំណាយ ជារបាយការណ៍ងាយយល់។</p>
+                        <button type="button" class="feature-link" data-bs-toggle="modal" data-bs-target="#featureModal"
+                            data-title="របាយការណ៍ហិរញ្ញវត្ថុ" data-icon="bi-graph-up-arrow"
+                            data-detail="បង្កើតរបាយការណ៍ចំណូល-ចំណាយ និងចំណេញ-ខាត ជាក្រាហ្វិចដែលងាយស្រួលអាន។ អាចជ្រើសរើសមើលតាមថ្ងៃ ខែ ឬឆ្នាំ ដើម្បីវិភាគនិន្នាការអាជីវកម្ម និងជួយសម្រេចចិត្តលើផែនការអនាគត។">
+                            មើលបន្ថែម <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-bell"></i></div>
+                        <h5 class="feature-title">ជូនដំណឹងស្តុកទាប</h5>
+                        <p class="feature-desc">ទទួលការជូនដំណឹងភ្លាមៗនៅពេលទំនិញណាមួយជិតអស់ស្តុក។</p>
+                        <button type="button" class="feature-link" data-bs-toggle="modal" data-bs-target="#featureModal"
+                            data-title="ជូនដំណឹងស្តុកទាប" data-icon="bi-bell"
+                            data-detail="ប្រព័ន្ធនឹងជូនដំណឹងដោយស្វ័យប្រវត្តិ នៅពេលចំនួនស្តុកទំនិញណាមួយធ្លាក់ចុះក្រោមកម្រិតដែលបានកំណត់ជាមុន។ ជួយកុំអោយហាងអស់ទំនិញលក់ ដោយអាចកំណត់ចំនួនអប្បបរមាដាច់ដោយឡែកតាមទំនិញនីមួយៗ។">
+                            មើលបន្ថែម <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-people"></i></div>
+                        <h5 class="feature-title">សិទ្ធិអ្នកប្រើប្រាស់ច្រើន</h5>
+                        <p class="feature-desc">កំណត់សិទ្ធិខុសៗគ្នាសម្រាប់ម្ចាស់ហាង និងបុគ្គលិក។</p>
+                        <button type="button" class="feature-link" data-bs-toggle="modal" data-bs-target="#featureModal"
+                            data-title="សិទ្ធិអ្នកប្រើប្រាស់ច្រើន" data-icon="bi-people"
+                            data-detail="បង្កើតគណនីសម្រាប់បុគ្គលិកច្រើននាក់ ជាមួយសិទ្ធិចូលប្រើប្រាស់ខុសៗគ្នាតាមតួនាទី ដូចជាម្ចាស់ហាង អ្នកគិតលុយ ឬអ្នកគ្រប់គ្រងស្តុក។ ធានាសុវត្ថិភាពទិន្នន័យ ដោយកំណត់ថាអ្នកណាអាចមើល ឬកែប្រែអ្វីខ្លះ។">
+                            មើលបន្ថែម <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-clock-history"></i></div>
+                        <h5 class="feature-title">ប្រវត្តិប្រតិបត្តិការ</h5>
+                        <p class="feature-desc">មើលឡើងវិញនូវប្រតិបត្តិការទាំងអស់ដែលបានកន្លងមក។</p>
+                        <button type="button" class="feature-link" data-bs-toggle="modal" data-bs-target="#featureModal"
+                            data-title="ប្រវត្តិប្រតិបត្តិការ" data-icon="bi-clock-history"
+                            data-detail="រក្សាទុកកំណត់ត្រាប្រតិបត្តិការទាំងអស់ ដូចជាការលក់ ការទិញចូល និងការកែស្តុក ដោយអាចស្វែងរកឡើងវិញតាមកាលបរិច្ឆេទ ឬឈ្មោះទំនិញ។ ជួយសម្រួលដល់ការត្រួតពិនិត្យ និងសវនកម្មនៅពេលក្រោយ។">
+                            មើលបន្ថែម <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared modal for all feature cards -->
+    <div class="modal fade" id="featureModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content feature-modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title d-flex align-items-center gap-2">
+                        <span class="feature-icon feature-icon-modal"><i class="bi" id="featureModalIcon"></i></span>
+                        <span id="featureModalTitle"></span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="featureModalDetail" class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="assest/vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const featureModal = document.getElementById('featureModal');
+        featureModal.addEventListener('show.bs.modal', (event) => {
+            const btn = event.relatedTarget;
+            document.getElementById('featureModalTitle').textContent = btn.getAttribute('data-title');
+            document.getElementById('featureModalDetail').textContent = btn.getAttribute('data-detail');
+            const iconEl = document.getElementById('featureModalIcon');
+            iconEl.className = 'bi ' + btn.getAttribute('data-icon');
+        });
+    </script>
 </body>
 
 </html>
