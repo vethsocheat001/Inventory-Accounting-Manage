@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assest/css/sarak.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"rel="stylesheet">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title> Staff and Product Management</title>
+</head>
+<body>
+        <div class="d-flex">
+            <aside class="sidebar d-none d-md-flex flex-column">
+                <ul class="nav nav-pills flex-column sidebar-nav" role="tablist">
+                    <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#employees-panel" type="button">
+                        <i class="bi bi-people-fill"></i>
+                        <span class="nav-text">
+                        <span class="nav-text-en">Employee Management</span>
+                        <span class="nav-text-kh">គ្រប់គ្រងបុគ្គលិក</span>
+                        </span>
+                    </button>
+                    </li>
+                    <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#products-panel" type="button">
+                        <i class="bi bi-box-seam-fill"></i>
+                        <span class="nav-text">
+                        <span class="nav-text-en">Product Management</span>
+                        <span class="nav-text-kh">គ្រប់គ្រងផលិតផល</span>
+                        </span>
+                    </button>
+                    </li>
+                </ul>
+            </aside>
+            <main class="main-content flex-grow-1">
+                <div class="container-fluid py-4 px-4 px-md-5">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="employees-panel">
+                            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+                                <div>
+                                    <p class="eyebrow-en">Employee Management</p>
+                                    <p class="eyebrow-kh">គ្រប់គ្រងបុគ្គលិកក្នុងប្រព័ន្ធ</p>
+                                </div>
+                                <div class="search-box">
+                                    <i class="bi bi-search"></i>
+                                    <input type="text" class="form-control" placeholder="Search staff...">
+                                </div>
+                            </div>
+                            <!-- =========rol-1========== -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-6 col-lg-3">
+                                    <div class="stat-card stat-blue">
+                                    <i class="bi bi-people-fill"></i>
+                                        <div>
+                                            <p class="stat-number">4</p>
+                                            <p class="stat-label">Total Staff</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="stat-card stat-green">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                        <div>
+                                            <p class="stat-number">3</p>
+                                            <p class="stat-label">Active</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="stat-card stat-orange">
+                                    <i class="bi bi-slash-circle-fill"></i>
+                                        <div>
+                                            <p class="stat-number">1</p>
+                                            <p class="stat-label">Disabled</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="stat-card stat-purple">
+                                    <i class="bi bi-person-badge-fill"></i>
+                                        <div>
+                                            <p class="stat-number">3</p>
+                                            <p class="stat-label">Roles</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ==========rol-2============ -->
+                            <div class="row g-3 mb-4"> 
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#addStaffModal">
+                                        <div class="action-icon icon-bg-green"><i class="bi bi-person-plus-fill"></i></div>
+                                        <div class="text-start">
+                                            <p class="action-title-en">Add Staff</p>
+                                            <p class="action-title-kh">បន្ថែមបុគ្គលិកថ្មី</p>
+                                            <p class="action-desc">Create a new staff profile and assign a role.</p>
+                                        </div>
+                                        <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#editStaffModal">
+                                        <div class="action-icon icon-bg-blue"><i class="bi bi-pencil-fill"></i></div>
+                                        <div class="text-start">
+                                            <p class="action-title-en">Edit Staff</p>
+                                            <p class="action-title-kh">កែប្រែព័ត៌មានបុគ្គលិក</p>
+                                            <p class="action-desc">Update name, role, contact, or shift details.</p>
+                                        </div>
+                                        <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                                        <div class="action-icon icon-bg-purple"><i class="bi bi-key-fill"></i></div>
+                                        <div class="text-start">
+                                            <p class="action-title-en">Reset Staff Password</p>
+                                            <p class="action-title-kh">កំណត់ពាក្យសម្ងាត់ថ្មី</p>
+                                            <p class="action-desc">Issue a new temporary password to a staff member.</p>
+                                        </div>
+                                        <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#toggleAccountModal">
+                                        <div class="action-icon icon-bg-orange"><i class="bi bi-toggle-on"></i></div>
+                                        <div class="text-start">
+                                            <p class="action-title-en">Enable / Disable Account</p>
+                                            <p class="action-title-kh">បើក ឬបិទគណនីបុគ្គលិក</p>
+                                            <p class="action-desc">Suspend or restore a staff member's system access.</p>
+                                        </div>
+                                        <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                   <!-- =============Staff table ======================== -->
+                            <div class="table-card">
+                                <table class="table align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Role</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th class="text-end">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted font-monospace">ST-014</td>
+                                            <td class="fw-semibold">Sok Pouy</td>
+                                            <td>Cashier</td>
+                                            <td class="text-muted">pouy.sok@shop.com</td>
+                                            <td><span class="badge-status badge-active">Active</span></td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-purple" title="Reset password" data-bs-toggle="modal" data-bs-target="#resetPasswordModal"><i class="bi bi-key-fill"></i></button>
+                                            <button class="icon-btn icon-btn-orange" title="Enable/disable" data-bs-toggle="modal" data-bs-target="#toggleAccountModal"><i class="bi bi-toggle-on"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted font-monospace">ST-013</td>
+                                            <td class="fw-semibold">Chan Dara</td>
+                                            <td>Warehouse</td>
+                                            <td class="text-muted">dara.chan@shop.com</td>
+                                            <td><span class="badge-status badge-active">Active</span></td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-purple" title="Reset password" data-bs-toggle="modal" data-bs-target="#resetPasswordModal"><i class="bi bi-key-fill"></i></button>
+                                            <button class="icon-btn icon-btn-orange" title="Enable/disable" data-bs-toggle="modal" data-bs-target="#toggleAccountModal"><i class="bi bi-toggle-on"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted font-monospace">ST-012</td>
+                                            <td class="fw-semibold">Ly Sreymom</td>
+                                            <td>Manager</td>
+                                            <td class="text-muted">sreymom.ly@shop.com</td>
+                                            <td><span class="badge-status badge-disabled">Disabled</span></td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-purple" title="Reset password" data-bs-toggle="modal" data-bs-target="#resetPasswordModal"><i class="bi bi-key-fill"></i></button>
+                                            <button class="icon-btn icon-btn-orange" title="Enable/disable" data-bs-toggle="modal" data-bs-target="#toggleAccountModal"><i class="bi bi-toggle-on"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted font-monospace">ST-011</td>
+                                            <td class="fw-semibold">Heng Vibol</td>
+                                            <td>Cashier</td>
+                                            <td class="text-muted">vibol.heng@shop.com</td>
+                                            <td><span class="badge-status badge-active">Active</span></td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-purple" title="Reset password" data-bs-toggle="modal" data-bs-target="#resetPasswordModal"><i class="bi bi-key-fill"></i></button>
+                                            <button class="icon-btn icon-btn-orange" title="Enable/disable" data-bs-toggle="modal" data-bs-target="#toggleAccountModal"><i class="bi bi-toggle-on"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                </div>
+                   <!-- ==========PRODUCT MANAGEMENT========== -->
+                    
+                    <div class="tab-pane fade" id="products-panel">
+                            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+                                <div>
+                                    <p class="eyebrow-en">Product Management</p>
+                                    <p class="eyebrow-kh">គ្រប់គ្រងព័ត៌មានផលិតផល</p>
+                                </div>
+                                <div class="search-box">
+                                    <i class="bi bi-search"></i>
+                                    <input type="text" class="form-control" placeholder="Search products...">
+                                </div>
+                            </div>
+                            <!-- ============management rol-1============ -->
+                            <div class="row g-3 mb-4">
+                                    <div class="col-6 col-lg-3">
+                                        <div class="stat-card stat-blue">
+                                        <i class="bi bi-box-seam-fill"></i>
+                                            <div>
+                                                <p class="stat-number">4</p>
+                                                <p class="stat-label">Total Products</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-3">
+                                        <div class="stat-card stat-teal">
+                                        <i class="bi bi-tags-fill"></i>
+                                            <div>
+                                                <p class="stat-number">4</p>
+                                                <p class="stat-label">Categories</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-3">
+                                        <div class="stat-card stat-orange">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                                <div>
+                                                    <p class="stat-number">1</p>
+                                                    <p class="stat-label">Low Stock</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-3">
+                                        <div class="stat-card stat-red">
+                                        <i class="bi bi-x-circle-fill"></i>
+                                                <div>
+                                                    <p class="stat-number">1</p>
+                                                    <p class="stat-label">Out of Stock</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                            </div>
+                         <!-- ============management rol-1============ -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                                    <div class="action-icon icon-bg-green"><i class="bi bi-bag-plus-fill"></i></div>
+                                            <div class="text-start">
+                                                <p class="action-title-en">Add Product</p>
+                                                <p class="action-title-kh">បន្ថែមផលិតផលថ្មី</p>
+                                                <p class="action-desc">List a new product with price, stock, and category.</p>
+                                            </div>
+                                        <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#editProductModal">
+                                    <div class="action-icon icon-bg-blue"><i class="bi bi-pencil-fill"></i></div>
+                                                <div class="text-start">
+                                                    <p class="action-title-en">Edit Product</p>
+                                                    <p class="action-title-kh">កែប្រែព័ត៌មានផលិតផល</p>
+                                                    <p class="action-desc">Update pricing, description, images, or stock.</p>
+                                                </div>
+                                            <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#categoriesModal">
+                                        <div class="action-icon icon-bg-teal"><i class="bi bi-tags-fill"></i></div>
+                                                <div class="text-start">
+                                                    <p class="action-title-en">Manage Categories</p>
+                                                    <p class="action-title-kh">គ្រប់គ្រងប្រភេទផលិតផល</p>
+                                                    <p class="action-desc">Organize products into browsable categories.</p>
+                                                </div>
+                                            <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="action-card w-100" data-bs-toggle="modal" data-bs-target="#suppliersModal">
+                                        <div class="action-icon icon-bg-pink"><i class="bi bi-truck"></i></div>
+                                                <div class="text-start">
+                                                    <p class="action-title-en">Manage Suppliers</p>
+                                                    <p class="action-title-kh">គ្រប់គ្រងអ្នកផ្គត់ផ្គង់</p>
+                                                    <p class="action-desc">Track supplier contacts and sourcing details.</p>
+                                                </div>
+                                            <i class="bi bi-chevron-right action-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                         <!-- ============Product table=========== -->
+                            <div class="table-card">
+                                <table class="table align-middle mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Product</th>
+                                                <th>Category</th>
+                                                <th>Supplier</th>
+                                                <th>Stock</th>
+                                                <th class="text-end">Actions</th>
+                                            </tr>
+                                        </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted font-monospace">PD-241</td>
+                                            <td class="fw-semibold">Kampot Pepper 100g</td>
+                                            <td><span class="badge-category">Spices</span></td>
+                                            <td class="text-muted">Kampot Farms Co.</td>
+                                            <td>128</td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted font-monospace">PD-240</td>
+                                            <td class="fw-semibold">Palm Sugar Jar</td>
+                                            <td><span class="badge-category">Sweeteners</span></td>
+                                            <td class="text-muted">Kompong Speu Trading</td>
+                                            <td>64</td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted font-monospace">PD-239</td>
+                                            <td class="fw-semibold">Rice Paper Pack</td>
+                                            <td><span class="badge-category">Dry Goods</span></td>
+                                            <td class="text-muted">Battambang Mills</td>
+                                            <td class="text-warning-emphasis fw-semibold">12 left</td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted font-monospace">PD-238</td>
+                                            <td class="fw-semibold">Prahok 250g</td>
+                                            <td><span class="badge-category">Condiments</span></td>
+                                            <td class="text-muted">Tonle Sap Suppliers</td>
+                                            <td class="text-danger fw-semibold">Out of stock</td>
+                                            <td class="text-end">
+                                            <button class="icon-btn icon-btn-blue" title="Edit" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="bi bi-pencil-fill"></i></button>
+                                            <button class="icon-btn icon-btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>   
+            <!-- ==============Add Staff============= -->
+            <div class="modal fade" id="addStaffModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-green">
+                            <h5 class="modal-title"><i class="bi bi-person-plus-fill me-2"></i>Add Staff</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" placeholder="e.g. Sok Pisey">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Role</label>
+                                        <select class="form-select">
+                                            <option value="">Choose a role...</option>
+                                            <option>Cashier</option>
+                                            <option>Warehouse</option>
+                                            <option>Manager</option>
+                                        </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="name@shop.com">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-brand-green" data-bs-dismiss="modal">Add Staff</button>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+            <!-- ==============Edit Staff============= -->
+            
+            <div class="modal fade" id="editStaffModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-blue">
+                        <h5 class="modal-title"><i class="bi bi-pencil-fill me-2"></i>Edit Staff</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" value="Sok Pisey">
+                            </div>
+                            <div class="mb-3">
+                            <label class="form-label">Role</label>
+                                <select class="form-select">
+                                    <option selected>Cashier</option>
+                                    <option>Warehouse</option>
+                                    <option>Manager</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="pisey.sok@shop.com">
+                            </div>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-brand-blue" data-bs-dismiss="modal">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <!-- ==========Reset Password=========== -->
+
+            <div class="modal fade" id="resetPasswordModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-purple">
+                           <h5 class="modal-title"><i class="bi bi-key-fill me-2"></i>Reset Password</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                           <p>Send a new temporary password to this staff member?</p>
+                           <p class="text-muted small mb-0">They will be asked to set a new password on next login.</p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                           <button type="button" class="btn btn-brand-purple" data-bs-dismiss="modal">Reset Password</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============Enable / Disable Account=========== -->
+
+            <div class="modal fade" id="toggleAccountModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-orange">
+                            <h5 class="modal-title"><i class="bi bi-toggle-on me-2"></i>Enable / Disable Account</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="mb-0">Change the access status for this staff member?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-brand-orange" data-bs-dismiss="modal">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============Add Product=========== -->
+
+            <div class="modal fade" id="addProductModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-green">
+                        <h5 class="modal-title"><i class="bi bi-bag-plus-fill me-2"></i>Add Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                <label class="form-label">Product Name</label>
+                                <input type="text" class="form-control" placeholder="e.g. Kampot Pepper 100g">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Category</label>
+                                        <input type="text" class="form-control" placeholder="e.g. Spices">
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Stock</label>
+                                        <input type="number" class="form-control" placeholder="0">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Supplier</label>
+                                    <input type="text" class="form-control" placeholder="e.g. Kampot Farms Co.">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                           <button type="button" class="btn btn-brand-green" data-bs-dismiss="modal">Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===========Edit Product=========== -->
+
+            <div class="modal fade" id="editProductModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-blue">
+                            <h5 class="modal-title"><i class="bi bi-pencil-fill me-2"></i>Edit Product</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                <label class="form-label">Product Name</label>
+                                <input type="text" class="form-control" value="Kampot Pepper 100g">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Category</label>
+                                        <input type="text" class="form-control" value="Spices">
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Stock</label>
+                                        <input type="number" class="form-control" value="128">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                <label class="form-label">Supplier</label>
+                                <input type="text" class="form-control" value="Kampot Farms Co.">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-brand-blue" data-bs-dismiss="modal">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           <!-- ==============Manage Categories========== -->
+
+            <div class="modal fade" id="categoriesModal" tabindex="-1">
+                 <div class="modal-dialog">
+                      <div class="modal-content">
+                            <div class="modal-header modal-header-teal">
+                            <h5 class="modal-title"><i class="bi bi-tags-fill me-2"></i>Manage Categories</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="list-group mb-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Spices
+                                    <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Sweeteners
+                                    <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dry Goods
+                                    <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Condiments
+                                    <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                    </li>
+                                </ul>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="New category name...">
+                                    <button class="btn btn-brand-teal" type="button">Add</button>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+         <!-- =============Manage Suppliers=========== -->
+
+            <div class="modal fade" id="suppliersModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-pink">
+                        <h5 class="modal-title"><i class="bi bi-truck me-2"></i>Manage Suppliers</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Kampot Farms Co.
+                                <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Kompong Speu Trading
+                                <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Battambang Mills
+                                <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Tonle Sap Suppliers
+                                <button class="icon-btn icon-btn-danger" title="Remove"><i class="bi bi-trash-fill"></i></button>
+                                </li>
+                            </ul>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="New supplier name...">
+                                <button class="btn btn-brand-pink" type="button">Add</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==============Generic Delete Confirmation================ -->
+
+            <div class="modal fade" id="deleteConfirmModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-red">
+                           <h5 class="modal-title"><i class="bi bi-exclamation-triangle-fill me-2"></i>Confirm Delete</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                           <p class="mb-0">Are you sure you want to delete this item? This cannot be undone.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-brand-red" data-bs-dismiss="modal">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
