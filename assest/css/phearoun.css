@@ -12,6 +12,9 @@
     height: 800px;
     margin: auto;
 }
+.card-box:hover{
+  
+}
 img{
     width: 100%;
     height: 100%;
