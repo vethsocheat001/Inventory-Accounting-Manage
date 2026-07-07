@@ -13,7 +13,7 @@
     margin: auto;
 }
 .card-box:hover{
-  
+
 }
 img{
     width: 100%;
@@ -31,11 +31,11 @@ img{
   *{font-family:'Inter',sans-serif;}
   body{
     background:#a0b8f84f;
-    min-height:100vh;
+    min-height:70vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:30px 16px;
+    padding:50px 16px;
   }
   .stage{
     width:100%;
@@ -197,3 +197,10 @@ img{
     .visual-side{display:none;}
     .form-side{padding:44px 28px;}
   }
+
+
+
+  /* ===============staff===================== */
+
+
+  

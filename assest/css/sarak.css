@@ -25,6 +25,7 @@ body {
   background-color: var(--color-paper);
   font-family: Arial, Helvetica, sans-serif;
   color: var(--color-text);
+  font-family: "Kantumruy Pro", sans-serif !important;
 }
 .sidebar {
   width: 350px;
