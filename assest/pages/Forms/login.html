@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../../vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/phearoun.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<section>
+    <div class="container">
+     <div class="card-box">
+    <div class="auth-card row g-0">
+    <div class="col-lg-6 form-side">
+      <h1 class="heading mt-4 mb-5 text-center">LOGIN</h1>
+      <form>
+        <input type="email" class="form-control-custom mb-3" placeholder="Email" value="">
+        <div class="password-wrap mt-2">
+          <input type="password" id="pwd" class="form-control-custom " placeholder="Password" >
+          <button type="button" class="toggle-eye" onclick="togglePwd()">👁</button>
+        </div>
+        <div class="row-between">
+          <label class="remember-check">
+            <input type="checkbox" class="form-check-input" checked>
+            Remember me
+          </label>
+          <a href="forget_password.html" class="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-submit">Log in</button>
+        <div class="divider">or continue with</div>
+      </form>
+      <div class="bottom-links">
+        <span>Don't have an account? </span>
+        <a href="register.html">Sign up</a>
+      </div>
+    </div>
+    <div class="col-6">
+         <img src="https://img.magnific.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg?semt=ais_hybrid&w=740&q=80" alt="">
+    </div>
+        </div>     
+          </div>
+  </section>
+    <script src="../../vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+function togglePwd(){
+  const el = document.getElementById('pwd');
+  el.type = el.type === 'password' ? 'text' : 'password';
+}
+</script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+                }, false)
+            })
+            })()  
+    </script>
+</body>
+</html>

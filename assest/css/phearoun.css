@@ -1,0 +1,199 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.form-control{
+    box-shadow: none !important;
+    
+}
+.card-box{
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+.card-box:hover{
+  
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  :root{
+    --cream:#f6faf9;
+    --yellow:#4fb8ae;
+    --yellow-dark:#2f9c92;
+    --dark:#1c1c1c;
+    --muted:#8a8a8a;
+    --field-bg:#eef5f4;
+  }
+  *{font-family:'Inter',sans-serif;}
+  body{
+    background:#a0b8f84f;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px 16px;
+  }
+  .stage{
+    width:100%;
+    max-width:1180px;
+  }
+  .auth-card{
+    background:linear-gradient(135deg,#6193b5 0%, #50b5ab 60%, #128d81 100%);
+    border-radius:32px;
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+    min-height:620px;
+  }
+  .brand-pill{
+    display:inline-block;
+    padding:8px 22px;
+    border:1px solid #d8d3c8;
+    border-radius:999px;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:.95rem;
+    color:var(--dark);
+  }
+  .form-side{
+    padding:56px 64px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .heading{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:2rem;
+    color:var(--dark);
+    margin-bottom:6px;
+  }
+  .subheading{
+    color:var(--muted);
+    font-size:.95rem;
+    margin-bottom:36px;
+  }
+  .field-label{
+    font-size:.82rem;
+    color:#555;
+    margin-bottom:6px;
+    display:block;
+  }
+  .form-control-custom{
+    background:var(--field-bg);
+    border:1px solid transparent;
+    border-radius:14px;
+    padding:12px 14px;
+    font-size:.95rem;
+    width:100%;
+    transition:.2s;
+  }
+  .form-control-custom:focus{
+    outline:none;
+    border-color:var(--yellow-dark);
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(240,189,47,.25);
+  }
+  .password-wrap{position:relative;}
+  .toggle-eye{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#999;
+    background:none;
+    border:none;
+    font-size:1rem;
+  }
+  .row-between{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:18px 0 28px;
+  }
+  .remember-check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:.85rem;
+    color:#555;
+  }
+  .form-check-input{
+    width:17px;height:17px;
+    border-radius:5px;
+    border:1.5px solid #c9c4b7;
+  }
+  .form-check-input:checked{
+    background-color:var(--yellow-dark);
+    border-color:var(--yellow-dark);
+  }
+  .forgot-link{
+    font-size:.85rem;
+    color:var(--dark);
+    text-decoration:underline;
+  }
+  .btn-submit{
+    background:linear-gradient(180deg,#6193b5,#315396);
+    border:none;
+    border-radius:16px;
+    padding:10px;
+    font-weight:600;
+    font-size:1rem;
+    color:#3a2c00;
+    width:100%;
+    transition:.2s;
+  }
+  .btn-submit:hover{
+    filter:brightness(1.03);
+    transform:translateY(-1px);
+    color:#3a2c00;
+  }
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:26px 0;
+    color:#e3dddd;
+    font-size:.8rem;
+  }
+  .divider::before,.divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:#e4ded0;
+  }
+  .btn-social{
+    border:1px solid #e4ded0;
+    background:#fff;
+    border-radius:14px;
+    padding:12px;
+    font-size:.9rem;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    color:var(--dark);
+    transition:.2s;
+  }
+  
+  .btn-social:hover{background:#faf8f4;color:var(--dark);}
+  .bottom-links{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:44px;
+    font-size:.82rem;
+    color:#e3dddd;
+  }
+  .bottom-links a{color:var(--dark);text-decoration:underline;}
+ 
+  @media (max-width: 991px){
+    .visual-side{display:none;}
+    .form-side{padding:44px 28px;}
+  }
