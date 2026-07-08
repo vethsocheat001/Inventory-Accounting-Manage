@@ -5,10 +5,374 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff</title>
     <link rel="stylesheet" href="assest/css/phearoun.css">
+    
 </head>
 <body>
     <section>
-        
+        <!-- Sidebar -->
+     <div class="sidebar">
+        <div class="brand-mark">StockApp</div>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link active" data-tab="pos"       href="#"><i class="fa-solid fa-cash-register"></i>លក់ទំនិញ</a>
+            <a class="nav-link"        data-tab="products"  href="#"><i class="fa-solid fa-box"></i>ផលិតផល</a>
+            <a class="nav-link"        data-tab="inventory" href="#"><i class="fa-solid fa-boxes-stacked"></i>ស្ថានភាពស្តុក</a>
+            <a class="nav-link"        data-tab="customers" href="#"><i class="fa-solid fa-users"></i>អតិថិជន</a>
+            <a class="nav-link"        data-tab="reports"   href="#"><i class="fa-solid fa-chart-simple"></i>របាយការណ៍</a>
+            <a class="nav-link"        data-tab="history"   href="#"><i class="fa-solid fa-clock-rotate-left"></i>ប្រវត្តិលក់</a>
+            <a class="nav-link"        data-tab="account"   href="#"><i class="fa-solid fa-user-gear"></i>គណនីខ្ញុំ</a>
+         </nav>
+     <div class="sidebar-foot" id="sidebarUser"></div>
+    </div>
+
+    <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <h5 class="mb-0" id="pageTitle">លក់ទំនិញ</h5>
+      <div class="d-flex align-items-center gap-2">
+        <span id="lowStockAlert" class="badge bg-danger" style="display:none!important"></span>
+        <button class="btn btn-outline-secondary btn-sm" onclick="logoutAndRedirect()">
+          <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>ចាកចេញ
+        </button>
+      </div>
+    </div>
+    <!-- ===================== 1. POS ===================== -->
+    <div id="tab-pos">
+      <div class="row g-3">
+        <div class="col-md-8">
+          <div class="d-flex gap-2 mb-3">
+            <input type="text" class="form-control" id="searchBox" placeholder="ស្វែងរកផលិតផល..." />
+            <select class="form-select" style="max-width:160px" id="filterCat">
+              <option value="">ប្រភេទទាំងអស់</option>
+            </select>
+          </div>
+          <div class="row g-2" id="productGrid"></div>
+        </div>
+        <div class="col-md-4">
+          <div class="cart-panel">
+            <h6 class="mb-3"><i class="fa-solid fa-cart-shopping me-1 text-muted"></i>កន្ត្រក</h6>
+            <div id="cartItems" style="overflow-y:auto;max-height:220px">
+              <p class="text-muted small">មិនទាន់មានទំនិញ</p>
+            </div>
+            <div class="mt-3">
+              <div class="section-title">ព័ត៌មានការទូទាត់</div>
+              <select class="form-select form-select-sm mb-2" id="cartCustomer"></select>
+              <div class="d-flex gap-3 small mb-2">
+                <label><input type="radio" name="payType" value="cash" checked /> សាច់ប្រាក់</label>
+                <label><input type="radio" name="payType" value="credit" /> ឥណទាន</label>
+              </div>
+              <input type="number" min="0" step="0.01" class="form-control form-control-sm" id="discountInput" placeholder="បញ្ចុះតម្លៃ ($)" />
+            </div>
+            <div class="mt-3 pt-2 border-top">
+              <div class="d-flex justify-content-between small text-muted mb-1"><span>តម្លៃដើម</span><span id="cartSubtotal">$0.00</span></div>
+              <div class="d-flex justify-content-between small text-muted mb-1"><span>បញ្ចុះ</span><span id="cartDiscount">-$0.00</span></div>
+              <div class="d-flex justify-content-between fw-bold"><span>សរុប</span><span class="cart-total" id="cartTotal">$0.00</span></div>
+            </div>
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn btn-outline-secondary btn-sm" onclick="clearCart()" title="សម្អាត"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-moss w-100 btn-sm" id="checkoutBtn"><i class="fa-solid fa-money-bill-wave me-1"></i>Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 2. PRODUCTS ===================== -->
+    <div id="tab-products" style="display:none">
+      <div class="section-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">បញ្ជីផលិតផលទាំងអស់</h6>
+          <div class="d-flex gap-2">
+            <input type="text" class="form-control form-control-sm" style="max-width:200px" id="prodSearch" placeholder="ស្វែងរក..." />
+            <button class="btn btn-moss btn-sm text-nowrap" data-bs-toggle="modal" data-bs-target="#staffProductModal" onclick="openStaffProductModal()">
+              <i class="fa-solid fa-plus me-1"></i>បន្ថែមផលិតផល
+            </button>
+          </div>
+        </div>
+        <div class="row g-2 mb-3" id="prodFilterBtns"></div>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle table-hover">
+            <thead class="table-light">
+              <tr><th></th><th>#</th><th>ឈ្មោះ</th><th>ប្រភេទ</th><th>តម្លៃលក់</th><th>ស្តុក</th><th>ស្ថានភាព</th><th></th></tr>
+            </thead>
+            <tbody id="prodListBody"></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 3. INVENTORY ===================== -->
+    <div id="tab-inventory" style="display:none">
+      <div id="stockAdjustSection" style="display:none" class="section-card mb-3">
+        <h6 class="mb-3"><i class="fa-solid fa-right-left me-2 text-muted"></i>ការកែតម្រូវស្តុក <span class="perm-tag ms-1">បានអនុញ្ញាត</span></h6>
+        <form id="stockAdjustForm" class="row g-2 align-items-end">
+          <div class="col-md-5">
+            <label class="form-label small">ផលិតផល</label>
+            <select class="form-select form-select-sm" id="adjProduct" required></select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label small">ប្រភេទ</label>
+            <select class="form-select form-select-sm" id="adjType">
+              <option value="in">Stock In — បញ្ចូល</option>
+              <option value="out">Stock Out — ដក</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label small">ចំនួន</label>
+            <input type="number" min="1" class="form-control form-control-sm" id="adjQty" required />
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-moss btn-sm w-100" type="submit">បញ្ជាក់</button>
+          </div>
+        </form>
+      </div>
+      <div class="section-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">ស្ថានភាពស្តុក</h6>
+          <input type="text" class="form-control form-control-sm" style="max-width:200px" id="stockSearch" placeholder="ស្វែងរក..." />
+        </div>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead class="table-light"><tr><th>ឈ្មោះ</th><th>ប្រភេទ</th><th>តម្លៃលក់</th><th>ស្តុក</th><th>ស្ថានភាព</th></tr></thead>
+            <tbody id="stockViewBody"></tbody>
+          </table>
+        </div>
+        <div class="mt-3">
+          <h6 class="mb-2">ប្រវត្តិចូល/ចេញស្តុក (របស់ខ្ញុំ)</h6>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead class="table-light"><tr><th>ផលិតផល</th><th>ប្រភេទ</th><th>ចំនួន</th><th>ពេលវេលា</th></tr></thead>
+              <tbody id="myStockTxBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 4. CUSTOMERS ===================== -->
+    <div id="tab-customers" style="display:none">
+      <div class="section-card mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">បញ្ជីអតិថិជន</h6>
+          <div class="d-flex gap-2">
+            <input type="text" class="form-control form-control-sm" style="max-width:180px" id="custSearch" placeholder="ស្វែងរក..." />
+            <button class="btn btn-moss btn-sm" data-bs-toggle="modal" data-bs-target="#custModal" onclick="openCustModal()">
+              <i class="fa-solid fa-plus me-1"></i>បន្ថែម
+            </button>
+          </div>
+        </div>
+        <div class="row g-3" id="custGrid"></div>
+      </div>
+    </div>
+
+    <!-- ===================== 5. REPORTS ===================== -->
+    <div id="tab-reports" style="display:none">
+      <div class="row g-3 mb-3">
+        <div class="col-6 col-md-3"><div class="summary-bar"><div class="lbl">ការលក់ថ្ងៃនេះ</div><div class="val" id="myDailyCount">0</div></div></div>
+        <div class="col-6 col-md-3"><div class="summary-bar"><div class="lbl">ចំណូលថ្ងៃនេះ</div><div class="val" id="myDailyRevenue">$0.00</div></div></div>
+        <div class="col-6 col-md-3"><div class="summary-bar"><div class="lbl">ចំណូលខែនេះ</div><div class="val" id="myMonthRevenue">$0.00</div></div></div>
+        <div class="col-6 col-md-3"><div class="summary-bar"><div class="lbl">វិក្កយបត្រសរុប</div><div class="val" id="myTotalCount">0</div></div></div>
+      </div>
+      <div class="section-card mb-3">
+        <h6 class="mb-3">ការលក់ថ្ងៃនេះ</h6>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead class="table-light"><tr><th>#</th><th>មុខទំនិញ</th><th>អតិថិជន</th><th>ការទូទាត់</th><th>សរុប</th><th>ពេលវេលា</th></tr></thead>
+            <tbody id="dailySalesBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="inventoryReportSection" style="display:none" class="section-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">របាយការណ៍ស្ថានភាពស្តុក <span class="perm-tag ms-1">បានអនុញ្ញាត</span></h6>
+          <button class="btn btn-sm btn-outline-secondary" onclick="exportInventoryCSV()"><i class="fa-solid fa-download me-1"></i>CSV</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead class="table-light"><tr><th>ឈ្មោះ</th><th>ប្រភេទ</th><th>ស្តុក</th><th>ស្ថានភាព</th></tr></thead>
+            <tbody id="inventoryReportBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 6. HISTORY ===================== -->
+    <div id="tab-history" style="display:none">
+      <div class="section-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">ប្រវត្តិលក់របស់ខ្ញុំ</h6>
+          <div class="d-flex gap-2">
+            <input type="text" class="form-control form-control-sm" style="max-width:160px" id="historySearch" placeholder="#ID..." />
+            <button class="btn btn-sm btn-outline-secondary" onclick="exportMySalesCSV()"><i class="fa-solid fa-download me-1"></i>CSV</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead class="table-light"><tr><th>លេខ</th><th>មុខទំនិញ</th><th>អតិថិជន</th><th>ការទូទាត់</th><th>សរុប</th><th>ពេលវេលា</th><th></th></tr></thead>
+            <tbody id="myHistoryBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 7. ACCOUNT ===================== -->
+    <div id="tab-account" style="display:none">
+      <div class="row g-3">
+        <!-- Profile info -->
+        <div class="col-md-5">
+          <div class="section-card mb-3">
+            <h6 class="mb-3">ព័ត៌មានគណនី</h6>
+            <table class="table table-sm mb-0" id="profileInfo"></table>
+          </div>
+          <div class="section-card">
+            <h6 class="mb-3">សិទ្ធិប្រើប្រាស់</h6>
+            <div id="permsList"></div>
+          </div>
+        </div>
+        <!-- Update profile + change password -->
+        <div class="col-md-7">
+          <div class="section-card mb-3">
+            <h6 class="mb-3">កែប្រែព័ត៌មានផ្ទាល់ខ្លួន</h6>
+            <form id="profileForm">
+              <div class="mb-2">
+                <label class="form-label small">ឈ្មោះ</label>
+                <input class="form-control form-control-sm" id="profName" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">អ៊ីមែល</label>
+                <input type="email" class="form-control form-control-sm" id="profEmail" required />
+              </div>
+              <div id="profError" class="text-danger small mb-2" style="display:none"></div>
+              <button type="submit" class="btn btn-moss btn-sm">រក្សាទុក</button>
+            </form>
+          </div>
+          <div class="section-card">
+            <h6 class="mb-3">ផ្លាស់ប្តូរពាក្យសម្ងាត់</h6>
+            <form id="pwForm">
+              <div class="mb-2">
+                <label class="form-label small">ពាក្យសម្ងាត់បច្ចុប្បន្ន</label>
+                <div class="input-group input-group-sm">
+                  <input type="password" class="form-control" id="pwOld" required />
+                  <span class="input-group-text pw-eye" onclick="togglePw('pwOld')"><i class="fa-solid fa-eye"></i></span>
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label small">ពាក្យសម្ងាត់ថ្មី</label>
+                <div class="input-group input-group-sm">
+                  <input type="password" class="form-control" id="pwNew" required />
+                  <span class="input-group-text pw-eye" onclick="togglePw('pwNew')"><i class="fa-solid fa-eye"></i></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">បញ្ជាក់ពាក្យសម្ងាត់ថ្មី</label>
+                <div class="input-group input-group-sm">
+                  <input type="password" class="form-control" id="pwConfirm" required />
+                  <span class="input-group-text pw-eye" onclick="togglePw('pwConfirm')"><i class="fa-solid fa-eye"></i></span>
+                </div>
+              </div>
+              <div id="pwError" class="text-danger small mb-2" style="display:none"></div>
+              <button type="submit" class="btn btn-moss btn-sm w-100">ផ្លាស់ប្តូរពាក្យសម្ងាត់</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /main -->
+</div><!-- /app-shell -->
+
+<!-- Staff Product modal -->
+<div class="modal fade" id="staffProductModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="staffProductForm">
+        <div class="modal-header">
+          <h6 class="modal-title">បន្ថែម / កែប្រែផលិតផល</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="staffProdId" />
+          <input type="hidden" id="staffProdImage" />
+          <div class="mb-2 text-center">
+            <img id="staffProdImagePreview" src="" style="display:none;width:96px;height:96px;object-fit:cover;border-radius:10px;border:1px solid #ddd" />
+            <div id="staffProdImagePlaceholder" class="d-flex align-items-center justify-content-center mx-auto"
+                 style="width:96px;height:96px;border-radius:10px;background:#f1f3f5;color:#adb5bd;font-size:1.6rem">
+              <i class="fa-solid fa-image"></i>
+            </div>
+            <input type="file" accept="image/*" class="form-control form-control-sm mt-2" id="staffProdImageInput" />
+          </div>
+          <div class="mb-2">
+            <label class="form-label small">ឈ្មោះផលិតផល</label>
+            <input class="form-control form-control-sm" id="staffProdName" required />
+          </div>
+          <div class="mb-2">
+            <label class="form-label small">ប្រភេទ</label>
+            <select class="form-select form-select-sm" id="staffProdCategory"></select>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-2">
+              <label class="form-label small">តម្លៃទិញ ($)</label>
+              <input type="number" step="0.01" min="0" class="form-control form-control-sm" id="staffProdBuy" required />
+            </div>
+            <div class="col-6 mb-2">
+              <label class="form-label small">តម្លៃលក់ ($)</label>
+              <input type="number" step="0.01" min="0" class="form-control form-control-sm" id="staffProdSell" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-2">
+              <label class="form-label small">ស្តុក</label>
+              <input type="number" min="0" class="form-control form-control-sm" id="staffProdQty" required />
+            </div>
+            <div class="col-6 mb-2">
+              <label class="form-label small">កម្រិតបញ្ជាទិញ</label>
+              <input type="number" min="0" class="form-control form-control-sm" id="staffProdReorder" required />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-moss btn-sm">រក្សាទុក</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Customer modal -->
+<div class="modal fade" id="custModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="custForm">
+        <div class="modal-header">
+          <h6 class="modal-title" id="custModalTitle">បន្ថែមអតិថិជន</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="custId" />
+          <div class="mb-2"><label class="form-label small">ឈ្មោះ</label><input class="form-control form-control-sm" id="custName" required /></div>
+          <div class="mb-2"><label class="form-label small">លេខទូរស័ព្ទ</label><input class="form-control form-control-sm" id="custPhone" /></div>
+          <div class="mb-2"><label class="form-label small">អ៊ីមែល</label><input type="email" class="form-control form-control-sm" id="custEmail" /></div>
+          <div class="mb-2"><label class="form-label small">អាសយដ្ឋាន</label><textarea class="form-control form-control-sm" id="custAddress" rows="2"></textarea></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-moss btn-sm">រក្សាទុក</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Customer detail modal -->
+<div class="modal fade" id="custDetailModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title">ព័ត៌មានអតិថិជន</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="custDetailBody"></div>
+    </div>
+  </div>
+</div>
     </section>
 </body>
 </html>
