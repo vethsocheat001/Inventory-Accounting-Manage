@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify OTP</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="../../../css/phearoun.css" rel="stylesheet">
+</head>
+<body class="body">
+
+<div class="page-wrapper">
+  <div class="login-card">
+    <div class="icon-circle">
+      <i class="fa-solid fa-shield-halved"></i>
+    </div>
+    <div class="form-title">Verify Your Code</div>
+    <form action="changePassword.html" onsubmit="return true;">
+      <div class="otp-inputs">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box" required>
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box" required>
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box" required>
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box" required>
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box" required>
+        <!-- <input type="text" maxlength="1" inputmode="numeric" class="otp-box" required> -->
+      </div>  
+      <button type="submit" class="btn btn-login w-100">Verify Code</button>
+    </form>
+
+    <!-- <div class="resend-text">
+      Didn't receive the code? <a href="#" id="resendLink">Resend Code</a>
+    </div> -->
+
+    <a href="login.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i>Back to Login
+    </a>
+
+  </div>
+</div>
+
+<script>
+  // Auto-advance to next box, and allow backspace to go to previous box
+  const boxes = document.querySelectorAll('.otp-box');
+  boxes.forEach((box, index) => {
+    box.addEventListener('input', () => {
+      box.value = box.value.replace(/[^0-9]/g, '');
+      if (box.value.length === 1 && index < boxes.length - 1) {
+        boxes[index + 1].focus();
+      }
+    });
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && box.value === '' && index > 0) {
+        boxes[index - 1].focus();
+      }
+    });
+  });
+
+  // Simple resend cooldown
+  const resendLink = document.getElementById('resendLink');
+  resendLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    let seconds = 30;
+    resendLink.style.pointerEvents = 'none';
+    resendLink.textContent = `Resend in ${seconds}s`;
+    const timer = setInterval(() => {
+      seconds--;
+      resendLink.textContent = `Resend in ${seconds}s`;
+      if (seconds <= 0) {
+        clearInterval(timer);
+        resendLink.textContent = 'Resend Code';
+        resendLink.style.pointerEvents = 'auto';
+      }
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>

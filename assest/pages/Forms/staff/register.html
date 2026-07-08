@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="../../../css/phearoun.css" rel="stylesheet">
+</head>
+<body class="body">
+
+<div class="page-wrapper">
+  <div class="login-card">
+
+    <div class="icon-circle">
+      <i class="fa-solid fa-user-plus"></i>
+    </div>
+
+    <div class="form-title">Create Account</div>
+    <form action="login.html" onsubmit="return true;">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Full Name" required>
+      </div>
+
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="Enter Email" required>
+      </div>
+
+      <div class="mb-3 pass-wrapper">
+        <input type="password" class="form-control" id="regPassword" placeholder="Create Password" required>
+        <button type="button" class="toggle-pass" onclick="togglePassword('regPassword', this)">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+
+      <div class="mb-3 pass-wrapper">
+        <input type="password" class="form-control" placeholder="Confirm Password" required>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+        <label class="form-check-label" for="agreeTerms">
+          I agree to the Terms &amp; Privacy Policy
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-login w-100">Create Account</button>
+    </form> 
+    <div class="signup-text d-flex justify-content-between">
+      <h6>Already have an account? </h6>
+      <a href="login.html">Sign in</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function togglePassword(id, btn) {
+    const input = document.getElementById(id);
+    const icon = btn.querySelector('i');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    } else {
+      input.type = 'password';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  }
+</script>
+
+</body>
+</html>
