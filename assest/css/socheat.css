@@ -1,46 +1,35 @@
 
 :root {
-    /* ពណ៌ចម្បង -> ត្រូវនឹង .text-primary / .bg-primary / .btn-primary */
+    --back-body : #EFF5FE;
     --bs-primary: #193476;
     --bs-primary-rgb: 25, 52, 118;
     --bs-primary-text-emphasis: #132a5e;
     --bs-primary-bg-subtle: #e3e9f7;
     --bs-primary-border-subtle: #b9c6e8;
-
-    /* ពណ៌មាស/accent -> ត្រូវនឹង .text-warning / .bg-warning / .btn-warning */
     --bs-warning: #F59E0B;
     --bs-warning-rgb: 245, 158, 11;
     --bs-warning-text-emphasis: #92600a;
     --bs-warning-bg-subtle: #fdf0d9;
     --bs-warning-border-subtle: #f8d9a1;
-
-    /* ពណ៌ខៀវក្រាស់ (secondary) -> របារក្រាហ្វិចទី ២, badge */
+    --bs-primary-box :#4a7dff ;
+    --bs-primary-boxs :#DADCEB ;
     --bs-secondary: #3B5FBF;
     --bs-secondary-rgb: 59, 95, 191;
-
-    /* អក្សរ / ផ្ទៃខាងក្រោយ / ស៊ុម ទូទាំង site */
     --bs-body-font-family: 'Kantumruy Pro', 'Plus Jakarta Sans', sans-serif;
     --bs-body-bg: #F8FAFC;
     --bs-body-color: #0F172A;
     --bs-secondary-color: #475569;
-    /* text-secondary / text-muted ប្រើតម្លៃនេះ */
     --bs-border-color: #E2E8F0;
     --bs-border-radius: .75rem;
     --bs-border-radius-lg: 1rem;
     --bs-border-radius-xl: 1.25rem;
-
-    /* focus ring តាមពណ៌ម៉ាក */
     --bs-focus-ring-color: rgba(25, 52, 118, .25);
     --bs-link-color: #193476;
     --bs-link-hover-color: #132a5e;
-
-    /* ធ្វើអោយសមាសធាតុ Bootstrap component (accordion, focus ring) ប្រើពណ៌ម៉ាកដូចគ្នា */
     --bs-accordion-active-color: #193476;
     --bs-accordion-active-bg: #e3e9f7;
     --bs-accordion-btn-focus-border-color: #193476;
-    --bs-accordion-btn-focus-box-shadow: 0 0 0 .25rem rgba(25, 52, 118, .25);
-
-    /* អថេរផ្ទាល់ខ្លួនដែល Bootstrap មិនមាន (gradient / footer) */
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 .25rem #19347640;
     --gradient-primary: linear-gradient(135deg, #193476, #14275c);
     --gradient-accent: linear-gradient(135deg, #F59E0B, #D97706);
     --secondary: #1E3A8A;
@@ -75,28 +64,23 @@ a {
     object-fit: cover;
     border-radius: 12px;
 }
-
-/* ============================================
-   ចំណុចដែល Bootstrap "មិនអាច" ធ្វើបានដោយផ្ទាល់
-   (gradient ២ពណ៌ អង្កាំទ្រេត, animation @keyframes,
-   hover-transform, ទំហំ icon ថេរ, បន្ទាត់ timeline)
-   គឺជាទីតែមួយគត់ដែលនៅសល់ជា CSS ផ្ទាល់ខ្លួន
-   ============================================ */
-
-/* gradient background (Bootstrap's .bg-gradient គ្រាន់តែជា highlight ស្រាល
-   មិនមែន gradient ២ពណ៌ទ្រេតដូចនេះទេ) */
 .bg-gradient-primary {
     background: var(--gradient-primary) !important;
 }
-
+.bg-bs-primary-box{
+    background: var(--bs-primary-box) !important;
+}
+.bg-bs-primary-boxs{
+    background: var(--bs-primary-boxs) !important;
+}
 .bg-gradient-accent {
     background: var(--gradient-accent) !important;
 }
-
-/* Navbar - hover underline animation + brand color transition,
-   Bootstrap navbar មិនមានឥទ្ធិពល underline animate ស្រាប់ទេ */
+.bg-back-body{
+    background: var(--back-body) !important;
+}
 .navbar-iam {
-    background: rgba(255, 255, 255, .95) !important;
+    background: #fffffff2 !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -155,7 +139,7 @@ a {
   box-shadow: 0 8px 18px rgba(255, 193, 7, 0.4);
 }
 .card-iam:hover .icon-tile {
-    transform: scale(1.1) rotate(-5deg);
+    transform: scale(1.1) rotate(-5deg) !important;
 }
 .card-iam {
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;

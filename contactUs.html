@@ -6,49 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inventory & Accounting </title>
   <meta name="description" content="ទំនាក់ទំនងមកកាន់ក្រុមការងារ Inventory & Accounting Management System" />
-
-  <!-- Google Fonts: Poppins (Latin) + Battambang (Khmer) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-  <!-- Bootstrap 5 -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
-  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assest/css/contact.css">
 </head>
 
 <body>
-  <!-- ===== NAVBAR HTML ===== -->
-<!-- ===== NAVBAR HTML (FIXED) ===== -->
-<nav class="navbar navbar-expand-lg navbar-iam sticky-top bg-body">
+  <!-- ----- NAVBAR ----- -->
+  <nav class="navbar navbar-expand-lg navbar-iam sticky-top bg-body">
     <div class="container">
-        <!-- Logo & Brand -->
-        <div class="d-flex align-items-center">
-            <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
-            <a class="navbar-brand navbar-brand-iam ms-2 fw-bold" href="#">IAM</a>
+      <div class="d-flex align-items-center">
+        <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
+        <a class="navbar-brand navbar-brand-iam ms-2 fw-bold" href="#">IAM</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navMenu">
+        <div></div>
+        <h4 class="navbar-brand-iam ms-2 fw-bold">Inventory and Accounting Manager</h4>
+        <div class="d-flex">
+          <a href="/index.html" class="btn btn-login">Back</a>
         </div>
-        
-        <!-- Toggler (Hamburger Menu) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#navMenu" aria-controls="navMenu" 
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- Menu -->
-        <div class="collapse navbar-collapse justify-content-between" id="navMenu">
-          <div></div>
-           <h4 class="navbar-brand-iam ms-2 fw-bold">Inventory and Accounting Manager</h4>
-            <div class="d-flex">
-                <a href="/index.html" class="btn btn-login">Back</a>
-            </div>
-        </div>
+      </div>
     </div>
-</nav>
+  </nav>
 
   <header id="home" class="hero-section">
     <div class="container text-center position-relative" data-aos>
@@ -76,20 +64,21 @@
             <div class="section-divider"></div>
 
             <div class="row row-cols-2 g-3 team-grid">
-              <div class="col text-center">
-                <img src="assest/image/photo_2026-07-06_16-37-09.jpg" alt="Mr.Lyheng Symeng" class="team-avatar" />
-                <h6 class="team-name">Mr.Lyheng Symeng</h6>
-                <p class="team-role">អ្នកគ្រប់គ្រងគម្រោង</p>
-              </div>
-              <div class="col text-center">
-                <img src="assest/image/DSC_1535 copy.JPG" alt="Mr.Veth Socheat" class="team-avatar" />
+              <div class="col text-center"><img src="assest/image/DSC_1535 copy.JPG" alt="Mr.Veth Socheat"
+                  class="team-avatar" />
                 <h6 class="team-name"> Mr.Veth Socheat</h6>
-                <p class="team-role">អ្នកគ្រប់គ្រងគណនេយ្យ</p>
+
+                <p class="team-role">អ្នកគ្រប់គ្រងគម្រោង</p>
               </div>
               <div class="col text-center">
                 <img src="assest/image/IMG_7961.JPG" alt="Mr.Rim Phearoun" class="team-avatar" />
                 <h6 class="team-name">Mr.Rim Phearoun</h6>
                 <p class="team-role">អ្នកអភិវឌ្ឍប្រព័ន្ធ</p>
+              </div>
+              <div class="col text-center">
+                <img src="assest/image/photo_2026-07-06_16-37-09.jpg" alt="Mr.Lyheng Symeng" class="team-avatar" />
+                <h6 class="team-name">Mr.Lyheng Symeng</h6>
+                <p class="team-role">អ្នកគ្រប់គ្រងគណនេយ្យ</p>
               </div>
               <div class="col text-center">
                 <img src="assest/image/DSC_1541 copy.JPG" alt="Mr.Vet ChanSarak" class="team-avatar" />
@@ -115,7 +104,7 @@
                   <strong>Telegram</strong>
                   <span>
                     <a class="text-body" href="https://t.me/+4QNlU95XlZBmYjc9" target="_blank">
-                      @Our teams
+                      Our teams
                     </a>
                   </span>
                 </div>
@@ -124,7 +113,7 @@
                 <span class="info-icon icon-email"><i class="bi bi-envelope-fill"></i></span>
                 <div>
                   <strong>Email</strong>
-                  <span>lyhengsymeng.@gmail.con</span>
+                  <span>inventoryaccountingmanager.@gmail.con</span>
                 </div>
               </li>
               <li>
@@ -659,17 +648,17 @@
 
     });
     document.addEventListener('DOMContentLoaded', function () {
-    const navbar = document.querySelector('.navbar-iam');
+      const navbar = document.querySelector('.navbar-iam');
 
-    // បន្ថែម class 'scrolled' ពេលរំកិល
-    window.addEventListener('scroll', function () {
+      // បន្ថែម class 'scrolled' ពេលរំកិល
+      window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+          navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+          navbar.classList.remove('scrolled');
         }
+      });
     });
-});
   </script>
 </body>
 
