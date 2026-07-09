@@ -8,58 +8,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="assest/css/socheat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
 </head>
 <body>
-<!-- ===== Navbar HTML ===== -->
-<nav class="navbar navbar-expand-lg navbar-iam sticky-top">
-    <div class="container">
-        <!-- Logo & Brand -->
-        <div class="d-flex align-items-center">
-            <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
-            <a class="navbar-brand navbar-brand-iam ms-2" href="#">IAM</a>
-        </div>
-        
-        <!-- Toggler -->
-        <button class="navbar-toggler navbar-toggler-iam" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#navMenu" aria-controls="navMenu" 
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- Menu -->
-        <div class="collapse navbar-collapse" id="navMenu">
-            <ul class="navbar-nav mx-auto gap-1 navbar-nav-iam">
-                <li class="nav-item">
-                    <a class="nav-link nav-link-iam" href="#hero">ទំព័រដើម</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-iam" href="#why">ហេតុអ្វីជ្រើសរើស</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-iam" href="#features">មុខងារ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-iam" href="#pricing">តម្លៃ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-iam" href="#faq">សំណួរ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-iam" href="/contactUs.html">ទំនាក់ទំនង</a>
-                </li>
-            </ul>
-            <div class="d-flex gap-2 btn-group-iam">
-                <a href="/assest/pages/Forms/login.html" class="btn btn-outline-iam">Staff</a>
-                <a href="/assest/pages/Forms/login.html" class="btn btn-primary-iam">Admin</a>
+    <!-- ------------ NAVBAR ------------ -->
+    <nav class="navbar navbar-expand-lg navbar-iam sticky-top shadow-sm border-bottom py-2">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
+                <a class="navbar-brand fw-bold text-primary fs-4 ms-2" href="#">IAM</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto gap-1">
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#hero">ទំព័រដើម</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#why">ហេតុអ្វីជ្រើសរើស</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#features">មុខងារ</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#pricing">តម្លៃ</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#faq">សំណួរ</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link px-3 rounded-3" href="/contactUs.html">ទំនាក់ទំនង</a></li> -->
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="/contactUs.html" class="btn btn-login shadow-sm fw-bold text-light">ទំនាក់ទំនង</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- ========== HERO ========== -->
+    <!-- ------------ HERO ------------ -->
     <section class="hero-section" id="hero">
         <div class="shape-circle shape-circle-1"></div>
         <div class="shape-circle shape-circle-2"></div>
@@ -73,11 +57,13 @@
                     <h1 class="display-4 fw-bold mt-4 mb-3 fade-in-up">
                         Welcome to <span class="text-warning">Inventory Accounting Manager</span>
                     </h1>
-                    <p class="lead text-white-50">Manage Inventory · Track Sales · Generate
-                        Reports — គ្រប់គ្រងអាជីវកម្មរបស់អ្នកយ៉ាងងាយស្រួល ក្នុងប្រព័ន្ធតែមួយ។</p>
+                    <p class="lead text-white-50">Manage Inventory Track Sales Generate
+                        Reports គ្រប់គ្រងអាជីវកម្មរបស់អ្នកយ៉ាងងាយស្រួល ក្នុងប្រព័ន្ធតែមួយ។</p>
                     <div class="d-flex flex-wrap gap-3 mt-4 mb-4">
-                        <a href="#pricing" class="btn bg-gradient-accent btn-lg shadow fw-bold text-black-50"> Staff</a>
-                        <a href="#pricing" class="btn btn-warning btn-lg shadow fw-bold text-black-50">Business Owner</a>
+                        <a href="/assest/pages/Forms/staff/login.html"
+                            class="btn bg-gradient-accent btn-lg shadow fw-bold text-black-50"> Staff</a>
+                        <a href="/assest/pages/Forms/admin/login.html"
+                            class="btn btn-warning btn-lg shadow fw-bold text-black-50">Business Owner</a>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
                         <span
@@ -131,34 +117,39 @@
         </div>
     </section>
 
-    <!-- ========== TRUSTED BY ========== -->
-    <section class="bg-white py-4 border-bottom">
+    <!-- ------------ TRUSTED BY ------------ -->
+    <section class="bg-back-body py-4 ">
         <div class="container text-center">
             <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">ទំនុកចិត្តពីអតិថិជន</span>
             <h6 class="fw-bold text-black-50 mb-4">Trusted by Growing Businesses</h6>
             <div class="row g-3 justify-content-center">
                 <div class="col-6 col-md-2">
-                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo">
+                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <i class="bi bi-building me-2 text-primary"></i> NEXA
                     </div>
                 </div>
                 <div class="col-6 col-md-2">
-                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo">
+                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <i class="bi bi-shop me-2 text-primary"></i> GreenMart
                     </div>
                 </div>
                 <div class="col-6 col-md-2">
-                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo">
+                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <i class="bi bi-briefcase me-2 text-primary"></i> TrueCo
                     </div>
                 </div>
                 <div class="col-6 col-md-2">
-                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo">
+                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <i class="bi bi-cart me-2 text-primary"></i> Bayon Retail
                     </div>
                 </div>
                 <div class="col-6 col-md-2">
-                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo">
+                    <div class="border rounded-3 py-3 fw-bold text-black-50 bg-light trusted-logo" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <i class="bi bi-truck me-2 text-primary"></i> Angkor Supply
                     </div>
                 </div>
@@ -166,8 +157,8 @@
         </div>
     </section>
 
-    <!-- ========== WHY CHOOSE IAM ========== -->
-    <section class="py-5" id="why">
+    <!-- ------------ WHY CHOOSE IAM ------------ -->
+    <section class="py-5 border-0 text-body" id="why">
         <div class="container text-center">
             <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">មូលហេតុ</span>
             <h2 class="display-6 fw-bold mb-3">ហេតុអ្វីត្រូវជ្រើសរើស IAM</h2>
@@ -176,13 +167,15 @@
                 ក្នុងកន្លែងតែមួយ រហ័ស សុវត្ថិភាព និងងាយស្រួលប្រើ</p>
             <div class="row g-4 text-start">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-iam border-start border-4 border-primary bg-primary-subtle rounded-4 p-4 h-100">
+                    <div
+                        class="card-iam border-start border-4 shadow border-primary bg-primary-subtle rounded-4 p-4 h-100"data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-tile mb-0" style="width:48px;height:48px;font-size:1.2rem;"><i
                                     class="bi bi-speedometer2"></i></div>
                             <div>
                                 <h5 class="mb-0">ល្បឿនលឿន</h5>
-                                <span class="badge bg-primary rounded-pill">ចាប់ផ្តើមភ្លាមៗ</span>
+                                <span class="badge bg-bs-primary-box rounded-pill">ចាប់ផ្តើមភ្លាមៗ</span>
                             </div>
                         </div>
                         <p class="mt-2 text-black-50">ដំណើរការរហ័ស ចាប់ផ្តើមប្រើភ្លាមៗដោយមិនចាំបាច់រៀបចំស្មុគស្មាញ</p>
@@ -202,13 +195,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white">
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-tile mb-0" style="width:48px;height:48px;font-size:1.2rem;"><i
                                     class="bi bi-lock"></i></div>
                             <div>
                                 <h5 class="mb-0">សុវត្ថិភាព</h5>
-                                <span class="badge bg-primary rounded-pill">ការពារទិន្នន័យ</span>
+                                <span class="badge bg-bs-primary-box rounded-pill">ការពារទិន្នន័យ</span>
                             </div>
                         </div>
                         <p class="mt-2 text-black-50">
@@ -229,13 +223,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white">
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-tile mb-0" style="width:48px;height:48px;font-size:1.2rem;"><i
                                     class="bi bi-cloud"></i></div>
                             <div>
                                 <h5 class="mb-0">ប្រើតាម Cloud</h5>
-                                <span class="badge bg-primary rounded-pill">គ្រប់ទីកន្លែង</span>
+                                <span class="badge bg-bs-primary-box rounded-pill">គ្រប់ទីកន្លែង</span>
                             </div>
                         </div>
                         <p class="mt-2 text-black-50">ចូលប្រើពីទីណាក៏បាន គ្រប់ពេលវេលា
@@ -255,13 +250,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white">
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-tile mb-0" style="width:48px;height:48px;font-size:1.2rem;"><i
                                     class="bi bi-graph-up"></i></div>
                             <div>
                                 <h5 class="mb-0">របាយការណ៍ច្បាស់</h5>
-                                <span class="badge bg-primary rounded-pill">វិភាគងាយ</span>
+                                <span class="badge bg-bs-primary-box rounded-pill">វិភាគងាយ</span>
                             </div>
                         </div>
                         <p class="mt-2 text-black-50">មើលទិន្នន័យអាជីវកម្មជាក្រាហ្វិច ងាយស្រួលវិភាគ និងសម្រេចចិត្ត</p>
@@ -280,13 +276,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white">
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-tile mb-0" style="width:48px;height:48px;font-size:1.2rem;"><i
                                     class="bi bi-receipt"></i></div>
                             <div>
                                 <h5 class="mb-0">វិក្កយបត្រស្វ័យប្រវត្តិ</h5>
-                                <span class="badge bg-primary rounded-pill">រហ័សទាន់ចិត្ត</span>
+                                <span class="badge bg-bs-primary-box rounded-pill">រហ័សទាន់ចិត្ត</span>
                             </div>
                         </div>
                         <p class="mt-2 text-black-50">បង្កើតវិក្កយបត្រលក់-ទិញ ដោយស្វ័យប្រវត្តិ ភ្ជាប់ជាមួយស្តុកភ្លាមៗ
@@ -307,13 +304,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white">
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-tile mb-0" style="width:48px;height:48px;font-size:1.2rem;"><i
                                     class="bi bi-box"></i></div>
                             <div>
                                 <h5 class="mb-0">គ្រប់គ្រងស្តុកពេញលេញ</h5>
-                                <span class="badge bg-primary rounded-pill">តាមដានគ្រប់ពេល</span>
+                                <span class="badge bg-bs-primary-box rounded-pill">តាមដានគ្រប់ពេល</span>
                             </div>
                         </div>
                         <p class="mt-2 text-black-50">តាមដានស្តុកគ្រប់ប្រភេទទំនិញ ជូនដំណឹងនៅពេលស្តុកទាប</p>
@@ -335,8 +333,8 @@
         </div>
     </section>
 
-    <!-- ========== SYSTEM MODULES ========== -->
-    <section class="py-5 bg-white border-top border-bottom">
+    <!-- ------------ SYSTEM MODULES ------------ -->
+    <section class="py-5 bg-back-body ">
         <div class="container text-center">
             <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">រចនាសម្ព័ន្ធប្រព័ន្ធ</span>
             <h2 class="display-6 fw-bold mb-3">System Modules</h2>
@@ -344,56 +342,65 @@
                 ទាំងអស់ដែលអាជីវកម្មរបស់អ្នកត្រូវការ</p>
             <div class="row g-4">
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-box-seam"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-boxes-stacked"></i></div>
                         <h5 class="mb-0">Inventory</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-calculator"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-file-invoice-dollar"></i></div>
                         <h5 class="mb-0">Accounting</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-cart-check"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-brands fa-shopify"></i></div>
                         <h5 class="mb-0">Sales</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-bag-check"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-cart-arrow-down"></i></div>
                         <h5 class="mb-0">Purchase</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-truck"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-truck-field-un"></i></div>
                         <h5 class="mb-0">Supplier</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="icon-tile mx-auto"><i class="bi bi-person-badge"></i></div>
                         <h5 class="mb-0">Employee</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-shield-lock"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-rotate"></i></div>
                         <h5 class="mb-0">Role</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-bar-chart"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-chart-column"></i></div>
                         <h5 class="mb-0">Reports</h5>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 mx-auto">
-                    <div class="card-iam border rounded-4 p-4 h-100 bg-white text-center">
-                        <div class="icon-tile mx-auto"><i class="bi bi-gear"></i></div>
+                    <div class="card-iam shadow rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="icon-tile mx-auto"><i class="fa-solid fa-gear"></i></div>
                         <h5 class="mb-0">Settings</h5>
                     </div>
                 </div>
@@ -401,8 +408,8 @@
         </div>
     </section>
 
-    <!-- ========== FEATURES ========== -->
-    <section class="py-5" id="features">
+    <!-- ------------ FEATURES ------------ -->
+    <section class="py-5 " id="features">
         <div class="container text-center">
             <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">សេវាកម្មរបស់យើង</span>
             <h2 class="display-6 fw-bold mb-3">អ្វីដែល IAM អាចជួយអ្នកបាន</h2>
@@ -410,9 +417,10 @@
                 និងហិរញ្ញវត្ថុហាងរបស់អ្នក ក្នុងកន្លែងតែមួយ
             </p>
             <div class="row g-4 text-start">
-
+                <!-- Card 1: check inventory -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow  rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/check-inventory.jpeg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
@@ -447,300 +455,313 @@
 
                 <!-- Card 2: Sales -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/salesmanagement.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>គ្រប់គ្រងការលក់</h5>
-                        <p class="text-black-50">កត់ត្រាការលក់ និងបង្កើតវិក្កយបត្រយ៉ាងរហ័ស ភ្ជាប់ជាមួយស្តុកភ្លាមៗ</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> វិក្កយបត្រ ១០វិនាទី</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> គណនាតម្លៃស្វ័យប្រវត្តិ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> បញ្ចុះតម្លៃ</span>
+                            <p class="text-black-50">កត់ត្រាការលក់ និងបង្កើតវិក្កយបត្រយ៉ាងរហ័ស ភ្ជាប់ជាមួយស្តុកភ្លាមៗ
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> វិក្កយបត្រ ១០វិនាទី</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> គណនាតម្លៃស្វ័យប្រវត្តិ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> បញ្ចុះតម្លៃ</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalSales">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalSales">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 3: Purchase -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/Orders.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>ការបញ្ជាទិញ</h5>
-                        <p class="text-black-50">គ្រប់គ្រងការបញ្ជាទិញពីអ្នកផ្គត់ផ្គង់ តាមដានស្ថានភាពបញ្ជូន
-                            និងបង់ប្រាក់</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> តាមដានស្ថានភាព</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ស្តុកកើនស្វ័យប្រវត្តិ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ប្រវត្តិពេញលេញ</span>
+                            <p class="text-black-50">គ្រប់គ្រងការបញ្ជាទិញពីអ្នកផ្គត់ផ្គង់ តាមដានស្ថានភាពបញ្ជូន
+                                និងបង់ប្រាក់</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> តាមដានស្ថានភាព</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ស្តុកកើនស្វ័យប្រវត្តិ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ប្រវត្តិពេញលេញ</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalPurchase">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalPurchase">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 4: Supplier -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/Supplier.png" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>អ្នកផ្គត់ផ្គង់</h5>
-                        <p class="text-black-50">រក្សាទុកព័ត៌មានអ្នកផ្គត់ផ្គង់ទាំងអស់ និងប្រវត្តិការទិញពីពួកគេ</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> រក្សាទុកតម្លៃ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ប្រវត្តិការទិញ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ស្វែងរកលឿន</span>
+                            <p class="text-black-50">រក្សាទុកព័ត៌មានអ្នកផ្គត់ផ្គង់ទាំងអស់ និងប្រវត្តិការទិញពីពួកគេ</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> រក្សាទុកតម្លៃ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ប្រវត្តិការទិញ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ស្វែងរកលឿន</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalSupplier">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalSupplier">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 5: Customer -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
-                       <div class="card-img-wrap">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <div class="card-img-wrap">
                             <img src="assest/image/customer.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
-                             <h5>អតិថិជន</h5>
-                        <p class="text-black-50">រក្សាទុកប្រវត្តិទិញទំនិញរបស់អតិថិជន ដើម្បីវិភាគអាកប្បកិរិយាទិញ</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> តាមដានឥណទាន</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ចាត់ថ្នាក់អតិថិជន</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ការផ្សព្វផ្សាយ</span>
+                            <h5>អតិថិជន</h5>
+                            <p class="text-black-50">រក្សាទុកប្រវត្តិទិញទំនិញរបស់អតិថិជន ដើម្បីវិភាគអាកប្បកិរិយាទិញ</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> តាមដានឥណទាន</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ចាត់ថ្នាក់អតិថិជន</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ការផ្សព្វផ្សាយ</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalCustomer">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalCustomer">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                       
+
                     </div>
                 </div>
 
                 <!-- Card 6: Users -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/User rights.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>សិទ្ធិអ្នកប្រើប្រាស់</h5>
-                        <p class="text-black-50">កំណត់សិទ្ធិខុសៗគ្នាសម្រាប់ម្ចាស់ហាង និងបុគ្គលិកតាមតួនាទី</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> កំណត់តួនាទី</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> សុវត្ថិភាពទិន្នន័យ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> តាមដានសកម្មភាព</span>
+                            <p class="text-black-50">កំណត់សិទ្ធិខុសៗគ្នាសម្រាប់ម្ចាស់ហាង និងបុគ្គលិកតាមតួនាទី</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> កំណត់តួនាទី</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> សុវត្ថិភាពទិន្នន័យ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> តាមដានសកម្មភាព</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalUsers">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalUsers">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 7: Accounting -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/Accounting.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
-                             <h5>គណនេយ្យ</h5>
-                        <p class="text-black-50">កត់ត្រាចំណូល-ចំណាយ និងគណនាចំណេញ-ខាតដោយស្វ័យប្រវត្តិ</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ចំណូល-ចំណាយស្វ័យប្រវត្តិ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ចំណេញ-ខាតភ្លាមៗ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> តារាងតុល្យការ</span>
+                            <h5>គណនេយ្យ</h5>
+                            <p class="text-black-50">កត់ត្រាចំណូល-ចំណាយ និងគណនាចំណេញ-ខាតដោយស្វ័យប្រវត្តិ</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i>
+                                    ចំណូល-ចំណាយស្វ័យប្រវត្តិ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ចំណេញ-ខាតភ្លាមៗ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> តារាងតុល្យការ</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalAccounting">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalAccounting">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                       
+
                     </div>
                 </div>
 
                 <!-- Card 8: Reports -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/report1.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
-                             <h5>របាយការណ៍</h5>
-                        <p class="text-black-50">មើលរបាយការណ៍ចំណេញ-ខាត ចំណូល-ចំណាយ ជាក្រាហ្វិចងាយយល់</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> វិភាគនិន្នាការ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ប្រៀបធៀបខែ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> នាំចេញ PDF/Excel</span>
+                            <h5>របាយការណ៍</h5>
+                            <p class="text-black-50">មើលរបាយការណ៍ចំណេញ-ខាត ចំណូល-ចំណាយ ជាក្រាហ្វិចងាយយល់</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> វិភាគនិន្នាការ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ប្រៀបធៀបខែ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> នាំចេញ PDF/Excel</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalReports">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalReports">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                       
+
                     </div>
                 </div>
 
                 <!-- Card 9: Barcode -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/barcode.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>Barcode</h5>
-                        <p class="text-black-50">បោះពុម្ព និងស្កេន Barcode ដើម្បីលក់ និងរាប់ស្តុករហ័ស</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> បោះពុម្ពភ្លាមៗ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ស្កេនលក់លឿន</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> កាត់បន្ថយកំហុស</span>
+                            <p class="text-black-50">បោះពុម្ព និងស្កេន Barcode ដើម្បីលក់ និងរាប់ស្តុករហ័ស</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> បោះពុម្ពភ្លាមៗ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ស្កេនលក់លឿន</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> កាត់បន្ថយកំហុស</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalBarcode">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalBarcode">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 10: SKU -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/SKU.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>SKU Management</h5>
-                        <p class="text-black-50">រៀបចំកូដ SKU ដាច់ដោយឡែកសម្រាប់ទំនិញនីមួយៗ ងាយស្រួលស្វែងរក</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> កូដតាមប្រភេទ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ស្វែងរកលឿន</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> គ្រប់គ្រងច្បាស់</span>
+                            <p class="text-black-50">រៀបចំកូដ SKU ដាច់ដោយឡែកសម្រាប់ទំនិញនីមួយៗ ងាយស្រួលស្វែងរក</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> កូដតាមប្រភេទ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ស្វែងរកលឿន</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> គ្រប់គ្រងច្បាស់</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalSku">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalSku">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 11: Notifications -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/notification.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
                             <h5>ការជូនដំណឹង</h5>
-                        <p class="text-black-50">ទទួលការជូនដំណឹងភ្លាមៗនៅពេលទំនិញជិតអស់ស្តុក ឬវិក្កយបត្រហួសកំណត់</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ជូនដំណឹងភ្លាមៗ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> កំណត់កម្រិតអប្បបរមា</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> មិនខកខានព័ត៌មាន</span>
+                            <p class="text-black-50">ទទួលការជូនដំណឹងភ្លាមៗនៅពេលទំនិញជិតអស់ស្តុក ឬវិក្កយបត្រហួសកំណត់</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ជូនដំណឹងភ្លាមៗ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> កំណត់កម្រិតអប្បបរមា</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> មិនខកខានព័ត៌មាន</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalNotifications">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalNotifications">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                        
+
                     </div>
                 </div>
 
                 <!-- Card 12: Backup -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-iam border rounded-4 h-100 bg-white overflow-hidden">
+                    <div class="card-iam shadow rounded-4 h-100 bg-white overflow-hidden" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="card-img-wrap">
                             <img src="assest/image/backupdata.jpg" alt="ត្រួតពិនិត្យស្តុកទំនិញ"
                                 class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="p-4">
-                             <h5>Backup ទិន្នន័យ</h5>
-                        <p class="text-black-50">ចម្លងទុកទិន្នន័យអាជីវកម្មរបស់អ្នកដោយស្វ័យប្រវត្តិ ដើម្បីសុវត្ថិភាព
-                        </p>
-                        <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ចម្លងទុកស្វ័យប្រវត្តិ</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ស្តារឡើងវិញបាន</span>
-                            <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
-                                    class="bi bi-check-circle-fill text-primary"></i> ការពារ ១០០%</span>
+                            <h5>Backup ទិន្នន័យ</h5>
+                            <p class="text-black-50">ចម្លងទុកទិន្នន័យអាជីវកម្មរបស់អ្នកដោយស្វ័យប្រវត្តិ ដើម្បីសុវត្ថិភាព
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ចម្លងទុកស្វ័យប្រវត្តិ</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ស្តារឡើងវិញបាន</span>
+                                <span class="badge bg-body border text-secondary fw-semibold badge-icon"><i
+                                        class="bi bi-check-circle-fill text-primary"></i> ការពារ ១០០%</span>
+                            </div>
+                            <button type="button"
+                                class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
+                                data-bs-toggle="modal" data-bs-target="#modalBackup">មើលបន្ថែម <i
+                                    class="bi bi-arrow-right"></i></button>
                         </div>
-                        <button type="button"
-                            class="btn btn-link p-0 mt-3 text-primary fw-bold text-decoration-none d-inline-flex align-items-center gap-2 feature-link"
-                            data-bs-toggle="modal" data-bs-target="#modalBackup">មើលបន្ថែម <i
-                                class="bi bi-arrow-right"></i></button>
-                        </div>
-                       
+
                     </div>
                 </div>
 
@@ -748,7 +769,7 @@
         </div>
     </section>
 
-    <!-- ========== MODALS ========== -->
+    <!-- --------------- MODALS --------------- -->
     <!-- Modal 1: Inventory -->
     <div class="modal fade" id="modalInventory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1339,8 +1360,8 @@
         </div>
     </div>
 
-    <!-- ========== DASHBOARD PREVIEW ========== -->
-    <section class="py-5 bg-white border-top border-bottom">
+    <!-- --------------- DASHBOARD PREVIEW --------------- -->
+    <section class="py-5 bg-back-body">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">ផ្ទាំងគ្រប់គ្រង</span>
@@ -1348,7 +1369,8 @@
                 <p class="text-black-50 fs-5 mx-auto" style="max-width:640px;">ផ្ទាំងគ្រប់គ្រងដ៏សាមញ្ញ
                     ប៉ុន្តែពោរពេញដោយព័ត៌មានសំខាន់ៗសម្រាប់ការសម្រេចចិត្ត</p>
             </div>
-            <div class="bg-white border rounded-4 shadow-lg p-3 mx-auto" style="max-width:900px;">
+            <div class="bg-white border rounded-4 shadow-lg p-3 mx-auto" style="max-width:900px;" data-aos="fade-up"
+                        data-aos-duration="1000">
                 <div class="d-flex align-items-center gap-2 pb-2">
                     <span class="bg-danger rounded-circle" style="width:11px;height:11px;display:inline-block;"></span>
                     <span class="bg-warning rounded-circle" style="width:11px;height:11px;display:inline-block;"></span>
@@ -1393,7 +1415,7 @@
         </div>
     </section>
 
-    <!-- ========== HOW IT WORKS ========== -->
+    <!-- --------------- HOW IT WORKS --------------- -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
@@ -1404,23 +1426,27 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-7">
-                    <div class="timeline-step">
+                    <div class="timeline-step" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="timeline-num">1</div>
                         <h5 class="text-primary fw-bold">បង្កើតគណនី</h5>
                         <p class="text-black-50 mb-0">ចុះឈ្មោះហាងរបស់អ្នក និងកំណត់ព័ត៌មានមូលដ្ឋានក្នុងរយៈពេលពីរបីនាទី។
                         </p>
                     </div>
-                    <div class="timeline-step">
+                    <div class="timeline-step" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="timeline-num">2</div>
                         <h5 class="text-primary fw-bold">បន្ថែមទំនិញ</h5>
                         <p class="text-black-50 mb-0">បញ្ចូលបញ្ជីទំនិញ កំណត់តម្លៃ និងចំនួនស្តុកចាប់ផ្តើម។</p>
                     </div>
-                    <div class="timeline-step">
+                    <div class="timeline-step" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="timeline-num">3</div>
                         <h5 class="text-primary fw-bold">គ្រប់គ្រងការលក់</h5>
                         <p class="text-black-50 mb-0">ចាប់ផ្តើមលក់ បង្កើតវិក្កយបត្រ និងតាមដានស្តុកជាបន្តបន្ទាប់។</p>
                     </div>
-                    <div class="timeline-step">
+                    <div class="timeline-step" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <div class="timeline-num">4</div>
                         <h5 class="text-primary fw-bold">មើលរបាយការណ៍</h5>
                         <p class="text-black-50 mb-0">ពិនិត្យរបាយការណ៍ចំណេញ-ខាត ដើម្បីធ្វើការសម្រេចចិត្តអាជីវកម្ម។</p>
@@ -1431,8 +1457,8 @@
     </section>
 
 
-    <!-- ========== PRICING ========== -->
-    <section class="py-5" id="pricing">
+    <!-- ------------ PRICING ------------ -->
+    <section class="py-5 bg-back-body" id="pricing">
         <div class="container text-center">
             <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">តម្លៃសមរម្យ</span>
             <h2 class="display-6 fw-bold mb-3">ជ្រើសរើសកញ្ចប់សម្រាប់អាជីវកម្មរបស់អ្នក</h2>
@@ -1440,7 +1466,8 @@
                 អាចផ្លាស់ប្តូរកញ្ចប់បានគ្រប់ពេល</p>
             <div class="row g-4 justify-content-center text-start">
                 <div class="col-md-6 col-lg-4">
-                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center">
+                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <h5 class="fw-bold">Starter</h5>
                         <div class="display-6 fw-bold text-primary mt-2">$9<small
                                 class="fs-6 text-secondary fw-semibold"> / ខែ</small></div>
@@ -1461,7 +1488,8 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="price-card featured border border-2 border-primary shadow-lg rounded-4 p-4 h-100 bg-white text-center"
-                        style="transform:scale(1.03);">
+                        style="transform:scale(1.03);" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <span class="badge bg-gradient-accent rounded-pill mb-2">ពេញនិយមបំផុត</span>
                         <h5 class="fw-bold">Business</h5>
                         <div class="display-6 fw-bold text-primary mt-2">$29<small
@@ -1486,7 +1514,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center">
+                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <h5 class="fw-bold">Enterprise</h5>
                         <div class="display-6 fw-bold text-primary mt-2">Custom</div>
                         <p class="text-center text-secondary" style="font-size:.88rem;">សម្រាប់ក្រុមហ៊ុនធំ
@@ -1509,8 +1538,9 @@
         </div>
     </section>
 
-    <!-- ========== TESTIMONIALS ========== -->
-    <section class="py-5 bg-white border-top border-bottom">
+    <!-- ------------ TESTIMONIALS ------------ -->
+    <section class="py-5 bg-white" data-aos="fade-up"
+                        data-aos-duration="1000">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">មតិអតិថិជន</span>
@@ -1530,7 +1560,7 @@
                                             style="width:44px;height:44px;">S</div>
                                         <div class="text-start">
                                             <p class="fw-bold text-primary mb-0">Sokha</p><span
-                                                class="text-secondary small">Business Owner</span>
+                                                class="text-black-50 small">Business Owner</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1549,7 +1579,7 @@
                                             style="width:44px;height:44px;">D</div>
                                         <div class="text-start">
                                             <p class="fw-bold text-primary mb-0">Dara</p><span
-                                                class="text-secondary small">Staff</span>
+                                                class="text-black-50 small">Staff</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1569,7 +1599,7 @@
                                             style="width:44px;height:44px;">M</div>
                                         <div class="text-start">
                                             <p class="fw-bold text-primary mb-0">Malis</p><span
-                                                class="text-secondary small">Manager</span>
+                                                class="text-black-50 small">Manager</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1587,8 +1617,9 @@
         </div>
     </section>
 
-    <!-- ========== FAQ ========== -->
-    <section class="py-5" id="faq">
+    <!-- ------------ FAQ ------------ -->
+    <section class="py-5 " data-aos="fade-up"
+                        data-aos-duration="1000" id="faq">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-2">សំណួរញឹកញាប់</span>
@@ -1602,7 +1633,7 @@
                                     data-bs-target="#faq1">តើខ្ញុំចូលប្រើគណនីដោយរបៀបណា?</button></h2>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">ចុចប៊ូតុង "ចូលប្រើ" ឬ "ចាប់ផ្តើមប្រើ" លើកម្រិត Navbar
-                                    រួចបញ្ចូល Email និង Password របស់អ្នក។</div>
+                                    រួចបញ្ចូល Email និង Password របស់អ្នក</div>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -1611,7 +1642,7 @@
                                     data-bs-target="#faq2">តើបុគ្គលិកអាចមើលរបាយការណ៍បានទេ?</button></h2>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">អាចបាន
-                                    ប៉ុន្តែសិទ្ធិមើលរបាយការណ៍អាស្រ័យលើតួនាទីដែលបានកំណត់ដោយម្ចាស់ហាង។</div>
+                                    ប៉ុន្តែសិទ្ធិមើលរបាយការណ៍អាស្រ័យលើតួនាទីដែលបានកំណត់ដោយម្ចាស់ហាង</div>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -1620,7 +1651,7 @@
                                     data-bs-target="#faq3">តើប្រព័ន្ធអាចប្រើលើទូរស័ព្ទបានទេ?</button></h2>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">បាទ/ចាស ប្រព័ន្ធអាចប្រើបានលើគ្រប់ឧបករណ៍ ដូចជាកុំព្យូទ័រ
-                                    ថេប្លេត និងទូរស័ព្ទ។</div>
+                                    tablet និងទូរស័ព្ទ</div>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -1629,7 +1660,7 @@
                                     data-bs-target="#faq4">តើទិន្នន័យរបស់ខ្ញុំមានសុវត្ថិភាពទេ?</button></h2>
                             <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">ទិន្នន័យទាំងអស់ត្រូវបានចម្លងទុក (Backup) ដោយស្វ័យប្រវត្តិ
-                                    និងការពារដោយប្រព័ន្ធសិទ្ធិចូលប្រើតាមតួនាទី។</div>
+                                    និងការពារដោយប្រព័ន្ធសិទ្ធិចូលប្រើតាមតួនាទី</div>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -1637,7 +1668,7 @@
                                     data-bs-toggle="collapse"
                                     data-bs-target="#faq5">តើអាចផ្លាស់ប្តូរកញ្ចប់តម្លៃពេលក្រោយបានទេ?</button></h2>
                             <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">អាចបានគ្រប់ពេល ដោយគ្មានកិច្ចសន្យារយៈពេលវែង។</div>
+                                <div class="accordion-body">អាចបានគ្រប់ពេល ដោយគ្មានកិច្ចសន្យារយៈពេលវែង</div>
                             </div>
                         </div>
                     </div>
@@ -1646,7 +1677,7 @@
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
+    <!-- ------------ FOOTER ------------ -->
     <footer class="site-foot">
         <div class="container">
             <div class="row g-4">
@@ -1697,8 +1728,10 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        AOS.init();
         document.addEventListener('DOMContentLoaded', () => {
             const myModal = document.getElementById('myModal');
             const myInput = document.getElementById('myInput');
