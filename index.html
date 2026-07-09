@@ -13,31 +13,48 @@
         href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
 </head>
-
 <body>
-    <!-- ========== NAVBAR ========== -->
-    <nav class="navbar navbar-expand-lg navbar-iam sticky-top shadow-sm border-bottom py-2">
-        <div class="container">
-            <div class="d-flex align-items-center">
-                <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
-                <a class="navbar-brand fw-bold text-primary fs-4 ms-2" href="#">IAM</a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-                aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav mx-auto gap-1">
-                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#hero">ទំព័រដើម</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#why">ហេតុអ្វីជ្រើសរើស</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#features">មុខងារ</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#pricing">តម្លៃ</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#faq">សំណួរ</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link px-3 rounded-3" href="/contactUs.html">ទំនាក់ទំនង</a></li> -->
-                </ul>
-                <div class="d-flex gap-2">
-                    <a href="/contactUs.html" class="btn btn-login shadow-sm fw-bold text-light">ទំនាក់ទំនង</a>
-                </div>
+<!-- ===== Navbar HTML ===== -->
+<nav class="navbar navbar-expand-lg navbar-iam sticky-top">
+    <div class="container">
+        <!-- Logo & Brand -->
+        <div class="d-flex align-items-center">
+            <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
+            <a class="navbar-brand navbar-brand-iam ms-2" href="#">IAM</a>
+        </div>
+        
+        <!-- Toggler -->
+        <button class="navbar-toggler navbar-toggler-iam" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navMenu" aria-controls="navMenu" 
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav mx-auto gap-1 navbar-nav-iam">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-iam" href="#hero">ទំព័រដើម</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-iam" href="#why">ហេតុអ្វីជ្រើសរើស</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-iam" href="#features">មុខងារ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-iam" href="#pricing">តម្លៃ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-iam" href="#faq">សំណួរ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-iam" href="/contactUs.html">ទំនាក់ទំនង</a>
+                </li>
+            </ul>
+            <div class="d-flex gap-2 btn-group-iam">
+                <a href="/assest/pages/Forms/login.html" class="btn btn-outline-iam">Staff</a>
+                <a href="/assest/pages/Forms/login.html" class="btn btn-primary-iam">Admin</a>
             </div>
         </div>
     </nav>
