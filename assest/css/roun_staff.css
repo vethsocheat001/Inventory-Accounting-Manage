@@ -1,5 +1,5 @@
 :root {
-  --ink: #125b8c;
+  --ink: #0a5c23;
   --paper: #f6f3ec;
   --moss: #71bedc;
   --moss-light: #e7efe9;
@@ -55,7 +55,7 @@ body {
 }
 
 .sidebar {
-  width: 220px;
+  width: 300px;
   background: var(--ink);
   color: #f1efe7;
   flex-shrink: 0;
@@ -425,6 +425,29 @@ body {
       .confirm-box{width:360px;}
       .confirm-text{font-size:14.5px;margin-bottom:6px;}
       .confirm-sub{font-size:13px;color:#7c8582;margin-bottom:18px;}
+  .form-control-custom {
+    border-color: #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .form-control-custom:focus {
+    border-color: #a0aec0;
+    background-color: #fff;
+  }
+  .fs-7 { font-size: 0.85rem !important; }
+  .font-khmer { font-family: 'Kantumruy Pro', 'Hanuman', sans-serif; }
+
+
+  
+
+  /* ជំនួយស្ទីលបន្ថែមឱ្យកាន់តែប្រណីត */
+  .form-control-custom {
+    border-color: #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .font-khmer { font-family: 'Kantumruy Pro', sans-serif; }
+  .fs-7 { font-size: 0.85rem !important; }
 
 
       

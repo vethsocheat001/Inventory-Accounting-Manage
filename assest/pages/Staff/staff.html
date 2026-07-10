@@ -7,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Staff</title>
-    <link rel="stylesheet" href="/assest/css/roun_staff.css" />
+    <link rel="stylesheet" href="/assest/css/roun_staff.css"/>
     <link rel="stylesheet" href="/assest/vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-  </head>
+  </head> 
   <body>
     <div class="app-shell">
       <div class="sidebar">
@@ -22,7 +22,6 @@
           <a class="nav-link"        data-tab="inventory" href="#"><i class="fa-solid fa-boxes-stacked"></i>ស្ថានភាពស្តុក</a>
           <a class="nav-link"        data-tab="customers" href="#"><i class="fa-solid fa-users"></i>អតិថិជន</a>
           <a class="nav-link"        data-tab="reports"   href="#"><i class="fa-solid fa-chart-simple"></i>របាយការណ៍</a>
-          <a class="nav-link"        data-tab="history"   href="#"><i class="fa-solid fa-clock-rotate-left"></i>ប្រវត្តិលក់</a>
           <a class="nav-link"        data-tab="account"   href="#"><i class="fa-solid fa-user-gear"></i>គណនីខ្ញុំ</a>
         </nav>
         <div class="sidebar-foot" id="sidebarUser">
@@ -429,32 +428,75 @@
               </div>
             </div>
 
-            <div class="col-md-4">
-              <div class="cart-panel">
-                <h6 class="mb-3"><i class="fa-solid fa-cart-shopping me-1 text-muted"></i>កន្ត្រក</h6>
-                <div id="cartItems" style="overflow-y:auto;max-height:220px">
-                  <p class="text-muted small">មិនទាន់មានទំនិញ</p>
+            <div class="col-12 col-md-4">
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-3">
+                <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-cart-shopping me-1 text-moss"></i> កន្ត្រក</h6>
+                
+                <div id="cart-items-wrapper" class="overflow-auto mb-3" style="max-height: 200px; min-height: 80px;">
+                  <p class="text-muted small text-center my-3" id="cart-empty-msg">មិនទាន់មានទំនិញ</p>
                 </div>
-                <div class="mt-3">
-                  <div class="section-title">ព័ត៌មានការទូទាត់</div>
-                  <select class="form-select form-select-sm mb-2" id="cartCustomer"></select>
-                  <div class="d-flex gap-3 small mb-2">
-                    <label><input type="radio" name="payType" value="cash" checked /> សាច់ប្រាក់</label>
-                    <label><input type="radio" name="payType" value="credit" /> ឥណទាន</label>
+
+                <h6 class="fw-bold text-dark small mb-2 font-khmer">ព័ត៌មានការទូទាត់</h6>
+                <div class="mb-2">
+                  <select class="form-select form-select-sm shadow-none font-khmer" id="pay-customer">
+                    <option value="">អង្ករ ៥គីឡូ</option>
+                    <option value="1">ពោត ៥គីឡូ</option>
+                    <option value="2">ស្រូវ​ ៥គីឡូ</option>
+                    <option value="3">ទឹកប្រេងឆា</option>
+                    <option value="4">ទឹកស៊ីអ៊ីវ</option>
+                    <option value="5">ត្រីខរកំប៉ុង</option>
+                    <option value="6">ពងមាន់ 10គ្រាប់</option>
+                    <option value="7">អំបិល​ ១កញ្ជប់</option>
+                    <option value="8">ស្ករស ១កញ្ជប់</option>
+                    <option value="9">សណ្ដែកដី​ ១គីឡូ</option>
+                    <option value="10">Coca-cola</option>
+                    <option value="11">Champion Drink</option>
+                    <option value="12">Water</option>
+                    <option value="13">ភេសជ្ជៈប៉ូវកម្លាំង WURKZ</option>
+                    <option value="14">ទឹកក្រូចអាយស៍</option>
+                    <option value="15">ភេសជ្ជៈប៉ូវកម្លាំងដាហ្ស</option>
+                    <option value="16">ភេសជ្ជៈ EXPREZ រសជាតិស្ត្រប៊ែរី</option>
+                    <option value="17">ភេសជ្ជៈប៉ូវកម្លាំង ICY COOL រសជាតិម៉ុងតុល</option>
+                    <option value="18">ភេសជ្ជៈប៉ូវកម្លាំង KIZZ រសជាតិម៉ុងតុល</option>
+                    <option value="19">ភេសជ្ជៈប៉ូវកម្លាំង VIKINGZ</option>
+                    <option value="20">Plate</option>
+                    <option value="21">Glass</option>
+                    <option value="22">ម៉ាស៊ីនក្រឡុក (Blender)</option>
+                    <option value="23">ក្រដាសអាលុយមីញ៉ូម</option>
+                    <option value="24">ប្រដាប់កិនខ្ទឹម</option>
+                    <option value="25">ប្រដាប់ឈូសបន្លែ</option>
+                    <option value="26">ជ្រញ់</option>
+                    <option value="27">ចង្ក្រានហ្គាស</option>
+                    <option value="28">តុបាយ</option>
+                    <option value="29">ឆ្នាំង</option>
+                    <option value="30">ទឹកស៊ីអ៊ីវ</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <select class="form-select form-select-sm shadow-none font-khmer" id="pay-method-select">
+                    <option value="សាច់ប្រាក់">សាច់ប្រាក់ (Cash)</option>
+                    <option value="ABA">ABA Bank</option>
+                    <option value="វីង">វីង (Wing)</option>
+                  </select>
+                </div>
+
+                <div class="py-2 border-top border-light-subtle small text-secondary">
+                  <div class="d-flex justify-content-between mb-1"><span>តម្លៃដើម</span><span id="summary-subtotal">$5.00</span></div>
+                  <div class="d-flex justify-content-between mb-1"><span>បញ្ចុះតម្លៃ</span><span>-$0.50</span></div>
+                  <div class="d-flex justify-content-between fw-bold text-dark fs-6 pt-1 border-top border-dashed">
+                    <span>សរុប</span><span class="text-dark" id="summary-total">$4.50</span>
                   </div>
-                  <input type="number" min="0" step="0.01" class="form-control form-control-sm" id="discountInput" placeholder="បញ្ចុះតម្លៃ ($)" />
                 </div>
-                <div class="mt-3 pt-2 border-top">
-                  <div class="d-flex justify-content-between small text-muted mb-1"><span>តម្លៃដើម</span><span id="cartSubtotal">$0.00</span></div>
-                  <div class="d-flex justify-content-between small text-muted mb-1"><span>បញ្ចុះ</span><span id="cartDiscount">-$0.00</span></div>
-                  <div class="d-flex justify-content-between fw-bold"><span>សរុប</span><span class="cart-total" id="cartTotal">$0.00</span></div>
-                </div>
+
                 <div class="d-flex gap-2 mt-3">
-                  <button class="btn btn-outline-secondary btn-sm" onclick="clearCart()" title="សម្អាត"><i class="fa-solid fa-trash"></i></button>
-                  <button class="btn btn-moss w-100 btn-sm" id="checkoutBtn"><i class="fa-solid fa-money-bill-wave me-1"></i>Checkout</button>
+                  <button class="btn btn-light btn-sm text-danger border shadow-none" onclick="clearCart()"><i class="fa-solid fa-trash"></i></button>
+                  <button class="btn btn-moss btn-sm flex-grow-1 py-2 fw-bold d-flex align-items-center justify-content-center gap-1" onclick="handleCheckout()">
+                    <i class="fa-solid fa-wallet"></i> Checkout
+                  </button>
                 </div>
               </div>
-            </div>
+              </div>
           </div>
         </div>
 
@@ -502,7 +544,6 @@
                 <input type="text" id="inventorySearchInput" class="search-input" placeholder="ស្វែងរក...">
               </div>
             </div>
- 
             <table id="inventoryTable">
               <thead>
                 <tr>
@@ -516,12 +557,10 @@
               <tbody id="inventoryTbody"></tbody>
             </table>
           </div>
- 
           <div class="card product-card-panel">
             <div class="card-head">
               <h2 class="card-title">ប្រវត្តិផ្លាស់ប្តូរស្តុក (បញ្ជីថ្មីៗ)</h2>
             </div>
- 
             <table id="stockHistoryTable">
               <thead>
                 <tr>
@@ -535,35 +574,207 @@
             </table>
           </div>
         </div>
- 
-        <!-- ============ TAB: CUSTOMERS (placeholder) ============ -->
-        <div id="tab-customers" class="tab-content">
-          <div class="card product-card-panel">
-            <p class="text-muted mb-0">អតិថិជន — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
+        <!-- customers -->
+
+         <div id="tab-customers" class="tab-content">
+          <div class="card border-0 shadow-sm rounded-3 p-4 bg-white mb-3">
+            
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+              <div>
+                <h5 class="mb-1 fw-bold text-dark font-khmer">បញ្ជីអតិថិជន</h5>
+                <p class="text-muted small mb-0 font-khmer">គ្រប់គ្រងព័ត៌មាន និងស្ថានភាពបំណុលរបស់អតិថិជន</p>
+              </div>
+              <div class="d-flex gap-2">
+                <div class="input-group input-group-sm" style="max-width: 220px;">
+                  <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
+                  <input type="text" class="form-control border-start-0 ps-0" id="custSearch" placeholder="ស្វែងរកអតិថិជន..." onkeyup="searchCustomers()" />
+                </div>
+                <button class="btn btn-moss btn-sm px-3 rounded-2 shadow-sm d-flex align-items-center gap-1 font-khmer" data-bs-toggle="modal" data-bs-target="#custModal" onclick="openCustModal()">
+                  <i class="fa-solid fa-plus fs-7"></i> បន្ថែមអតិថិជន
+                </button>
+              </div>
+            </div>
+            <div class="row g-3" id="custGrid"></div>
           </div>
         </div>
- 
-        <!-- ============ TAB: REPORTS (placeholder) ============ -->
+    <div class="modal fade" id="custModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-3">
+          <div class="modal-header border-bottom-0 bg-light py-3">
+            <h6 class="modal-title fw-bold text-dark font-khmer" id="custModalTitle">បន្ថែមអតិថិជនថ្មី</h6>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body px-4 py-3">
+            <input type="hidden" id="custId">
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-secondary font-khmer">ឈ្មោះអតិថិជន <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-custom shadow-none" id="custName" placeholder="ឧ. សុខ ជា">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-secondary font-khmer">លេខទូរស័ព្ទ</label>
+              <input type="text" class="form-control form-control-custom shadow-none" id="custPhone" placeholder="ឧ. 012 345 678">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-secondary font-khmer">អ៊ីមែល</label>
+              <input type="email" class="form-control form-control-custom shadow-none" id="custEmail" placeholder="ឧ. name@example.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold text-secondary font-khmer">អាសយដ្ឋាន</label>
+              <textarea class="form-control form-control-custom shadow-none" id="custAddress" rows="2" placeholder="ភ្នំពេញ, កម្ពុជា"></textarea>
+            </div>
+            <div class="p-3 bg-light rounded-2 d-flex justify-content-between align-items-center">
+              <div>
+                <label class="fw-semibold small d-block font-khmer mb-0" for="custDebt">ស្ថានភាពគណនី</label>
+                <span class="text-muted style-desc" style="font-size: 11px;">បើកដំណើរការជម្រើសនេះ ប្រសិនបើអតិថិជនមានបំណុលវីសា</span>
+              </div>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input shadow-none" type="checkbox" role="switch" id="custDebt" style="cursor: pointer; width: 2.5em; hieght: 1.2em;">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 px-4 pb-4 pt-2">
+            <button type="button" class="btn btn-light btn-sm px-3 rounded-2 text-secondary font-khmer" data-bs-dismiss="modal">បោះបង់</button>
+            <button type="button" class="btn btn-moss btn-sm px-4 rounded-2 shadow-sm font-khmer" onclick="saveCust()">រក្សាទុក</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
         <div id="tab-reports" class="tab-content">
-          <div class="card product-card-panel">
-            <p class="text-muted mb-0">របាយការណ៍ — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
-          </div>
-        </div>
- 
-        <!-- ============ TAB: HISTORY (placeholder) ============ -->
-        <div id="tab-history" class="tab-content">
-          <div class="card product-card-panel">
-            <p class="text-muted mb-0">ប្រវត្តិលក់ — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
-          </div>
-        </div>
+              <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                  <div class="card p-3 shadow-sm border-0 bg-white rounded-3">
+                    <small class="text-muted d-block mb-1 font-khmer">ការលក់ថ្ងៃនេះ</small>
+                    <h4 class="fw-bold mb-0 text-dark" id="report-today-sales">0</h4>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="card p-3 shadow-sm border-0 bg-white rounded-3">
+                    <small class="text-muted d-block mb-1 font-khmer">ចំណូលថ្ងៃនេះ</small>
+                    <h4 class="fw-bold mb-0 text-success" id="report-today-revenue">$0.00</h4>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="card p-3 shadow-sm border-0 bg-white rounded-3">
+                    <small class="text-muted d-block mb-1 font-khmer">ចំណូលខែនេះ</small>
+                    <h4 class="fw-bold mb-0 text-primary" id="report-month-revenue">$11.75</h4>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="card p-3 shadow-sm border-0 bg-white rounded-3">
+                    <small class="text-muted d-block mb-1 font-khmer">វិក្កយបត្រសរុប</small>
+                    <h4 class="fw-bold mb-0 text-purple" style="color: #6f42c1;" id="report-total-invoices">4</h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card shadow-sm border-0 bg-white rounded-3">
+                <div class="card-header bg-light/50 py-3 d-flex justify-content-between align-items-center border-bottom-0">
+                  <h6 class="mb-0 fw-bold text-secondary font-khmer">ការលក់ថ្ងៃនេះ</h6>
+                </div>
+                
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light text-uppercase fs-7 text-muted font-khmer">
+                      <tr>
+                        <th class="text-center" style="width: 60px;">#</th>
+                        <th>មុខទំនិញ</th>
+                        <th>អតិថិជន</th>
+                        <th>ការទូទាត់</th>
+                        <th>សរុប</th>
+                        <th>ពេលវេលា</th>
+                      </tr>
+                    </thead>
+                    <tbody id="reports-sales-tbody">
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
  
         <!-- ============ TAB: ACCOUNT (placeholder) ============ -->
         <div id="tab-account" class="tab-content">
-          <div class="card product-card-panel">
-            <p class="text-muted mb-0">គណនីខ្ញុំ — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
+            <div class="row g-3">
+              <div class="col-12 col-md-5">
+                <div class="card border-0 shadow-sm rounded-3 bg-white p-4 mb-3">
+                  <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">ព័ត៌មានគណនី</h6>
+                  <div class="table-responsive">
+                    <table class="table table-borderless align-middle mb-0 text-secondary font-khmer" style="font-size: 0.9rem;">
+                      <tbody>
+                        <tr>
+                          <td class="ps-0 py-2 text-muted" style="width: 30%;">ឈ្មោះ:</td>
+                          <td class="fw-bold text-dark" id="acc-info-name">រឹម​ ភារុន</td>
+                        </tr>
+                        <tr>
+                          <td class="ps-0 py-2 text-muted">អ៊ីមែល:</td>
+                          <td class="text-dark" id="acc-info-email">phearoun@shop.com</td>
+                        </tr>
+                        <tr>
+                          <td class="ps-0 py-2 text-muted">តួនាទី:</td>
+                          <td><span class="badge bg-secondary-subtle text-secondary px-2 py-1 uppercase fw-bold" style="font-size: 10px;">User</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-3 bg-white p-4">
+                  <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">សិទ្ធិប្រើប្រាស់</h6>
+                  <div class="font-khmer text-secondary" style="font-size: 0.9rem;">
+                    <div class="d-flex justify-content-between align-items-center mb-2.5">
+                      <span class=" mb-4">Stock In / Out</span>
+                      <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-1 font-khmer px-2 py-1" style="font-size: 11px;">មិនអនុញ្ញាត</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span>មើលរបាយការណ៍ស្តុក</span>
+                      <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-1 font-khmer px-2 py-1" style="font-size: 11px;">មិនអនុញ្ញាត</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-7">
+                <div class="card border-0 shadow-sm rounded-3 bg-white p-4 mb-3">
+                  <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">កែប្រែព័ត៌មានផ្ទាល់ខ្លួន</h6>
+                  <div class="font-khmer">
+                    <div class="mb-3">
+                      <label class="form-label small fw-semibold text-secondary">ឈ្មោះ</label>
+                      <input type="text" class="form-control form-control-custom shadow-none" id="edit-acc-name" value="រឹម​ ភារុន">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label small fw-semibold text-secondary">អ៊ីមែល</label>
+                      <input type="email" class="form-control form-control-custom shadow-none" id="edit-acc-email" value="phearoun@shop.com">
+                    </div>
+                    <button class="btn btn-moss btn-sm px-4 rounded-2 shadow-sm font-khmer" onclick="updateProfile()">រក្សាទុក</button>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-3 bg-white p-4">
+                  <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">ផ្លាស់ប្តូរពាក្យសម្ងាត់</h6>
+                  <div class="font-khmer">
+                    <div class="mb-3 position-relative">
+                      <label class="form-label small fw-semibold text-secondary">ពាក្យសម្ងាត់បច្ចុប្បន្ន</label>
+                      <input type="password" class="form-control form-control-custom shadow-none pe-5" id="pass-current">
+                      <span class="position-absolute end-0 top-50 translate-middle-y mt-2.5 me-3 text-muted" style="cursor: pointer;" onclick="togglePass('pass-current')"><i style="margin-top: 35px;" class="fa-solid fa-eye fs-7 "></i></span>
+                    </div>
+                    <div class="mb-3 position-relative">
+                      <label class="form-label small fw-semibold text-secondary">ពាក្យសម្ងាត់ថ្មី</label>
+                      <input type="password" class="form-control form-control-custom shadow-none pe-5" id="pass-new">
+                      <span class="position-absolute end-0 top-50 translate-middle-y mt-2.5 me-3 text-muted" style="cursor: pointer;" onclick="togglePass('pass-new')"><i style="margin-top: 35px;" class="fa-solid fa-eye fs-7"></i></span>
+                    </div>
+                    <div class="mb-3 position-relative">
+                      <label class="form-label small fw-semibold text-secondary">បញ្ជាក់ពាក្យសម្ងាត់ថ្មី</label>
+                      <input type="password" class="form-control form-control-custom shadow-none pe-5" id="pass-confirm">
+                      <span class="position-absolute end-0 top-50 translate-middle-y mt-2.5 me-3 text-muted" style="cursor: pointer;" onclick="togglePass('pass-confirm')"><i style="margin-top: 35px;" class="fa-solid fa-eye fs-7"></i></span>
+                    </div>
+                    <button class="btn btn-moss btn-sm w-100 py-2 rounded-2 shadow-sm font-khmer fw-bold mt-2" onclick="changePassword()">ផ្លាស់ប្តូរពាក្យសម្ងាត់</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
- 
       </div>
     </div>
  
@@ -612,24 +823,11 @@
     </div>
  
 
-        <!-- ============ TAB: CUSTOMERS (placeholder) ============ -->
-        <div id="tab-customers" class="tab-content">
-          <div class="card product-card-panel">
-            <p class="text-muted mb-0">អតិថិជន — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
-          </div>
-        </div>
-
+       
         <!-- ============ TAB: REPORTS (placeholder) ============ -->
         <div id="tab-reports" class="tab-content">
           <div class="card product-card-panel">
             <p class="text-muted mb-0">របាយការណ៍ — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
-          </div>
-        </div>
-
-        <!-- ============ TAB: HISTORY (placeholder) ============ -->
-        <div id="tab-history" class="tab-content">
-          <div class="card product-card-panel">
-            <p class="text-muted mb-0">ប្រវត្តិលក់ — មាតិកានឹងបន្ថែមនៅទីនេះ។</p>
           </div>
         </div>
 
@@ -686,336 +884,10 @@
         </div>
       </div>
     </div>
-
+    
+    <script src="/assest/js/phearoun.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <script src="/assest/vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-     
-      const tabTitles = {
-        pos:       'លក់ទំនិញ',
-        products:  'ផលិតផល',
-        inventory: 'ស្ថានភាពស្តុក',
-        customers: 'អតិថិជន',
-        reports:   'របាយការណ៍',
-        history:   'ប្រវត្តិលក់',
-        account:   'គណនីខ្ញុំ'
-      };
-
-      document.querySelectorAll('.nav-link[data-tab]').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const tabName = link.dataset.tab;
-
-          // toggle active sidebar link
-          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-
-          // toggle visible content section
-          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-          const target = document.getElementById('tab-' + tabName);
-          if (target) target.classList.add('active');
-
-          // update the page title in the topbar
-          const pageTitle = document.getElementById('pageTitle');
-          if (pageTitle) pageTitle.textContent = tabTitles[tabName] || '';
-        });
-      });
-    </script>
-
-    <!-- ============ POS: search + category filter ============ -->
-    <script>
-      const filterCat = document.getElementById('filterCat');
-      const searchBox = document.getElementById('searchBox');
-      const productCards = document.querySelectorAll('#productGrid .product-card');
-
-      function applyPosFilter() {
-        const selectedCat = filterCat.value;
-        const keyword = searchBox.value.trim().toLowerCase();
-
-        productCards.forEach(card => {
-          const matchesCategory = selectedCat === 'all' || card.dataset.category === selectedCat;
-          const matchesSearch = card.dataset.name.toLowerCase().includes(keyword);
-          card.classList.toggle('d-none', !(matchesCategory && matchesSearch));
-        });
-      }
-
-      filterCat.addEventListener('change', applyPosFilter);
-      searchBox.addEventListener('input', applyPosFilter);
-    </script>
-
-    <!-- ============ PRODUCTS: table, search, tabs, add/edit/delete ============ -->
-    <script>
-      // ---------- Sample data (replace with API data in a real app) ----------
-      let products = [
-        { id: 1, name: "អង្គរ ៥គីឡូ",       category: "គ្រឿងទេស",   price: 6.50, stock: 11 },
-        { id: 2, name: "ប្រេងសា ១លីត្រ",     category: "គ្រឿងទេស",   price: 3.20, stock: 12 },
-        { id: 3, name: "គ្រាកគូឡ្យា កំប៉ុង",  category: "គ្រឿងភេជ្ជះ:", price: 0.75, stock: 55 },
-        { id: 4, name: "សាប៊ូកក់សក់",       category: "សម្ភារៈ",     price: 1.00, stock: 8  },
-        { id: 5, name: "ទឹកសុទ្ធ ៦00ml",     category: "គ្រឿងភេជ្ជះ:", price: 0.30, stock: 77 },
-        { id: 6, name: "Coca-cola",               category: "គ្រឿងភេជ្ជះ", price: 2.50, stock: 49 },
-        { id: 7, name: "fanta",              category: "គ្រឿងភេជ្ជះ:", price: 2.30, stock: 48 },
-      ];
-      let nextId = products.length + 1;
-
-      const LOW_STOCK_THRESHOLD = 5;
-
-      let state = {
-        category: 'all',
-        search: '',
-        editingId: null,
-        deletingId: null
-      };
-
-      const tbody = document.getElementById('productsTbody');
-      const searchInput = document.getElementById('searchInput');
-      const categoryTabs = document.getElementById('categoryTabs');
-
-      function render() {
-        let list = products.filter(p => {
-          const matchesCat = state.category === 'all' || p.category === state.category;
-          const matchesSearch = p.name.toLowerCase().includes(state.search.toLowerCase());
-          return matchesCat && matchesSearch;
-        });
-
-        tbody.innerHTML = '';
-
-        if (list.length === 0) {
-          tbody.innerHTML = `<tr class="empty-row"><td colspan="8">មិនមានផលិតផលត្រូវនឹងលក្ខខណ្ឌនេះទេ</td></tr>`;
-          return;
-        }
-
-        list.forEach((p, idx) => {
-          const isLow = p.stock <= LOW_STOCK_THRESHOLD;
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td><div class="prod-thumb"><i class="fa-regular fa-image"></i></div></td>
-            <td>${idx + 1}</td>
-            <td class="prod-name">${escapeHtml(p.name)}</td>
-            <td>${escapeHtml(p.category)}</td>
-            <td>$${p.price.toFixed(2)}</td>
-            <td>${p.stock}</td>
-            <td><span class="badge-stock ${isLow ? 'badge-low' : ''}">${isLow ? 'ស្តុកទាប' : 'គ្រប់គ្រាន់'}</span></td>
-            <td>
-              <div class="row-actions">
-                <button class="icon-btn icon-add" title="បន្ថែមស្តុក" data-action="addstock" data-id="${p.id}"><i class="fa-solid fa-plus"></i></button>
-                <button class="icon-btn icon-edit" title="កែប្រែ" data-action="edit" data-id="${p.id}"><i class="fa-solid fa-pen"></i></button>
-                <button class="icon-btn icon-del" title="លុប" data-action="delete" data-id="${p.id}"><i class="fa-solid fa-trash"></i></button>
-              </div>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      }
-
-      function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-      }
-
-      // category tabs
-      categoryTabs.addEventListener('click', (e) => {
-        const btn = e.target.closest('.tab-btn');
-        if (!btn) return;
-        categoryTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.category = btn.dataset.cat;
-        render();
-      });
-
-      // search
-      searchInput.addEventListener('input', (e) => {
-        state.search = e.target.value;
-        render();
-      });
-
-      // add / edit modal
-      const productModal = document.getElementById('productModal');
-      const productModalTitle = document.getElementById('productModalTitle');
-      const fName = document.getElementById('fName');
-      const fCategory = document.getElementById('fCategory');
-      const fPrice = document.getElementById('fPrice');
-      const fStock = document.getElementById('fStock');
-
-      document.getElementById('openAddBtn').addEventListener('click', () => openProductModal(null));
-      document.getElementById('cancelProductBtn').addEventListener('click', () => closeProductModal());
-
-      function openProductModal(id) {
-        state.editingId = id;
-        if (id) {
-          const p = products.find(p => p.id === id);
-          productModalTitle.textContent = 'កែប្រែផលិតផល';
-          fName.value = p.name;
-          fCategory.value = p.category;
-          fPrice.value = p.price;
-          fStock.value = p.stock;
-        } else {
-          productModalTitle.textContent = 'បន្ថែមផលិតផល';
-          fName.value = '';
-          fCategory.value = 'គ្រឿងទេស';
-          fPrice.value = '';
-          fStock.value = '';
-        }
-        productModal.classList.add('open');
-      }
-
-      function closeProductModal() {
-        productModal.classList.remove('open');
-        state.editingId = null;
-      }
-
-      document.getElementById('saveProductBtn').addEventListener('click', () => {
-        const name = fName.value.trim();
-        const category = fCategory.value;
-        const price = parseFloat(fPrice.value) || 0;
-        const stock = parseInt(fStock.value) || 0;
-
-        if (!name) {
-          fName.focus();
-          return;
-        }
-
-        if (state.editingId) {
-          const p = products.find(p => p.id === state.editingId);
-          p.name = name; p.category = category; p.price = price; p.stock = stock;
-        } else {
-          products.push({ id: nextId++, name, category, price, stock });
-        }
-
-        closeProductModal();
-        render();
-      });
-
-      // delete modal
-      const deleteModal = document.getElementById('deleteModal');
-      const deleteProductName = document.getElementById('deleteProductName');
-
-      document.getElementById('cancelDeleteBtn').addEventListener('click', () => {
-        deleteModal.classList.remove('open');
-        state.deletingId = null;
-      });
-
-      document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
-        products = products.filter(p => p.id !== state.deletingId);
-        deleteModal.classList.remove('open');
-        state.deletingId = null;
-        render();
-      });
-
-      // row action delegation
-      tbody.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-action]');
-        if (!btn) return;
-        const id = parseInt(btn.dataset.id);
-        const action = btn.dataset.action;
-
-        if (action === 'edit') {
-          openProductModal(id);
-        } else if (action === 'delete') {
-          const p = products.find(p => p.id === id);
-          state.deletingId = id;
-          deleteProductName.textContent = p ? p.name : '';
-          deleteModal.classList.add('open');
-        } else if (action === 'addstock') {
-          const p = products.find(p => p.id === id);
-          const qty = prompt('បញ្ចូលចំនួនស្តុកបន្ថែមសម្រាប់ "' + p.name + '"', '1');
-          if (qty !== null) {
-            const n = parseInt(qty);
-            if (!isNaN(n) && n > 0) {
-              p.stock += n;
-              render();
-            }
-          }
-        }
-      });
-
-      render();
-    </script>
-
-    <!-- ============ INVENTORY: stock table + stock movement history ============ -->
-    <script>
-      // ---------- Sample stock movement history (replace with API data in a real app) ----------
-      let stockHistory = [
-        { product: "អង្គរ ៥គីឡូ",     type: "out", qty: 1, time: "09/07/2026 00:26" },
-        { product: "ប្រេងសា ១លីត្រ",   type: "out", qty: 1, time: "09/07/2026 00:26" },
-        { product: "គ្រាកគូឡ្យា កំប៉ុង", type: "out", qty: 1, time: "09/07/2026 00:26" },
-        { product: "សាប៊ូកក់សក់",     type: "out", qty: 1, time: "09/07/2026 00:26" },
-        { product: "ទឹកសុទ្ធ ៦00ml",   type: "out", qty: 1, time: "09/07/2026 00:26" },
-        { product: "fanta",            type: "out", qty: 2, time: "30/06/2026 14:38" },
-        { product: "ទឹកសុទ្ធ ៦00ml",   type: "out", qty: 1, time: "30/06/2026 14:38" },
-        { product: "សាប៊ូកក់សក់",     type: "out", qty: 1, time: "30/06/2026 14:38" },
-        { product: "អង្គរ ៥គីឡូ",     type: "out", qty: 1, time: "30/06/2026 14:38" },
-        { product: "ប្រេងសា ១លីត្រ",   type: "out", qty: 1, time: "30/06/2026 14:38" },
-        { product: "koka",              type: "out", qty: 1, time: "30/06/2026 14:38" },
-        { product: "អង្គរ ៥គីឡូ",     type: "out", qty: 2, time: "30/06/2026 14:00" },
-        { product: "ប្រេងសា ១លីត្រ",   type: "out", qty: 3, time: "30/06/2026 14:00" },
-        { product: "គ្រាកគូឡ្យា កំប៉ុង", type: "out", qty: 3, time: "30/06/2026 14:00" },
-        { product: "ទឹកសុទ្ធ ៦00ml",   type: "out", qty: 7, time: "30/06/2026 14:00" },
-        { product: "ទឹកសុទ្ធ ៦00ml",   type: "out", qty: 4, time: "30/06/2026 14:00" },
-        { product: "អង្គរ ៥គីឡូ",     type: "out", qty: 9, time: "30/06/2026 14:00" },
-        { product: "ប្រេងសា ១លីត្រ",   type: "out", qty: 1, time: "30/06/2026 14:00" },
-        { product: "គ្រាកគូឡ្យា កំប៉ុង", type: "out", qty: 1, time: "30/06/2026 14:00" },
-        { product: "សាប៊ូកក់សក់",     type: "out", qty: 4, time: "30/06/2026 14:00" },
-      ];
- 
-      const inventorySearchInput = document.getElementById('inventorySearchInput');
-      const inventoryTbody = document.getElementById('inventoryTbody');
-      const stockHistoryTbody = document.getElementById('stockHistoryTbody');
- 
-      function renderInventory() {
-        const keyword = (inventorySearchInput ? inventorySearchInput.value : '').trim().toLowerCase();
-        const list = products.filter(p => p.name.toLowerCase().includes(keyword));
- 
-        inventoryTbody.innerHTML = '';
- 
-        if (list.length === 0) {
-          inventoryTbody.innerHTML = `<tr class="empty-row"><td colspan="5">មិនមានផលិតផលត្រូវនឹងលក្ខខណ្ឌនេះទេ</td></tr>`;
-        } else {
-          list.forEach(p => {
-            const isLow = p.stock <= LOW_STOCK_THRESHOLD;
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-              <td class="prod-name">${escapeHtml(p.name)}</td>
-              <td>${escapeHtml(p.category)}</td>
-              <td>$${p.price.toFixed(2)}</td>
-              <td>${p.stock}</td>
-              <td><span class="badge-stock ${isLow ? 'badge-low' : ''}">${isLow ? 'ស្តុកទាប' : 'គ្រប់គ្រាន់'}</span></td>
-            `;
-            inventoryTbody.appendChild(tr);
-          });
-        }
- 
-        renderStockHistory();
-      }
- 
-      function renderStockHistory() {
-        stockHistoryTbody.innerHTML = '';
- 
-        if (stockHistory.length === 0) {
-          stockHistoryTbody.innerHTML = `<tr class="empty-row"><td colspan="4">មិនទាន់មានប្រវត្តិផ្លាស់ប្តូរស្តុកទេ</td></tr>`;
-          return;
-        }
- 
-        stockHistory.forEach(h => {
-          const tr = document.createElement('tr');
-          const typeLabel = h.type === 'out' ? 'ចេញ' : 'ចូល';
-          const typeClass = h.type === 'out' ? 'move-out' : 'move-in';
-          tr.innerHTML = `
-            <td class="prod-name">${escapeHtml(h.product)}</td>
-            <td class="${typeClass}">${typeLabel}</td>
-            <td>${h.qty}</td>
-            <td>${escapeHtml(h.time)}</td>
-          `;
-          stockHistoryTbody.appendChild(tr);
-        });
-      }
- 
-      if (inventorySearchInput) {
-        inventorySearchInput.addEventListener('input', renderInventory);
-      }
- 
-      renderInventory();
-    </script>
   </body>
 </html>
