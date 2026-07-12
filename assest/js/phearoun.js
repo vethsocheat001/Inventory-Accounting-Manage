@@ -356,12 +356,55 @@ function saveCust() {
       let products = [
         { id: 1, name: "អង្គរ ៥គីឡូ",       category: "គ្រឿងទេស",   price: 6.50, stock: 11 },
         { id: 2, name: "ប្រេងសា ១លីត្រ",     category: "គ្រឿងទេស",   price: 3.20, stock: 12 },
-        { id: 3, name: "គ្រាកគូឡ្យា កំប៉ុង",  category: "គ្រឿងភេជ្ជះ:", price: 0.75, stock: 55 },
+        { id: 3, name: "គ្រាកគូឡ្យា កំប៉ុង",  category: "ភេសជ្ជៈ", price: 0.75, stock: 55 },
         { id: 4, name: "សាប៊ូកក់សក់",       category: "សម្ភារៈ",     price: 1.00, stock: 8  },
-        { id: 5, name: "ទឹកសុទ្ធ ៦00ml",     category: "គ្រឿងភេជ្ជះ:", price: 0.30, stock: 77 },
-        { id: 6, name: "Coca-cola",               category: "គ្រឿងភេជ្ជះ", price: 2.50, stock: 49 },
-        { id: 7, name: "fanta",              category: "គ្រឿងភេជ្ជះ:", price: 2.30, stock: 48 },
-      ];
+        { id: 5, name: "ទឹកសុទ្ធ ៦00ml",     category: "ភេសជ្ជៈ", price: 0.30, stock: 77 },
+        { id: 6, name: "Coca-cola",               category: "ភេសជ្ជៈ", price: 2.50, stock: 49 },
+        { id: 7, name: "fanta",              category: "ភេសជ្ជៈ", price: 2.30, stock: 48 },
+        { id: 1, name: "កូកាកូឡា (Coca-Cola)", category: "ភេសជ្ជៈ", price: 0.60, stock: 120 },
+        { id: 2, name: "ភេសជ្ជៈ PION", category: "ភេសជ្ជៈ", price: 0.70, stock: 85 },
+        { id: 3, name: "កាហ្វេដប", category: "ភេសជ្ជៈ", price: 1.20, stock: 4 }, // ស្តុកទាប
+        { id: 4, name: "ទឹកក្រូចដប", category: "ភេសជ្ជៈ", price: 2.50, stock: 50 },
+        { id: 5, name: "ទឹកស៊ីអ៊ីវ", category: "គ្រឿងទេស", price: 1.50, stock: 100 },
+        // --- ភេសជ្ជៈថែមថ្មីទាំង ១០ មុខ ---
+        { id: 5, name: "តែបៃតង អូអ៊ិឈិ (Oishi)", category: "ភេសជ្ជៈ", price: 0.75, stock: 90 },
+        { id: 6, name: "ភេសជ្ជៈពៅកម្លាំង វើក (WURKZ)", category: "ភេសជ្ជៈ", price: 0.65, stock: 150 },
+        { id: 7, name: "ទឹកបរិសុទ្ធ វីតាល់ (Vital) ៥០០ml", category: "ភេសជ្ជៈ", price: 0.25, stock: 250 },
+        { id: 8, name: "ភេសជ្ជៈការ៉ាបាវ (Carabao)", category: "ភេសជ្ជៈ", price: 0.70, stock: 5 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 9, name: "ភេសជ្ជៈ ស្តីងក្រហម (Sting)", category: "ភេសជ្ជៈ", price: 0.70, stock: 110 },
+        { id: 10, name: "ទឹកដោះគោជូរ ឌីឡាក់ (Delight)", category: "ភេសជ្ជៈ", price: 0.50, stock: 65 },
+        { id: 11, name: "តែក្រូចឆ្មា ហ្វ្រូស (Iced Tea)", category: "ភេសជ្ជៈ", price: 0.80, stock: 3 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 12, name: "ទឹកផ្លែឈើ ជូស៊ី (Juice)", category: "ភេសជ្ជៈ", price: 1.00, stock: 45 },
+        { id: 13, name: "ភេសជ្ជៈ ប៉ិបស៊ី (Pepsi)", category: "ភេសជ្ជៈ", price: 0.60, stock: 135 },
+        { id: 14, name: "ទឹកដោះគោ កំប៉ុង BEAR BRAND", category: "ភេសជ្ជៈ", price: 0.85, stock: 70 },
+
+        // --- គ្រឿងទេសផ្សេងៗ ---
+        { id: 15, name: "ទឹកស៊ីអ៊ីវ", category: "គ្រឿងទេស", price: 1.50, stock: 100 },
+        { id: 15, name: "ទឹកស៊ីអ៊ីវ ម៉ាកស៊ុបភើគីតឆេន", category: "គ្រឿងទេស", price: 1.50, stock: 100 },
+        { id: 16, name: "អំបិលអុីយ៉ូដ ១កញ្ចប់", category: "គ្រឿងទេស", price: 0.25, stock: 300 },
+        { id: 17, name: "ទឹកត្រី ផ្ការំដួល", category: "គ្រឿងទេស", price: 1.80, stock: 80 },
+        { id: 18, name: "ប៊ីចេង រូបភ្នំ (៥០០ក្រាម)", category: "គ្រឿងទេស", price: 1.25, stock: 6 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 19, name: "ស្ករសធម្មជាតិ (១គីឡូ)", category: "គ្រឿងទេស", price: 1.10, stock: 95 },
+        { id: 20, name: "ម្សៅស៊ុបខ្នរ (Knorr) ប្រអប់ធំ", category: "គ្រឿងទេស", price: 2.30, stock: 40 },
+        { id: 21, name: "ប្រេងខ្យង ម៉ាកក្បាលតោ", category: "គ្រឿងទេស", price: 2.10, stock: 75 },
+        { id: 22, name: "ម្រេចកំពតម៉ត់ (កំប៉ុងតូច)", category: "គ្រឿងទេស", price: 3.50, stock: 2 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 23, name: "ទឹកប៉េងប៉ោះ ម៉ាករ៉ូសា (Roza)", category: "គ្រឿងទេស", price: 1.40, stock: 55 },
+        { id: 24, name: "ទឹកម្ទេសហិរ ម៉ាកឆេហ្វ (Chef)", category: "គ្រឿងទេស", price: 1.35, stock: 60 },
+        { id: 25, name: "ម្សៅការី (កញ្ចប់តូច)", category: "គ្រឿងទេស", price: 0.40, stock: 120 },
+        // ================= សម្ភារៈ (ថែមថ្មី ១០ មុខ) =================
+        { id: 26, name: "សាប៊ូដុសខ្លួន Lux (ដុំ)", category: "សម្ភារៈ", price: 0.85, stock: 90 },
+        { id: 27, name: "សាប៊ូកក់សក់ Sunsilk (ដបមធ្យម)", category: "សម្ភារៈ", price: 2.75, stock: 45 },
+        { id: 28, name: "ថ្នាំដុសធ្មេញ Colgate ប្រអប់ធំ", category: "សម្ភារៈ", price: 1.90, stock: 60 },
+        { id: 29, name: "ច្រាសដុសធ្មេញ (កញ្ចប់ ១ថែម១)", category: "សម្ភារៈ", price: 1.20, stock: 8 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 30, name: "សាប៊ូលាងចាន សាន់ឡាយ (Sunlight)", category: "សម្ភារៈ", price: 1.10, stock: 110 },
+        { id: 31, name: "ម្សៅសាប៊ូបោកខោអាវ វីហ្សូ (Viso) ៥០០ក្រាម", category: "សម្ភារៈ", price: 1.40, stock: 75 },
+        { id: 32, name: "ក្រដាសអនាម័យ (ប៉េក ១០ដុំ)", category: "សម្ភារៈ", price: 2.20, stock: 35 },
+        { id: 33, name: "ថង់យួរផ្លាស្ទិក (១គីឡូ)", category: "សម្ភារៈ", price: 1.50, stock: 4 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 34, name: "ទឹកជូតការ៉ូ ម៉ាកក្លីន (Clean)", category: "សម្ភារៈ", price: 2.60, stock: 50 },
+        { id: 35, name: "អេប៉ុងលាងចាន (កញ្ចប់ ៥បន្ទះ)", category: "សម្ភារៈ", price: 0.60, stock: 140 }
+];
+
+      
       let nextId = products.length + 1;
 
       const LOW_STOCK_THRESHOLD = 5;
