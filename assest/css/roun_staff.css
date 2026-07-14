@@ -19,7 +19,34 @@ body {
   font-weight: 700;
   letter-spacing: 0.02em;
 }
-
+/* Dashboard Elements */
+.purpose-banner {
+  background: linear-gradient(135deg, #1f4d43 0%, #0b5e28 100%);
+  color: white;
+}
+.chart-container {
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding-top: 20px;
+}
+.chart-bar {
+  flex: 1;
+  background: #e1ddff;
+  border-radius: 4px 4px 0 0;
+  min-width: 20px;
+  transition: height 0.5s ease;
+}
+.chart-bar.peak {
+  background: #6f42c1;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
 /* ---------- Login ---------- */
 .login-wrap {
   min-height: 100vh;
@@ -56,11 +83,15 @@ body {
 
 .sidebar {
   width: 300px;
+  height: 100vh; 
   background: var(--ink);
   color: #f1efe7;
-  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
+ 
 }
 
 .sidebar .brand-mark {
@@ -101,9 +132,9 @@ body {
 }
 
 .main {
-  flex: 1;
-  padding: 1.75rem 2rem;
-  overflow-x: hidden;
+  margin-left: 300px; 
+  padding: 20px;
+  width: calc(100% - 300px); 
 }
 
 .topbar {

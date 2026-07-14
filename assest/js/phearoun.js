@@ -1,3 +1,33 @@
+
+
+
+document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // ដក Active ពីគ្រប់លីង និងផ្ទាំងចាស់
+    document.querySelectorAll('.sidebar .nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    
+    // បន្ថែម Active លើលីងដែលបានចុច
+    this.classList.add('active');
+    
+    // បង្ហាញផ្ទាំងមាតិកាថ្មី
+    const targetTab = this.getAttribute('data-tab');
+    const activeContent = document.getElementById(`tab-${targetTab}`);
+    if (activeContent) {
+      activeContent.classList.add('active');
+    }
+    
+    // ប្តូរចំណងជើង Topbar តាមទំព័រ
+    const pageTitle = document.getElementById('pageTitle');
+    if(pageTitle) {
+      pageTitle.innerText = this.textContent.trim();
+    }
+  });
+});
+
+
 // កន្ត្រកទំនិញបច្ចុប្បន្ន (Cart State)
 let cart = [];
 
