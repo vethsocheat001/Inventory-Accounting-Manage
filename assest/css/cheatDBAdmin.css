@@ -9,7 +9,11 @@
   --text-secondary: #8a8da3;
   --radius-lg: 1.25rem;
 }
-
+/* .logoimg{
+  width: 55px ;
+  height: 55px;
+  object-fit: cover;
+} */
 html {
   scroll-behavior: smooth;
 }
