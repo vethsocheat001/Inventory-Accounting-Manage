@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assest/css/cheatDBAdmin.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="d-flex flex-lg-row flex-column">
+  <!-- ============ SIDEBAR fixed (sticky, desktop only, lg and up) ============ -->
+  <aside class="sidebar text-white p-3 d-none d-lg-flex flex-column" style="width:250px; flex-shrink:0;">
+    <div class="d-flex align-items-center gap-2 px-2 mb-4">
+      <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:38px;height:38px;">
+        <i class="bi bi-bar-chart-fill fs-5"></i>
+      </div> -->
+      <div>
+        <div class="fw-bold text-white">IAM</div>
+        <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+      </div>
+    </div>
+
+    <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">Main</div>
+    <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenu">
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i class="bi bi-people-fill"></i> Employee Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i class="bi bi-box-seam-fill"></i> Product Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+      <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="SalesManagement.html"><i class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i class="bi bi-truck"></i> Purchase Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i class="bi bi-calculator-fill"></i> Accounting</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+    </ul>
+
+    <div class="mt-auto p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+      <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
+    </div>
+  </aside>
+
+  <!-- ============ OFFCANVAS SIDEBAR (mobile / tablet, below lg) ============ -->
+  <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center gap-2">
+        <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:34px;height:34px;">
+          <i class="bi bi-bar-chart-fill"></i>
+        </div>
+        <div>
+          <div class="fw-bold text-white">ខ្មែរដាស</div>
+          <div class="km small text-secondary" style="font-size:.7rem;">ប្រព័ន្ធគ្រប់គ្រង</div>
+        </div>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-3">
+      <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">Main</div>
+      <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenuOff">
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i class="bi bi-people-fill"></i> Employee Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i class="bi bi-box-seam-fill"></i> Product Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+        <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="SalesManagement.html"><i class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i class="bi bi-truck"></i> Purchase Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i class="bi bi-calculator-fill"></i> Accounting</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+      </ul>
+
+      <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+        <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
+      </div>
+    </div>
+  </div>
+</body>
+</html>

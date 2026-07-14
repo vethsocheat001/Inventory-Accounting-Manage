@@ -1,0 +1,22 @@
+:root {
+    --navy-1: #121327;
+    --navy-2: #181a35;
+    --violet: #4f46e5;
+    --violet-soft: #e7e5ff;
+    --green: #1f4d43;
+    --clay: #c1793a;
+    --page-bg: #f4f5fb;
+    --text-secondary: #8a8da3;
+    --radius-lg: 1.25rem;
+}
+.card-body .bi {
+    background: none;
+}
+.sce1 .card-body .bi {
+    background: none;
+    font-size: 1.5rem;
+
+}
+.navy-1 {
+    color: var(--navy-1) !important;
+}
