@@ -1,142 +1,222 @@
-function countUp(el, target, opts = {}) {
-    const dur = opts.duration || 1200;
-    const suffix = opts.suffix || '';
-    const prefix = opts.prefix || '';
-    const start = performance.now();
-    function tick(now) {
-      const p = Math.min((now - start) / dur, 1);
+/* ==========================================================
+   cheatDBAdmin.js — Dashboard interactivity
+   Builds the animated bar charts, wires up the sales /
+   trend tabs, and keeps the task-progress card in sync.
+   ========================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const toastEl  = document.getElementById('liveToast');
+  const toastBody = document.getElementById('toastBody');
+  const toast = toastEl ? new bootstrap.Toast(toastEl, { delay: 1800 }) : null;
+  function notify(msg){
+    if(!toast) return;
+    toastBody.textContent = msg;
+    toast.show();
+  }
+
+  function animateNumber(el, target, { prefix = '', suffix = '', duration = 700, decimals = 0 } = {}){
+    const start = 0;
+    const t0 = performance.now();
+    function tick(now){
+      const p = Math.min(1, (now - t0) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + Math.round(target * eased).toLocaleString() + suffix;
-      if (p < 1) requestAnimationFrame(tick);
+      const val = start + (target - start) * eased;
+      el.textContent = prefix + val.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suffix;
+      if(p < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
   }
 
-  const toastEl = document.getElementById('liveToast');
-  const toast = new bootstrap.Toast(toastEl, { delay: 2000 });
-  function showToast(msg) {
-    document.getElementById('toastBody').textContent = msg;
-    toast.show();
-  }
-  document.getElementById('bellBtn').addEventListener('click', () => {
-    showToast('🔔 No new notifications');
-  });
-
+  /* ---------------- TODAY'S SALES ---------------- */
   const salesData = {
-    week: { amt: 15443, trend: '▲ 10.4%', up: true, bars: [52,68,38,82,100,58,71], vals: ['8.1k','10.6k','5.9k','12.8k','15.4k','9.0k','11.1k'] },
-    lastweek: { amt: 13980, trend: '▼ 4.2%', up: false, bars: [60,45,72,50,66,88,40], vals: ['9.4k','7.0k','11.2k','7.8k','10.3k','13.7k','6.2k'] }
+    week:     { amt: 15420, trend: '▲ 10.4%', up: true, visits: 1284, payments: 372, conversion: 29 },
+    lastweek: { amt: 13980, trend: '▼ 4.8%',  up: false, visits: 1102, payments: 318, conversion: 26 }
   };
 
-  function renderSales(data, animate) {
-    countUp(document.getElementById('salesAmt'), data.amt, { prefix: '$', duration: animate ? 1200 : 600 });
-    const trendEl = document.getElementById('salesTrend');
-    trendEl.textContent = data.trend;
-    trendEl.className = 'badge ' + (data.up ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger');
-    document.querySelectorAll('#chartRow .chart-bar').forEach((bar, i) => {
-      const h = data.bars[i];
-      setTimeout(() => { bar.style.height = h + '%'; }, animate ? i * 70 : 0);
-      bar.querySelector('.val').textContent = '$' + data.vals[i];
-      bar.classList.toggle('peak', h === Math.max(...data.bars));
-    });
+  const salesAmt = document.getElementById('salesAmt');
+  const salesTrend = document.getElementById('salesTrend');
+  const statVisits = document.getElementById('statVisits');
+  const statPayments = document.getElementById('statPayments');
+  const statConversion = document.getElementById('statConversion');
+
+  function renderSales(key){
+    const d = salesData[key];
+    animateNumber(salesAmt, d.amt, { prefix: '$' });
+    salesTrend.textContent = d.trend;
+    salesTrend.className = 'badge ' + (d.up ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger') + ' ' ;
+    salesTrend.id = 'salesTrend';
+    animateNumber(statVisits, d.visits);
+    animateNumber(statPayments, d.payments);
+    animateNumber(statConversion, d.conversion, { suffix: '%' });
   }
 
   document.querySelectorAll('#salesTabs [data-sales]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#salesTabs .nav-link').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderSales(salesData[btn.dataset.sales], false);
+      renderSales(btn.dataset.sales);
     });
   });
 
-  /* ======================================================================
-     MONTHLY REVENUE CHART (View Monthly Revenue)
-     Same idea as the Store Sales Trend chart below: data lives in one
-     array, JavaScript builds every bar + label from it.
-     ====================================================================== */
-  const revenueData = [
-    { month: 'មករា',    amt: 9800  },
-    { month: 'កុម្ភៈ',  amt: 10450 },
-    { month: 'មីនា',    amt: 11200 },
-    { month: 'មេសា',    amt: 10100 },
-    { month: 'ឧសភា',    amt: 12600 },
-    { month: 'មិថុនា',  amt: 13400 },
-    { month: 'កក្កដា',  amt: 14320 },
-    { month: 'សីហា',    amt: 13950 },
-    { month: 'កញ្ញា',   amt: 15100 },
-    { month: 'តុលា',    amt: 16200 },
-    { month: 'វិច្ឆិកា', amt: 17840 },
-    { month: 'ធ្នូ',     amt: 19630 }
-  ];
+  /* weekly chart bars — animate from 0 up to their data-h value */
+  document.querySelectorAll('#chartRow .chart-bar').forEach(bar => {
+    const h = bar.dataset.h;
+    const v = bar.dataset.v;
+    bar.querySelector('.val').textContent = v;
+    requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.height = h + '%'; }));
+  });
 
-  function renderMonthlyRevenue() {
-    const chartEl = document.getElementById('monthlyChart');
-    const labelsEl = document.getElementById('monthlyLabels');
-    chartEl.innerHTML = '';
-    labelsEl.innerHTML = '';
+  renderSales('week');
 
-    const maxAmt = Math.max(...revenueData.map(m => m.amt));
-    const total = revenueData.reduce((sum, m) => sum + m.amt, 0);
-    const best = revenueData.reduce((a, b) => (b.amt > a.amt ? b : a));
-    const avg = Math.round(total / revenueData.length);
-    const target = 200000; // annual target
-    const targetPct = Math.min(Math.round((total / target) * 100), 100);
+  /* ---------------- ASSIGNED TASKS ---------------- */
+  const taskList = document.getElementById('taskList');
+  const taskItems = () => Array.from(taskList.querySelectorAll('.task-item'));
 
-    revenueData.forEach((m, i) => {
-      const bar = document.createElement('div');
-      bar.className = 'chart-bar' + (m.amt === maxAmt ? ' peak' : '');
-      bar.innerHTML = `<span class="val">$${(m.amt / 1000).toFixed(1)}k</span>`;
-      chartEl.appendChild(bar);
-      setTimeout(() => { bar.style.height = (m.amt / maxAmt) * 100 + '%'; }, i * 45);
+  function updateTaskProgress(){
+    const items = taskItems();
+    const done = items.filter(i => i.classList.contains('done')).length;
+    const total = items.length;
+    const pct = Math.round((done / total) * 100);
 
-      const label = document.createElement('div');
-      label.className = 'flex-fill km';
-      label.style.fontSize = '.68rem';
-      label.textContent = m.month;
-      labelsEl.appendChild(label);
-    });
+    document.getElementById('taskBig').textContent = `${done} of ${total} tasks completed`;
+    document.getElementById('taskPct').textContent = `${pct}%`;
+    document.getElementById('taskProgress').style.width = pct + '%';
 
-    countUp(document.getElementById('revenueAmt'), total, { prefix: '$', duration: 1300 });
-    countUp(document.getElementById('revenueBest'), best.amt, { prefix: '$', duration: 900 });
-    countUp(document.getElementById('revenueAvg'), avg, { prefix: '$', duration: 900 });
-    countUp(document.getElementById('revenueTarget'), targetPct, { suffix: '%', duration: 900 });
+    const khmerDigits = ['០','១','២','៣','៤','៥','៦','៧','៨','៩'];
+    const toKhmer = n => String(n).split('').map(d => khmerDigits[d] ?? d).join('');
+    document.getElementById('taskSm').textContent =
+      `ការងារបានបញ្ចប់ ${toKhmer(done)} ក្នុងចំណោម ${toKhmer(total)}`;
   }
 
+  taskItems().forEach(item => {
+    const checkbox = item.querySelector('input[type="checkbox"]');
+    const tag = item.querySelector('.task-tag');
+    checkbox.addEventListener('change', () => {
+      if(checkbox.checked){
+        item.classList.add('done');
+        if(tag){ tag.textContent = 'Done'; tag.className = 'badge bg-success-subtle text-success rounded-pill task-tag'; }
+        notify('Task marked as done');
+      } else {
+        item.classList.remove('done');
+        if(tag){
+          const level = item.dataset.tag;
+          if(level === 'high'){ tag.textContent = 'High'; tag.className = 'badge bg-danger-subtle text-danger rounded-pill task-tag'; }
+          else if(level === 'med'){ tag.textContent = 'Medium'; tag.className = 'badge bg-warning-subtle text-warning rounded-pill task-tag'; }
+          else { tag.textContent = 'Pending'; tag.className = 'badge bg-secondary-subtle text-secondary rounded-pill task-tag'; }
+        }
+        notify('Task reopened');
+      }
+      updateTaskProgress();
+    });
+  });
+
+  updateTaskProgress();
+
+  /* ---------------- MONTHLY REVENUE CHART ---------------- */
+  const revenueData = [
+    { m: 'Jan', v: 9800 },  { m: 'Feb', v: 10650 }, { m: 'Mar', v: 11200 },
+    { m: 'Apr', v: 9400 },  { m: 'May', v: 12100 }, { m: 'Jun', v: 13050 },
+    { m: 'Jul', v: 14320 }, { m: 'Aug', v: 0 },     { m: 'Sep', v: 0 },
+    { m: 'Oct', v: 0 },     { m: 'Nov', v: 0 },     { m: 'Dec', v: 0 }
+  ];
+  const ANNUAL_TARGET = 150000;
+
+  const monthlyChart = document.getElementById('monthlyChart');
+  const monthlyLabels = document.getElementById('monthlyLabels');
+  const maxRevenue = Math.max(...revenueData.map(d => d.v));
+  const bestMonth = revenueData.reduce((a, b) => (b.v > a.v ? b : a), revenueData[0]);
+  const ytdTotal = revenueData.reduce((sum, d) => sum + d.v, 0);
+  const monthsWithData = revenueData.filter(d => d.v > 0).length;
+
+  revenueData.forEach(d => {
+    const bar = document.createElement('div');
+    bar.className = 'month-bar' + (d.m === bestMonth.m && d.v > 0 ? ' best' : '');
+    bar.title = `${d.m}: $${d.v.toLocaleString()}`;
+    monthlyChart.appendChild(bar);
+    const h = maxRevenue ? Math.max(4, (d.v / maxRevenue) * 100) : 4;
+    requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.height = h + '%'; }));
+
+    const label = document.createElement('div');
+    label.className = 'flex-fill';
+    label.textContent = d.m;
+    monthlyLabels.appendChild(label);
+  });
+
+  animateNumber(document.getElementById('revenueAmt'), ytdTotal, { prefix: '$' });
+  document.getElementById('revenueBest').textContent = `$${bestMonth.v.toLocaleString()}`;
+  document.getElementById('revenueAvg').textContent =
+    `$${Math.round(ytdTotal / (monthsWithData || 1)).toLocaleString()}`;
+  document.getElementById('revenueTarget').textContent =
+    `${Math.min(100, Math.round((ytdTotal / ANNUAL_TARGET) * 100))}%`;
+
+  /* ---------------- STORE SALES TREND (stacked, sales vs visits) ---------------- */
   const trendData = {
     sales: [
-      { year: '2017', online: 70, instore: 55, wholesale: 48 },
-      { year: '2018', online: 30, instore: 45, wholesale: 52 },
-      { year: '2019', online: 33, instore: 95, wholesale: 64 },
-      { year: '2020', online: 28, instore: 55, wholesale: 62 }
+      { m: 'Jan', online: 32, instore: 48, wholesale: 20 },
+      { m: 'Feb', online: 30, instore: 50, wholesale: 22 },
+      { m: 'Mar', online: 35, instore: 46, wholesale: 24 },
+      { m: 'Apr', online: 28, instore: 44, wholesale: 18 },
+      { m: 'May', online: 38, instore: 52, wholesale: 26 },
+      { m: 'Jun', online: 42, instore: 58, wholesale: 28 },
+      { m: 'Jul', online: 48, instore: 64, wholesale: 30 },
+      { m: 'Aug', online: 40, instore: 55, wholesale: 25 },
+      { m: 'Sep', online: 36, instore: 50, wholesale: 22 },
+      { m: 'Oct', online: 44, instore: 60, wholesale: 27 },
+      { m: 'Nov', online: 50, instore: 68, wholesale: 32 },
+      { m: 'Dec', online: 58, instore: 74, wholesale: 36 }
     ],
     visits: [
-      { year: '2017', online: 45, instore: 60, wholesale: 38 },
-      { year: '2018', online: 52, instore: 40, wholesale: 58 },
-      { year: '2019', online: 60, instore: 72, wholesale: 50 },
-      { year: '2020', online: 48, instore: 66, wholesale: 70 }
+      { m: 'Jan', online: 60, instore: 30, wholesale: 8 },
+      { m: 'Feb', online: 58, instore: 32, wholesale: 9 },
+      { m: 'Mar', online: 64, instore: 34, wholesale: 10 },
+      { m: 'Apr', online: 55, instore: 28, wholesale: 8 },
+      { m: 'May', online: 70, instore: 36, wholesale: 11 },
+      { m: 'Jun', online: 75, instore: 40, wholesale: 12 },
+      { m: 'Jul', online: 82, instore: 44, wholesale: 14 },
+      { m: 'Aug', online: 72, instore: 38, wholesale: 12 },
+      { m: 'Sep', online: 66, instore: 34, wholesale: 10 },
+      { m: 'Oct', online: 78, instore: 42, wholesale: 13 },
+      { m: 'Nov', online: 88, instore: 48, wholesale: 15 },
+      { m: 'Dec', online: 95, instore: 52, wholesale: 18 }
     ]
   };
 
-  function renderTrendChart(dataset) {
-    const chartEl = document.getElementById('bigChart');
-    const yearsEl = document.getElementById('yearLabels');
-    chartEl.innerHTML = '';
-    yearsEl.innerHTML = '';
-    dataset.forEach(yearData => {
-      const group = document.createElement('div');
-      group.className = 'flex-fill d-flex align-items-end gap-1 h-100';
-      group.innerHTML = `
-        <div class="trend-bar b1" data-h="${yearData.online}"></div>
-        <div class="trend-bar b2" data-h="${yearData.instore}"></div>
-        <div class="trend-bar b3" data-h="${yearData.wholesale}"></div>
-      `;
-      chartEl.appendChild(group);
+  const bigChart = document.getElementById('bigChart');
+  const yearLabels = document.getElementById('yearLabels');
+
+  function renderTrend(key){
+    bigChart.innerHTML = '';
+    yearLabels.innerHTML = '';
+    const rows = trendData[key];
+    const maxTotal = Math.max(...rows.map(r => r.online + r.instore + r.wholesale));
+
+    rows.forEach(r => {
+      const col = document.createElement('div');
+      col.className = 'trend-col';
+
+      const online = document.createElement('div');
+      online.className = 'trend-seg online';
+      const instore = document.createElement('div');
+      instore.className = 'trend-seg instore';
+      const wholesale = document.createElement('div');
+      wholesale.className = 'trend-seg wholesale';
+
+      col.appendChild(online);
+      col.appendChild(instore);
+      col.appendChild(wholesale);
+      bigChart.appendChild(col);
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        online.style.height = (r.online / maxTotal) * 100 + '%';
+        instore.style.height = (r.instore / maxTotal) * 100 + '%';
+        wholesale.style.height = (r.wholesale / maxTotal) * 100 + '%';
+      }));
+
       const label = document.createElement('div');
       label.className = 'flex-fill';
-      label.textContent = yearData.year;
-      yearsEl.appendChild(label);
-    });
-    chartEl.querySelectorAll('.trend-bar').forEach((bar, i) => {
-      setTimeout(() => { bar.style.height = bar.dataset.h + '%'; }, i * 60);
+      label.textContent = r.m;
+      yearLabels.appendChild(label);
     });
   }
 
@@ -144,61 +224,15 @@ function countUp(el, target, opts = {}) {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#trendTabs .nav-link').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderTrendChart(trendData[btn.dataset.trend]);
+      renderTrend(btn.dataset.trend);
     });
   });
 
-  const khmerDigits = ['០','១','២','៣','៤','៥','៦','៧','៨','៩'];
-  const toKhmer = n => String(n).split('').map(d => khmerDigits[d]).join('');
+  renderTrend('sales');
 
-  function updateTaskProgress() {
-    const items = document.querySelectorAll('[data-task]');
-    const total = items.length;
-    const done = document.querySelectorAll('[data-task].done').length;
-    const pct = Math.round((done / total) * 100);
-    document.getElementById('taskProgress').style.width = pct + '%';
-    document.getElementById('taskPct').textContent = pct + '%';
-    document.getElementById('taskBig').textContent = `${done} of ${total} tasks completed`;
-    document.getElementById('taskSm').textContent = `ការងារបានបញ្ចប់ ${toKhmer(done)} ក្នុងចំណោម ${toKhmer(total)}`;
+  /* ---------------- BELL ---------------- */
+  const bellBtn = document.getElementById('bellBtn');
+  if(bellBtn){
+    bellBtn.addEventListener('click', () => notify('You have 3 new notifications'));
   }
-
-  document.querySelectorAll('[data-task]').forEach(item => {
-    const checkbox = item.querySelector('input[type="checkbox"]');
-    const tag = item.querySelector('.task-tag');
-    item.addEventListener('click', (e) => {
-      if (e.target === checkbox) return;
-      checkbox.checked = !checkbox.checked;
-      checkbox.dispatchEvent(new Event('change'));
-    });
-    checkbox.addEventListener('change', () => {
-      const isDone = checkbox.checked;
-      item.classList.toggle('done', isDone);
-      if (isDone) {
-        item.dataset.prevTag = item.dataset.tag || 'low';
-        tag.className = 'badge bg-success-subtle text-success rounded-pill task-tag';
-        tag.textContent = 'Done';
-        showToast('✓ Marked as complete');
-      } else {
-        const prev = item.dataset.prevTag || 'low';
-        const map = {
-          high: ['bg-danger-subtle text-danger', 'High'],
-          med: ['bg-warning-subtle text-warning', 'Medium'],
-          low: ['bg-primary-subtle text-primary', 'Low']
-        };
-        tag.className = 'badge rounded-pill task-tag ' + map[prev][0];
-        tag.textContent = map[prev][1];
-        showToast('↺ Marked as pending');
-      }
-      updateTaskProgress();
-    });
-  });
-
-  window.addEventListener('load', () => {
-    renderSales(salesData.week, true);
-    renderTrendChart(trendData.sales);
-    renderMonthlyRevenue();
-    updateTaskProgress();
-    countUp(document.getElementById('statVisits'), 6480, { duration: 1000 });
-    countUp(document.getElementById('statPayments'), 5320, { duration: 1100 });
-    countUp(document.getElementById('statConversion'), 50, { suffix: '%', duration: 900 });
-  });
+});

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>គ្រប់គ្រងផលិតផល — Product Management</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assest/css/cheatDBAdmin.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex flex-lg-row flex-column">
+  <!-- ============ SIDEBAR fixed (sticky, desktop only, lg and up) ============ -->
+  <aside class="sidebar text-white p-3 d-none d-lg-flex flex-column" style="width:250px; flex-shrink:0;">
+    <div class="d-flex align-items-center gap-2 px-2 mb-4">
+      <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:38px;height:38px;">
+        <i class="bi bi-bar-chart-fill fs-5"></i>
+      </div> -->
+      <div>
+        <div class="fw-bold text-white">IAM</div>
+        <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+      </div>
+    </div>
+
+    <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">Main</div>
+    <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenu">
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i class="bi bi-people-fill"></i> Employee Management</a></li>
+      <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="ProductManagement.html"><i class="bi bi-box-seam-fill"></i> Product Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i class="bi bi-truck"></i> Purchase Management</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i class="bi bi-calculator-fill"></i> Accounting</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+    
+    </ul>
+
+    <div class="mt-auto p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+      <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
+    </div>
+  </aside>
+
+  <!-- ============ OFFCANVAS SIDEBAR (mobile / tablet, below lg) ============ -->
+  <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center gap-2">
+        <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:34px;height:34px;">
+          <i class="bi bi-bar-chart-fill"></i>
+        </div>
+        <div>
+          <div class="fw-bold text-white">ខ្មែរដាស</div>
+          <div class="km small text-secondary" style="font-size:.7rem;">ប្រព័ន្ធគ្រប់គ្រង</div>
+        </div>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-3">
+      <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">Main</div>
+      <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenuOff">
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i class="bi bi-people-fill"></i> Employee Management</a></li>
+        <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="ProductManagement.html"><i class="bi bi-box-seam-fill"></i> Product Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i class="bi bi-truck"></i> Purchase Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i class="bi bi-calculator-fill"></i> Accounting</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+      </ul>
+
+      <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+        <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="flex-grow-1 main-offset" style="min-width:0;">
+
+    <!-- ============ STICKY NAVBAR ============ -->
+    <nav class="sticky-nav px-3 px-lg-4 d-flex align-items-center justify-content-between flex-wrap">
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-light border rounded-3 d-lg-none" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+          <i class="bi bi-list fs-5"></i>
+        </button>
+        <div>
+          <h1 class="h4 fw-bold mb-0">Product Management</h1>
+          <div class="km text-secondary small">គ្រប់គ្រងព័ត៌មានផលិតផលទាំងអស់</div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+        <button class="btn btn-light border rounded-3"><i class="bi bi-search"></i></button>
+        <button class="btn btn-light border rounded-3 position-relative" id="bellBtn">
+          <i class="bi bi-bell-fill"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:.6rem;">3</span>
+        </button>
+        <div class="d-flex align-items-center gap-2 bg-white border rounded-pill ps-2 pe-3 py-1">
+          <div class="avatar-circle d-flex align-items-center justify-content-center">S</div>
+          <div>
+            <div class="small fw-bold lh-1">Socheat</div>
+            <div class="text-secondary lh-1" style="font-size:.7rem;">Admin</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-3 p-lg-4">
+
+      <!-- ============ Purpose banner ============ -->
+      <div class="purpose-banner text-white rounded-4 p-4 mb-4 shadow">
+        <div class="text-uppercase small fw-bold mb-2 km" style="letter-spacing:.1em; color:#c2b8ff; font-size:.7rem;">
+          <i class="bi bi-square-fill" style="font-size:.4rem; color:#f2b134;"></i> គោលបំណង / Purpose
+        </div>
+        <p class="km mb-1" style="max-width:640px; line-height:1.8;">
+          គ្រប់គ្រងព័ត៌មានផលិតផល — បន្ថែម កែប្រែ លុបផលិតផល គ្រប់គ្រងប្រភេទផលិតផល និងអ្នកផ្គត់ផ្គង់។
+        </p>
+        <div class="small" style="color:#9d9fd6;">Add, edit, and organize products, categories, and suppliers.</div>
+      </div>
+
+      <!-- ============ KPI Cards ============ -->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3 mb-4">
+        <div class="col">
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body p-3 p-lg-4">
+              <div class="km text-secondary small mb-2">ផលិតផលសរុប</div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-circle" style="color:#1f4d43; font-size:.6rem;"></i>
+                <span class="font-serif" id="kpiTotal" style="font-size:2rem; color:#1f4d43;">0</span>
+              </div>
+              <div class="km text-secondary small mt-1">SKU ចុះបញ្ជីទាំងអស់</div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body p-3 p-lg-4">
+              <div class="km text-secondary small mb-2">កំពុងលក់</div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-circle" style="color:#1f4d43; font-size:.6rem;"></i>
+                <span class="font-serif" id="kpiActive" style="font-size:2rem; color:#1f4d43;">0</span>
+              </div>
+              <div class="km text-secondary small mt-1">Active products</div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body p-3 p-lg-4">
+              <div class="km text-secondary small mb-2">បញ្ឈប់លក់</div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-circle" style="color:#c1793a; font-size:.6rem;"></i>
+                <span class="font-serif" id="kpiInactive" style="font-size:2rem; color:#c1793a;">0</span>
+              </div>
+              <div class="km text-secondary small mt-1">Discontinued products</div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body p-3 p-lg-4">
+              <div class="km text-secondary small mb-2">ប្រភេទផលិតផល</div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-circle" style="color:#c1793a; font-size:.6rem;"></i>
+                <span class="font-serif" id="kpiCategories" style="font-size:2rem; color:#c1793a;">0</span>
+              </div>
+              <div class="km text-secondary small mt-1">Categories in use</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Product Table ============ -->
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3">
+            <div>
+              <h2 class="h5 fw-bold mb-0">Product List</h2>
+              <div class="km text-secondary small">បញ្ជីផលិតផលទាំងអស់</div>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <input type="text" class="form-control rounded-3" id="productSearch" placeholder="ស្វែងរកផលិតផល... / Search product" style="min-width:220px;">
+              <button class="btn btn-light border rounded-3 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#categoryModal">
+                <i class="bi bi-tags-fill"></i> Categories
+              </button>
+              <button class="btn btn-light border rounded-3 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#supplierModal">
+                <i class="bi bi-truck"></i> Suppliers
+              </button>
+              <button class="btn text-white rounded-3 d-flex align-items-center gap-2" style="background:var(--violet);" data-bs-toggle="modal" data-bs-target="#productModal" id="addProductBtn">
+                <i class="bi bi-plus-circle-fill"></i> Add Product
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr class="text-secondary small text-uppercase">
+                  <th style="font-size:.72rem; letter-spacing:.05em;">Product</th>
+                  <th style="font-size:.72rem; letter-spacing:.05em;">Category</th>
+                  <th style="font-size:.72rem; letter-spacing:.05em;">Supplier</th>
+                  <th style="font-size:.72rem; letter-spacing:.05em;">Price</th>
+                  <th style="font-size:.72rem; letter-spacing:.05em;">Status</th>
+                  <th style="font-size:.72rem; letter-spacing:.05em;" class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productTableBody"><!-- rows injected by JS --></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ============ Add / Edit Product Modal ============ -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="productModalTitle">Add Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="productForm">
+          <input type="hidden" id="productId">
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Product Name <span class="km text-secondary">/ ឈ្មោះផលិតផល</span></label>
+            <input type="text" class="form-control rounded-3" id="productName" required>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <label class="form-label small fw-semibold">Category <span class="km text-secondary">/ ប្រភេទ</span></label>
+              <select class="form-select rounded-3" id="productCategory"></select>
+            </div>
+            <div class="col-6">
+              <label class="form-label small fw-semibold">Supplier <span class="km text-secondary">/ អ្នកផ្គត់ផ្គង់</span></label>
+              <select class="form-select rounded-3" id="productSupplier"></select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Price ($) <span class="km text-secondary">/ តម្លៃ</span></label>
+            <input type="number" step="0.01" min="0" class="form-control rounded-3" id="productPrice" required>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="productActive" checked>
+            <label class="form-check-label small fw-semibold" for="productActive">Actively selling</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-light rounded-3" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn text-white rounded-3" style="background:var(--violet);" id="saveProductBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Manage Categories Modal ============ -->
+<div class="modal fade" id="categoryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Manage Categories</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex gap-2 mb-3">
+          <input type="text" class="form-control rounded-3" id="newCategoryInput" placeholder="New category name">
+          <button class="btn text-white rounded-3" style="background:var(--violet);" id="addCategoryBtn">Add</button>
+        </div>
+        <ul class="list-group list-group-flush" id="categoryList"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Manage Suppliers Modal ============ -->
+<div class="modal fade" id="supplierModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Manage Suppliers</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex gap-2 mb-3">
+          <input type="text" class="form-control rounded-3" id="newSupplierInput" placeholder="New supplier name">
+          <button class="btn text-white rounded-3" style="background:var(--violet);" id="addSupplierBtn">Add</button>
+        </div>
+        <ul class="list-group list-group-flush" id="supplierList"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Toast -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
+  <div id="liveToast" class="toast align-items-center text-white bg-dark border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toastBody">Updated</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assest/js/productManagement.js"></script>
+</body>
+</html>

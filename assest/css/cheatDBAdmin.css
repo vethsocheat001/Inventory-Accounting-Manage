@@ -1,228 +1,279 @@
-  :root {
-    --brand-violet: #5b4fe8;
-    /* indigo/violet accent — Today's Sales, sidebar highlight */
-    --brand-violet-dark: #4038c4;
-    --brand-terracotta: #c1793a;
-    /* warm terracotta — secondary accent */
-    --brand-gold: #d9a441;
-  }
+:root {
+  --navy-1: #121327;
+  --navy-2: #181a35;
+  --violet: #4f46e5;
+  --violet-soft: #e7e5ff;
+  --green: #1f4d43;
+  --clay: #c1793a;
+  --page-bg: #f4f5fb;
+  --text-secondary: #8a8da3;
+  --radius-lg: 1.25rem;
+}
 
-  body {
-    font-family: 'Manrope', 'Noto Sans Khmer', sans-serif;
-    background: #f3f4fb;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  .km {
-    font-family: 'Noto Sans Khmer', 'Manrope', sans-serif;
-  }
+body {
+  background: var(--page-bg);
+  font-family: 'Manrope', 'Noto Sans Khmer', sans-serif;
+  color: #20213a;
+}
 
-  .font-serif {
-    font-family: 'Fraunces', 'Noto Sans Khmer', serif;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
+/* Khmer text always gets the Khmer face layered on top of Manrope */
+.km {
+  font-family: 'Noto Sans Khmer', 'Manrope', sans-serif;
+}
 
-  /* --- fixed sidebar (sticky, desktop only) --- */
-  .sidebar {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    background: linear-gradient(160deg, #12142c 0%, #1b1e40 100%);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, .15) transparent;
-  }
+.font-serif {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
 
-  .sidebar::-webkit-scrollbar {
-    width: 4px;
-  }
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
 
-  .sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, .2);
-    border-radius: 8px;
-  }
+/* ---------------- Sidebar (fixed, does not scroll with page) ---------------- */
+.sidebar {
+  background: linear-gradient(180deg, var(--navy-2), var(--navy-1));
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 1030;
+}
 
-  .sidebar .nav-link {
-    color: #9698c2;
-    font-weight: 600;
-    font-size: .9rem;
-    border-radius: .5rem;
-  }
+/* pushes the main content right so it isn't hidden under the fixed sidebar */
+.main-offset {
+  margin-left: 250px;
+}
 
-  .sidebar .nav-link.active {
-    background: var(--brand-violet);
-    color: #fff;
-  }
+.sidebar .nav-link {
+  color: #a9acc6;
+  border-radius: .75rem;
+  padding: .6rem .9rem;
+  font-weight: 600;
+  font-size: .92rem;
+  transition: background .15s ease, color .15s ease;
+}
 
-  .sidebar .nav-link:hover:not(.active) {
-    color: #fff;
-    background: rgba(255, 255, 255, .06);
-  }
+.sidebar .nav-link:hover {
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+}
 
-  /* --- offcanvas sidebar (mobile / tablet) shares the same look --- */
-  #mobileSidebar {
-    background: linear-gradient(160deg, #12142c 0%, #1b1e40 100%);
-    color: #c3c5e0;
-    width: 260px;
-  }
+.sidebar .nav-link.active {
+  background: var(--violet);
+  color: #fff;
+}
 
-  #mobileSidebar .nav-link {
-    color: #9698c2;
-    font-weight: 600;
-    font-size: .9rem;
-    border-radius: .5rem;
-  }
+.offcanvas.offcanvas-start {
+  background: linear-gradient(180deg, var(--navy-2), var(--navy-1));
+  color: #fff;
+  width: 270px;
+}
 
-  #mobileSidebar .nav-link.active {
-    background: var(--brand-violet);
-    color: #fff;
-  }
+.offcanvas .btn-close {
+  filter: invert(1) grayscale(1) brightness(2);
+}
 
-  #mobileSidebar .nav-link:hover:not(.active) {
-    color: #fff;
-    background: rgba(255, 255, 255, .06);
-  }
+.offcanvas .nav-link {
+  color: #a9acc6;
+  border-radius: .75rem;
+  padding: .6rem .9rem;
+  font-weight: 600;
+  font-size: .92rem;
+}
 
-  #mobileSidebar .btn-close {
-    filter: invert(1) grayscale(1) brightness(2);
-  }
+.offcanvas .nav-link.active {
+  background: var(--violet);
+  color: #fff;
+}
 
-  .purpose-banner {
-    background: linear-gradient(120deg, #12142c 0%, #232760 55%, #2c2f78 100%);
-  }
+/* ---------------- Accent utilities ---------------- */
+.bg-violet {
+  background: var(--violet) !important;
+  color: #fff;
+}
 
-  .text-violet {
-    color: var(--brand-violet) !important;
-  }
+.text-violet {
+  color: var(--violet) !important;
+}
 
-  .bg-violet {
-    background-color: var(--brand-violet) !important;
-  }
+.bg-violet.bg-opacity-10 {
+  background: var(--violet-soft) !important;
+  color: var(--violet);
+}
 
-  .btn-violet {
-    background: var(--brand-violet);
-    color: #fff;
-  }
+/* ---------------- Top navbar ---------------- */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  height: 78px;
+  background: rgba(244, 245, 251, .85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, .04);
+}
 
-  .btn-violet:hover {
-    background: var(--brand-violet-dark);
-    color: #fff;
-  }
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--clay);
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+}
 
-  /* Bootstrap's .nav-pills defaults to its own blue ($primary) — force our brand color instead */
-  .nav-pills .nav-link.active,
-  .nav-pills .show>.nav-link {
-    background-color: var(--brand-violet);
-    color: #fff;
-  }
+/* ---------------- Cards ---------------- */
+.card {
+  border-radius: var(--radius-lg);
+}
 
-  .chart-bar {
-    flex: 1;
-    height: 0%;
-    border-radius: .5rem .5rem .2rem .2rem;
-    background: linear-gradient(180deg, #e6efe9, #cfe0d6);
-    transition: height .8s cubic-bezier(.16, 1, .3, 1);
-    position: relative;
-    cursor: pointer;
-  }
+.shadow-sm {
+  box-shadow: 0 4px 18px rgba(20, 20, 60, .06) !important;
+}
 
-  .chart-bar.peak {
-    background: linear-gradient(180deg, #4f8f7c, var(--brand-violet));
-  }
+/* ---------------- Purpose banner ---------------- */
+.purpose-banner {
+  background: linear-gradient(135deg, #3f3ac7, #2c2470);
+}
 
-  .chart-bar .val {
-    position: absolute;
-    top: -1.4rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: .65rem;
-    font-weight: 700;
-    opacity: 0;
-    transition: .2s;
-    color: var(--brand-violet);
-  }
+/* ---------------- Sales bar chart ---------------- */
+#chartRow {
+  position: relative;
+}
 
-  .chart-bar.peak .val,
-  .chart-bar:hover .val {
-    opacity: 1;
-  }
+.chart-bar {
+  flex: 1;
+  height: 4%;
+  min-height: 6px;
+  background: var(--violet-soft);
+  border-radius: 8px 8px 3px 3px;
+  position: relative;
+  transition: height .7s cubic-bezier(.22, 1, .36, 1);
+  cursor: default;
+}
 
-  .trend-bar {
-    flex: 1;
-    height: 0%;
-    border-radius: .35rem .35rem .15rem .15rem;
-    transition: height .9s cubic-bezier(.16, 1, .3, 1);
-  }
+.chart-bar.peak {
+  background: var(--violet);
+}
 
-  .trend-bar.b1 {
-    background: #cfe3da;
-  }
+.chart-bar .val {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
 
-  .trend-bar.b2 {
-    background: linear-gradient(180deg, #4f8f7c, var(--brand-violet));
-  }
+.chart-bar:hover .val {
+  opacity: 1;
+}
 
-  .trend-bar.b3 {
-    background: #9dc2b0;
-  }
+.chart-bar.peak .val {
+  color: var(--violet);
+  opacity: 1;
+}
 
-  .avatar-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f2b134, #f0793f);
-    color: #fff;
-    font-weight: 800;
-    font-size: .75rem;
-  }
+/* ---------------- Monthly revenue bars ---------------- */
+.month-bar {
+  flex: 1;
+  min-height: 6px;
+  background: var(--violet-soft);
+  border-radius: 8px 8px 3px 3px;
+  height: 4%;
+  transition: height .7s cubic-bezier(.22, 1, .36, 1);
+}
 
-  /* --- warm card / border tint, so the whole page reads as one palette --- */
-  .card {
-    background: #fffdf9;
-  }
+.month-bar.best {
+  background: var(--clay);
+}
 
-  .border,
-  .list-group-item,
-  .form-control,
-  .nav-tabs {
-    border-color: #e9e1cf !important;
-  }
+/* ---------------- Store sales trend (stacked bars) ---------------- */
+.trend-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  border-radius: 6px 6px 2px 2px;
+  overflow: hidden;
+  min-width: 0;
+}
 
-  .bg-light {
-    background-color: #f2ede1 !important;
-  }
+.trend-seg {
+  width: 100%;
+  transition: height .7s cubic-bezier(.22, 1, .36, 1);
+}
 
-  .form-check-input:checked {
-    background-color: var(--brand-violet);
-    border-color: var(--brand-violet);
-  }
+.trend-seg.online {
+  background: #cfe3da;
+}
 
-  .nav-tabs .nav-link.active {
-    border-color: #e9e1cf #e9e1cf #fffdf9;
-    color: var(--brand-violet);
-    font-weight: 700;
-  }
+.trend-seg.instore {
+  background: var(--violet);
+}
 
-  /* --- sticky navbar (top) --- */
-  .sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1030;
-    background: rgba(246, 241, 231, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
+.trend-seg.wholesale {
+  background: #9dc2b0;
+}
 
+/* ---------------- Tasks ---------------- */
+.task-item .task-title {
+  transition: color .2s ease;
+}
+
+.task-item.done .task-title {
+  color: #a7abbf;
+  text-decoration: line-through;
+}
+
+.task-item input.form-check-input {
+  cursor: pointer;
+}
+
+.task-item input.form-check-input:checked {
+  background-color: var(--green);
+  border-color: var(--green);
+}
+
+/* ---------------- Misc ---------------- */
+.nav-tabs .nav-link {
+  color: var(--text-secondary);
+  font-weight: 600;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--violet);
+  border-bottom-color: var(--violet);
+  background: transparent;
+}
+
+#salesTabs .nav-link {
+  color: var(--text-secondary);
+  background: #f1f1f8;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+#salesTabs .nav-link.active {
+  background: var(--violet);
+  color: #fff;
+}
+
+@media (max-width:991.98px) {
   .main-offset {
-    padding-top: 0.25rem;
+    margin-left: 0;
   }
-
-  @media (min-width: 992px) {
-    .sidebar {
-      height: 100vh;
-    }
-  }
+}
