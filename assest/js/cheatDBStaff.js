@@ -1,150 +1,184 @@
-function countUp(el, target, opts = {}) {
-    const dur = opts.duration || 1200;
-    const suffix = opts.suffix || '';
-    const prefix = opts.prefix || '';
-    const start = performance.now();
-    function tick(now) {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + Math.round(target * eased).toLocaleString() + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
+/* cheatDBStaff.js — populates all dynamic Dashboard data:
+   - Today's Sales chart bars (from data-h / data-v attributes)
+   - Sales total + This week / Last week toggle
+   - Mini stats: Visits / Payments / Conversion
+   - Assigned Tasks progress bar
+   - Store Sales Trend big chart
+*/
+document.addEventListener("DOMContentLoaded", function () {
 
-  const toastEl = document.getElementById('liveToast');
-  const toast = new bootstrap.Toast(toastEl, { delay: 2000 });
-  function showToast(msg) {
-    document.getElementById('toastBody').textContent = msg;
-    toast.show();
-  }
-  document.getElementById('bellBtn').addEventListener('click', () => {
-    showToast('🔔 No new notifications');
+  /* ---------- 1) TODAY'S SALES CHART (chartRow) ---------- */
+  var chartRow = document.getElementById("chartRow");
+  var bars = chartRow ? chartRow.querySelectorAll(".chart-bar") : [];
+
+  // Read each bar's data-h (height %) / data-v (label) straight from the HTML
+  var weekValues = [];
+  bars.forEach(function (bar) {
+    var h = parseFloat(bar.getAttribute("data-h")) || 0;
+    var v = bar.getAttribute("data-v") || "";
+    bar.style.height = h + "%";
+    var val = bar.querySelector(".val");
+    if (val) val.textContent = v;
+    weekValues.push(parseFloat(v)); // e.g. "8.1k" -> 8.1
   });
 
-  const salesData = {
-    week: { amt: 15443, trend: '▲ 10.4%', up: true, bars: [52,68,38,82,100,58,71], vals: ['8.1k','10.6k','5.9k','12.8k','15.4k','9.0k','11.1k'] },
-    lastweek: { amt: 13980, trend: '▼ 4.2%', up: false, bars: [60,45,72,50,66,88,40], vals: ['9.4k','7.0k','11.2k','7.8k','10.3k','13.7k','6.2k'] }
-  };
+  // Last week = same shape, scaled down ~10.4% (matches the ▲10.4% badge already in the HTML)
+  var lastWeekValues = weekValues.map(function (v) { return +(v / 1.104).toFixed(1); });
+  var lastWeekMax = Math.max.apply(null, lastWeekValues) || 1;
 
-  function renderSales(data, animate) {
-    countUp(document.getElementById('salesAmt'), data.amt, { prefix: '$', duration: animate ? 1200 : 600 });
-    const trendEl = document.getElementById('salesTrend');
-    trendEl.textContent = data.trend;
-    trendEl.className = 'badge ' + (data.up ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger');
-    document.querySelectorAll('#chartRow .chart-bar').forEach((bar, i) => {
-      const h = data.bars[i];
-      setTimeout(() => { bar.style.height = h + '%'; }, animate ? i * 70 : 0);
-      bar.querySelector('.val').textContent = '$' + data.vals[i];
-      bar.classList.toggle('peak', h === Math.max(...data.bars));
+  function renderWeek(values, isLastWeek) {
+    var max = isLastWeek ? lastWeekMax : 100; // "This week" already has data-h as %, base on that
+    bars.forEach(function (bar, i) {
+      if (isLastWeek) {
+        var pct = (values[i] / lastWeekMax) * 100;
+        bar.style.height = pct + "%";
+      } else {
+        bar.style.height = (parseFloat(bar.getAttribute("data-h")) || 0) + "%";
+      }
+      var val = bar.querySelector(".val");
+      if (val) val.textContent = values[i] + "k";
     });
   }
 
-  document.querySelectorAll('#salesTabs [data-sales]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#salesTabs .nav-link').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderSales(salesData[btn.dataset.sales], false);
+  function totalOf(values) {
+    return values.reduce(function (a, b) { return a + b; }, 0);
+  }
+
+  var salesAmt = document.getElementById("salesAmt");
+  var salesTrend = document.getElementById("salesTrend");
+
+  function showWeek(kind) {
+    var values = kind === "lastweek" ? lastWeekValues : weekValues;
+    renderWeek(values, kind === "lastweek");
+    if (salesAmt) salesAmt.textContent = "$" + (totalOf(values) * 1000).toLocaleString();
+    if (salesTrend) salesTrend.textContent = kind === "lastweek" ? "▼ 5.2%" : "▲ 10.4%";
+  }
+  showWeek("week");
+
+  document.querySelectorAll("#salesTabs [data-sales]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll("#salesTabs .nav-link").forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      showWeek(btn.getAttribute("data-sales"));
     });
   });
 
-  const trendData = {
+  /* ---------- 2) MINI STATS: Visits / Payments / Conversion ---------- */
+  var statVisits = document.getElementById("statVisits");
+  var statPayments = document.getElementById("statPayments");
+  var statConversion = document.getElementById("statConversion");
+
+  // Derived from the same week totals, so it stays consistent with the chart above
+  var visits = Math.round(totalOf(weekValues) * 12);   // e.g. 72.9k sales -> ~875 visits
+  var payments = 37;                                     // matches "37 invoices" KPI card
+  var conversion = Math.round((payments / visits) * 1000) / 10;
+
+  function countUp(el, target, suffix) {
+    if (!el) return;
+    var start = 0;
+    var step = Math.max(1, Math.round(target / 30));
+    var timer = setInterval(function () {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = start + (suffix || "");
+    }, 20);
+  }
+  countUp(statVisits, visits, "");
+  countUp(statPayments, payments, "");
+  countUp(statConversion, conversion, "%");
+
+  /* ---------- 3) ASSIGNED TASKS PROGRESS BAR ---------- */
+  var taskList = document.getElementById("taskList");
+  var taskProgress = document.getElementById("taskProgress");
+  var taskPct = document.getElementById("taskPct");
+  var taskBig = document.getElementById("taskBig");
+
+  if (taskList) {
+    var items = taskList.querySelectorAll(".task-item");
+    var done = taskList.querySelectorAll(".task-item.done").length;
+    var total = items.length;
+    var pct = total ? Math.round((done / total) * 100) : 0;
+
+    if (taskProgress) setTimeout(function () { taskProgress.style.width = pct + "%"; }, 100);
+    if (taskPct) taskPct.textContent = pct + "%";
+    if (taskBig) taskBig.textContent = done + " of " + total + " tasks completed";
+
+    // Let checking/unchecking a task update the bar live
+    items.forEach(function (item) {
+      var checkbox = item.querySelector('input[type="checkbox"]');
+      if (!checkbox) return;
+      checkbox.addEventListener("change", function () {
+        item.classList.toggle("done", checkbox.checked);
+        var newDone = taskList.querySelectorAll(".task-item.done").length;
+        var newPct = total ? Math.round((newDone / total) * 100) : 0;
+        if (taskProgress) taskProgress.style.width = newPct + "%";
+        if (taskPct) taskPct.textContent = newPct + "%";
+        if (taskBig) taskBig.textContent = newDone + " of " + total + " tasks completed";
+      });
+    });
+  }
+
+  /* ---------- 4) STORE SALES TREND (bigChart / yearLabels) ---------- */
+  var bigChart = document.getElementById("bigChart");
+  var yearLabels = document.getElementById("yearLabels");
+
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  // Fixed sample dataset for 2020, split Online / In-store / Wholesale (matches the legend already in the HTML)
+  var trend = {
     sales: [
-      { year: '2017', online: 70, instore: 55, wholesale: 48 },
-      { year: '2018', online: 30, instore: 45, wholesale: 52 },
-      { year: '2019', online: 33, instore: 95, wholesale: 64 },
-      { year: '2020', online: 28, instore: 55, wholesale: 62 }
+      [20,45,10],[25,50,12],[18,60,15],[30,55,20],[28,65,18],[35,70,22],
+      [40,80,25],[38,75,24],[32,68,20],[36,72,22],[42,85,28],[50,95,30]
     ],
     visits: [
-      { year: '2017', online: 45, instore: 60, wholesale: 38 },
-      { year: '2018', online: 52, instore: 40, wholesale: 58 },
-      { year: '2019', online: 60, instore: 72, wholesale: 50 },
-      { year: '2020', online: 48, instore: 66, wholesale: 70 }
+      [80,120,30],[90,130,32],[85,150,35],[100,140,40],[95,160,38],[110,175,45],
+      [120,190,48],[115,180,46],[105,165,42],[112,172,44],[125,195,50],[140,210,55]
     ]
   };
 
-  function renderTrendChart(dataset) {
-    const chartEl = document.getElementById('bigChart');
-    const yearsEl = document.getElementById('yearLabels');
-    chartEl.innerHTML = '';
-    yearsEl.innerHTML = '';
-    dataset.forEach(yearData => {
-      const group = document.createElement('div');
-      group.className = 'flex-fill d-flex align-items-end gap-1 h-100';
-      group.innerHTML = `
-        <div class="trend-bar b1" data-h="${yearData.online}"></div>
-        <div class="trend-bar b2" data-h="${yearData.instore}"></div>
-        <div class="trend-bar b3" data-h="${yearData.wholesale}"></div>
-      `;
-      chartEl.appendChild(group);
-      const label = document.createElement('div');
-      label.className = 'flex-fill';
-      label.textContent = yearData.year;
-      yearsEl.appendChild(label);
+  function renderTrend(kind) {
+    var data = trend[kind] || trend.sales;
+    var max = Math.max.apply(null, data.map(function (m) { return m[0] + m[1] + m[2]; }));
+    bigChart.innerHTML = "";
+    data.forEach(function (m) {
+      var col = document.createElement("div");
+      col.className = "d-flex flex-column-reverse flex-fill";
+      col.style.height = "100%";
+      col.style.gap = "2px";
+
+      var segments = [
+        { v: m[0], color: "#e1ddff" }, // Online
+        { v: m[1], color: "#6d4de0" }, // In-store (violet)
+        { v: m[2], color: "#c9c2ff" }  // Wholesale
+      ];
+      segments.forEach(function (seg) {
+        var bar = document.createElement("div");
+        bar.style.background = seg.color;
+        bar.style.width = "100%";
+        bar.style.height = (seg.v / max) * 100 + "%";
+        bar.style.borderRadius = "3px";
+        col.appendChild(bar);
+      });
+      bigChart.appendChild(col);
     });
-    chartEl.querySelectorAll('.trend-bar').forEach((bar, i) => {
-      setTimeout(() => { bar.style.height = bar.dataset.h + '%'; }, i * 60);
+
+    yearLabels.innerHTML = "";
+    months.forEach(function (m) {
+      var lbl = document.createElement("div");
+      lbl.className = "flex-fill";
+      lbl.textContent = m;
+      yearLabels.appendChild(lbl);
     });
   }
 
-  document.querySelectorAll('#trendTabs [data-trend]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#trendTabs .nav-link').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderTrendChart(trendData[btn.dataset.trend]);
+  if (bigChart && yearLabels) {
+    renderTrend("sales");
+    document.querySelectorAll("#trendTabs [data-trend]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("#trendTabs .nav-link").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        renderTrend(btn.getAttribute("data-trend"));
+      });
     });
-  });
-
-  const khmerDigits = ['០','១','២','៣','៤','៥','៦','៧','៨','៩'];
-  const toKhmer = n => String(n).split('').map(d => khmerDigits[d]).join('');
-
-  function updateTaskProgress() {
-    const items = document.querySelectorAll('[data-task]');
-    const total = items.length;
-    const done = document.querySelectorAll('[data-task].done').length;
-    const pct = Math.round((done / total) * 100);
-    document.getElementById('taskProgress').style.width = pct + '%';
-    document.getElementById('taskPct').textContent = pct + '%';
-    document.getElementById('taskBig').textContent = `${done} of ${total} tasks completed`;
-    document.getElementById('taskSm').textContent = `ការងារបានបញ្ចប់ ${toKhmer(done)} ក្នុងចំណោម ${toKhmer(total)}`;
   }
 
-  document.querySelectorAll('[data-task]').forEach(item => {
-    const checkbox = item.querySelector('input[type="checkbox"]');
-    const tag = item.querySelector('.task-tag');
-    item.addEventListener('click', (e) => {
-      if (e.target === checkbox) return;
-      checkbox.checked = !checkbox.checked;
-      checkbox.dispatchEvent(new Event('change'));
-    });
-    checkbox.addEventListener('change', () => {
-      const isDone = checkbox.checked;
-      item.classList.toggle('done', isDone);
-      if (isDone) {
-        item.dataset.prevTag = item.dataset.tag || 'low';
-        tag.className = 'badge bg-success-subtle text-success rounded-pill task-tag';
-        tag.textContent = 'Done';
-        showToast('✓ Marked as complete');
-      } else {
-        const prev = item.dataset.prevTag || 'low';
-        const map = {
-          high: ['bg-danger-subtle text-danger', 'High'],
-          med: ['bg-warning-subtle text-warning', 'Medium'],
-          low: ['bg-primary-subtle text-primary', 'Low']
-        };
-        tag.className = 'badge rounded-pill task-tag ' + map[prev][0];
-        tag.textContent = map[prev][1];
-        showToast('↺ Marked as pending');
-      }
-      updateTaskProgress();
-    });
-  });
-
-  window.addEventListener('load', () => {
-    renderSales(salesData.week, true);
-    renderTrendChart(trendData.sales);
-    updateTaskProgress();
-    countUp(document.getElementById('statVisits'), 6480, { duration: 1000 });
-    countUp(document.getElementById('statPayments'), 5320, { duration: 1100 });
-    countUp(document.getElementById('statConversion'), 50, { suffix: '%', duration: 900 });
-  });
+});
