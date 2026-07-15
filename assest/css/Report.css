@@ -1,0 +1,337 @@
+:root {
+  --ink: #1c2430;
+  --muted: #6b7686;
+  --line: #e7eaef;
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --sales: #3b6fe0;
+  --sales-bg: #eaf1fe;
+  --inventory: #1fa971;
+  --inventory-bg: #e7f8f1;
+  --purchase: #7c5cff;
+  --purchase-bg: #f0ecff;
+  --expense: #e0473b;
+  --expense-bg: #fdeceb;
+  --profit: #e08a1f;
+  --profit-bg: #fdf1e2;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: 'Noto Sans Khmer', 'Inter', sans-serif; */
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+.page-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.eyebrow {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--sales);
+}
+
+h1.page-title {
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin: .15rem 0 1rem;
+}
+
+.purpose-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+}
+
+.purpose-box .label {
+  font-weight: 700;
+  color: var(--sales);
+  margin-inline-end: 6px;
+}
+
+/* Report cards */
+.report-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 100%;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -12px rgba(28, 36, 48, .18);
+}
+
+.report-card .stripe {
+  height: 6px;
+  width: 100%;
+}
+
+.report-card .icon-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+
+.report-card .body-pad {
+  padding: 18px 20px 20px;
+}
+
+.report-card .kh-name {
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin-bottom: 2px;
+}
+
+.report-card .en-name {
+  color: var(--muted);
+  font-size: .85rem;
+  margin-bottom: 16px;
+}
+
+.btn-view {
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: .9rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-view i {
+  transition: transform .15s ease;
+}
+
+.btn-view:hover i {
+  transform: translateX(3px);
+}
+
+.sales .stripe {
+  background: var(--sales);
+}
+
+.sales .icon-badge {
+  background: var(--sales-bg);
+  color: var(--sales);
+}
+
+.sales .btn-view {
+  color: var(--sales);
+}
+
+.inventory .stripe {
+  background: var(--inventory);
+}
+
+.inventory .icon-badge {
+  background: var(--inventory-bg);
+  color: var(--inventory);
+}
+
+.inventory .btn-view {
+  color: var(--inventory);
+}
+
+.purchase .stripe {
+  background: var(--purchase);
+}
+
+.purchase .icon-badge {
+  background: var(--purchase-bg);
+  color: var(--purchase);
+}
+
+.purchase .btn-view {
+  color: var(--purchase);
+}
+
+.expense .stripe {
+  background: var(--expense);
+}
+
+.expense .icon-badge {
+  background: var(--expense-bg);
+  color: var(--expense);
+}
+
+.expense .btn-view {
+  color: var(--expense);
+}
+
+.profit .stripe {
+  background: var(--profit);
+}
+
+.profit .icon-badge {
+  background: var(--profit-bg);
+  color: var(--profit);
+}
+
+.profit .btn-view {
+  color: var(--profit);
+}
+
+/* Table section */
+.table-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 32px;
+}
+
+.table-card h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.report-table thead th {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+.report-table tbody td {
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+  font-size: .92rem;
+  white-space: nowrap;
+}
+
+.report-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.report-name {
+  font-weight: 600;
+}
+
+.row-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  font-size: .85rem;
+  margin-inline-end: 8px;
+  vertical-align: middle;
+}
+
+.row-icon-sales {
+  background: var(--sales-bg);
+  color: var(--sales);
+}
+
+.row-icon-inventory {
+  background: var(--inventory-bg);
+  color: var(--inventory);
+}
+
+.row-icon-purchase {
+  background: var(--purchase-bg);
+  color: var(--purchase);
+}
+
+.row-icon-expense {
+  background: var(--expense-bg);
+  color: var(--expense);
+}
+
+.row-icon-profit {
+  background: var(--profit-bg);
+  color: var(--profit);
+}
+
+.format-badge {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.format-pdf {
+  background: #fdeceb;
+  color: #c8382d;
+}
+
+.format-excel {
+  background: #e7f8f1;
+  color: #178a5a;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: all .15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--sales-bg);
+  color: var(--sales);
+  border-color: var(--sales);
+}
+
+.table-responsive-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.search-input {
+  max-width: 260px;
+}
+
+/* Toast */
+.toast-container {
+  z-index: 1080;
+}
+
+@media (max-width: 576px) {
+  h1.page-title {
+    font-size: 1.4rem;
+  }
+
+  .purpose-box {
+    font-size: .92rem;
+  }
+
+  .table-card h2 {
+    font-size: .95rem;
+  }
+}
