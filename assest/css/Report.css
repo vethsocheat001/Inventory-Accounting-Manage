@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: 'Noto Sans Khmer', 'Inter', sans-serif;
+  /* font-family: 'Noto Sans Khmer', 'Inter', sans-serif; */
   background: var(--bg);
   color: var(--ink);
   min-height: 100vh;
