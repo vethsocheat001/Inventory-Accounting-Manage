@@ -278,10 +278,6 @@ function saveCust() {
 
   // ដំណើរការដំបូងបង្អស់
   renderCustomers();
-
-
-
-    
         const currentSales = [
         { item_name: "កាហ្វេទឹកដោះគោទឹកកក", customer: "រឹម​ ភារុន", payment_method: "ABA", total_price: "$2.50", time: "08:30 AM" },
         { item_name: "តែបៃតងក្រូចឆ្មា", customer: "វ៉៉េង សុជាតិ", payment_method: "សាច់ប្រាក់", total_price: "$1.75", time: "09:15 AM" },
@@ -377,6 +373,58 @@ function saveCust() {
 
       filterCat.addEventListener('change', applyPosFilter);
       searchBox.addEventListener('input', applyPosFilter);
+
+      // POS: ចុចលើកាតផលិតផល -> បន្ថែមទៅកន្ត្រក ហើយលោតទៅផ្ទាំងកន្ត្រកសម្រាប់គិតលុយ
+      productCards.forEach((card, index) => {
+        // ផ្តល់ id ថេរតាមកាត ដើម្បីឲ្យ addToCart ដឹងថាជាមុខទំនិញតែមួយ
+        if (!card.dataset.pid) {
+          card.dataset.pid = 'pos-' + index;
+        }
+
+        card.addEventListener('click', () => {
+          const nameEl = card.querySelector('.card-body h5');
+          const priceEl = card.querySelector('.card-body p');
+          const stockEl = card.querySelectorAll('.card-body p')[1];
+
+          if (!nameEl || !priceEl) return;
+
+          const name = nameEl.textContent.trim();
+
+          // ទាញយកតម្លៃជាលេខ ទោះបីទម្រង់សរសេរខុសគ្នា (ឧ. "$1.50", "0.30$")
+          const priceMatch = priceEl.textContent.replace(/[^0-9.]/g, '');
+          const price = parseFloat(priceMatch) || 0;
+
+          // បើអស់ស្តុក កុំបន្ថែមទៅកន្ត្រក
+          if (stockEl) {
+            const stockMatch = stockEl.textContent.replace(/[^0-9]/g, '');
+            const stock = parseInt(stockMatch, 10);
+            if (!isNaN(stock) && stock <= 0) {
+              showPosToast(`${name} អស់ស្តុក!`);
+              return;
+            }
+          }
+
+          addToCart(card.dataset.pid, name, price);
+          showPosToast(`បានបន្ថែម "${name}" ចូលកន្ត្រក`);
+
+          // លោត(scroll)ទៅផ្ទាំងកន្ត្រកសម្រាប់ធ្វើការគិតលុយ
+          const cartPanel = document.getElementById('cartPanel');
+          if (cartPanel) {
+            cartPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            cartPanel.classList.add('cart-highlight');
+            setTimeout(() => cartPanel.classList.remove('cart-highlight'), 600);
+          }
+        });
+      });
+
+      function showPosToast(message) {
+        const toastEl = document.getElementById('posToast');
+        if (!toastEl) return;
+        toastEl.textContent = message;
+        toastEl.classList.add('show');
+        clearTimeout(showPosToast._t);
+        showPosToast._t = setTimeout(() => toastEl.classList.remove('show'), 1500);
+      }
     
 
       
