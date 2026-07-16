@@ -16,20 +16,21 @@
     <link rel="stylesheet" href="/assest/css/roun_staff.css"/>
     <link rel="stylesheet" href="/assest/vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.2.0/css/all.min.css">
     
   </head> 
   <body>
     <div class="app-shell">
       <div class="sidebar">
         <nav class="nav flex-column mt-2">
-          <a class="nav-link active" data-tab="Dashboard" href="#"><i class="fa-solid fa-cash-register"></i>Dashboard</a>
+          <a class="nav-link active"  data-tab="Dashboard" href="#"><i class="fa-solid fa-cash-register"></i>Dashboard</a>
           <a class="nav-link        " data-tab="pos"       href="#"><i class="fa-solid fa-cash-register"></i>លក់ទំនិញ</a>
           <a class="nav-link"        data-tab="products"  href="#"><i class="fa-solid fa-box"></i>ផលិតផល</a>
           <a class="nav-link"        data-tab="inventory" href="#"><i class="fa-solid fa-boxes-stacked"></i>ស្ថានភាពស្តុក</a>
           <a class="nav-link"        data-tab="customers" href="#"><i class="fa-solid fa-users"></i>អតិថិជន</a>
           <a class="nav-link"        data-tab="reports"   href="#"><i class="fa-solid fa-chart-simple"></i>របាយការណ៍</a>
           <a class="nav-link"        data-tab="account"   href="#"><i class="fa-solid fa-user-gear"></i>គណនីខ្ញុំ</a>
-          <a  href="../../../index.html"><i class="fa-solid fa-user-gear"></i>ចាកចេញ</a>
+         <a class="nav-link" data-tab="logout" href="/index.html"><i class="fa-solid fa-user-gear"></i> Logout</a>
           
         </nav>
       </div>
@@ -108,9 +109,6 @@
           </div>
         </div>
       </div>
-
-     
-
       <div class="row g-4 mb-4">
         <!-- ============ View Today's Sales ============ -->
         <div class="col-lg-7">
@@ -756,7 +754,7 @@
             </div>
 
             <div class="col-12 col-md-4">
-              <div class="card border-0 shadow-sm rounded-3 bg-white p-3">
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-3" id="cartPanel">
                 <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-cart-shopping me-1 text-moss"></i> កន្ត្រក</h6>
                 
                 <div id="cart-items-wrapper" class="overflow-auto mb-3" style="max-height: 200px; min-height: 80px;">
@@ -764,42 +762,6 @@
                 </div>
 
                 <h6 class="fw-bold text-dark small mb-2 font-khmer">ព័ត៌មានការទូទាត់</h6>
-                <div class="mb-2">
-                  <select class="form-select form-select-sm shadow-none font-khmer" id="pay-customer">
-                    <option value="">អង្ករ ៥គីឡូ</option>
-                    <option value="1">ពោត ៥គីឡូ</option>
-                    <option value="2">ស្រូវ​ ៥គីឡូ</option>
-                    <option value="3">ទឹកប្រេងឆា</option>
-                    <option value="4">ទឹកស៊ីអ៊ីវ</option>
-                    <option value="5">ត្រីខរកំប៉ុង</option>
-                    <option value="6">ពងមាន់ 10គ្រាប់</option>
-                    <option value="7">អំបិល​ ១កញ្ជប់</option>
-                    <option value="8">ស្ករស ១កញ្ជប់</option>
-                    <option value="9">សណ្ដែកដី​ ១គីឡូ</option>
-                    <option value="10">Coca-cola</option>
-                    <option value="11">Champion Drink</option>
-                    <option value="12">Water</option>
-                    <option value="13">ភេសជ្ជៈប៉ូវកម្លាំង WURKZ</option>
-                    <option value="14">ទឹកក្រូចអាយស៍</option>
-                    <option value="15">ភេសជ្ជៈប៉ូវកម្លាំងដាហ្ស</option>
-                    <option value="16">ភេសជ្ជៈ EXPREZ រសជាតិស្ត្រប៊ែរី</option>
-                    <option value="17">ភេសជ្ជៈប៉ូវកម្លាំង ICY COOL រសជាតិម៉ុងតុល</option>
-                    <option value="18">ភេសជ្ជៈប៉ូវកម្លាំង KIZZ រសជាតិម៉ុងតុល</option>
-                    <option value="19">ភេសជ្ជៈប៉ូវកម្លាំង VIKINGZ</option>
-                    <option value="20">Plate</option>
-                    <option value="21">Glass</option>
-                    <option value="22">ម៉ាស៊ីនក្រឡុក (Blender)</option>
-                    <option value="23">ក្រដាសអាលុយមីញ៉ូម</option>
-                    <option value="24">ប្រដាប់កិនខ្ទឹម</option>
-                    <option value="25">ប្រដាប់ឈូសបន្លែ</option>
-                    <option value="26">ជ្រញ់</option>
-                    <option value="27">ចង្ក្រានហ្គាស</option>
-                    <option value="28">តុបាយ</option>
-                    <option value="29">ឆ្នាំង</option>
-                    <option value="30">ទឹកស៊ីអ៊ីវ</option>
-                  </select>
-                </div>
-
                 <div class="mb-3">
                   <select class="form-select form-select-sm shadow-none font-khmer" id="pay-method-select">
                     <option value="សាច់ប្រាក់">សាច់ប្រាក់ (Cash)</option>
@@ -1211,6 +1173,8 @@
         </div>
       </div>
     </div>
+
+    <div class="toast-msg" id="posToast"></div>
 
     <script src="/assest/js/cheatDBStaff.js"></script>
     <script src="/assest/js/phearoun.js"></script>
