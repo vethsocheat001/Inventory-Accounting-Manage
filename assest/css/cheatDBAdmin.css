@@ -281,3 +281,18 @@ body {
     margin-left: 0;
   }
 }
+.avatar-circle{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#e9ecef;
+    font-weight:600;
+    color:#1161E0;
+}
+
+.avatar-circle img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
