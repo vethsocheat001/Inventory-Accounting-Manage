@@ -9,6 +9,7 @@
   --text-secondary: #8a8da3;
   --radius-lg: 1.25rem;
 }
+
 /* .logoimg{
   width: 55px ;
   height: 55px;
@@ -281,18 +282,84 @@ body {
     margin-left: 0;
   }
 }
-.avatar-circle{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    overflow:hidden;
-    background:#e9ecef;
-    font-weight:600;
-    color:#1161E0;
+
+.avatar-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e9ecef;
+  font-weight: 600;
+  color: #1161E0;
 }
 
-.avatar-circle img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 991.98px) {
+  .sticky-nav {
+    height: auto;
+    padding-block: 12px;
+  }
+}
+
+/* ---------------- Top navbar: compact single-row layout on small screens ---------------- */
+@media (max-width: 576px) {
+  .sticky-nav {
+    flex-wrap: nowrap;
+    height: auto;
+    min-height: 62px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+
+  /* keep title + action buttons on one row instead of stacking */
+  .sticky-nav .mt-2 {
+    margin-top: 0 !important;
+  }
+
+  /* hide the Khmer subtitle under the page title to save space */
+  .sticky-nav .km.text-secondary {
+    display: none;
+  }
+
+  .sticky-nav h1.h4 {
+    font-size: 1.05rem;
+  }
+
+  /* shrink the search / bell buttons */
+  .sticky-nav .btn.btn-light.border.rounded-3 {
+    padding: .35rem .55rem;
+  }
+
+  .sticky-nav .btn.btn-light.border.rounded-3 .fs-5 {
+    font-size: 1rem !important;
+  }
+
+  /* shrink the gaps between header elements */
+  .sticky-nav .gap-2 {
+    gap: .35rem !important;
+  }
+
+  /* shrink the user avatar pill */
+  .sticky-nav .avatar-circle {
+    width: 26px;
+    height: 26px;
+    font-size: .75rem;
+  }
+
+  .sticky-nav .rounded-pill.ps-2.pe-3.py-1 {
+    padding: .25rem .5rem !important;
+  }
+
+  .sticky-nav .rounded-pill .small.fw-bold {
+    font-size: .72rem;
+  }
+
+  .sticky-nav .rounded-pill div[style*="0.7rem"] {
+    font-size: .6rem;
+  }
 }
