@@ -625,12 +625,43 @@ a {
 
     .hero-section {
         min-height: 70vh;
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
     }
 
     .shape-circle-1,
     .shape-circle-2 {
         display: none;
     }
+}
+.stats-row {
+    flex-wrap: nowrap !important;
+    width: 100%;
+    gap: .5rem !important;
+}
+
+.floating-card {
+    min-width: 0;
+    flex: 1 1 0;
+    padding: .6rem .5rem;
+    gap: .4rem;
+    border-radius: 10px;
+}
+
+.floating-card .fc-icon {
+    width: 32px;
+    height: 32px;
+    font-size: .9rem;
+    border-radius: 8px;
+}
+
+.floating-card .fc-num {
+    font-size: .95rem;
+}
+
+.floating-card .fc-label {
+    font-size: .62rem;
+    white-space: nowrap;
 }
 /* ===== Modal Styles ===== */
 .modal-content {

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
  const sales = [
-  { id: '1001', customer: 'សុខា', date: '2026-07-14', items: 3, total: 86.00, status: 'paid' },
+  { id: '1001', customer: 'សុខា', date: '2026/07/14', items: 3, total: 86.00, status: 'paid' },
   { id: '1002', customer: 'Walk-in', date: '2026-07-14', items: 1, total: 12.00, status: 'paid' },
   { id: '1003', customer: 'ដារា', date: '2026-07-13', items: 2, total: 100.00, status: 'unpaid' },
   { id: '1004', customer: 'ស្រីនាង', date: '2026-07-13', items: 4, total: 143.50, status: 'paid' },
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
       tr.innerHTML = `
         <td class="fw-semibold">${s.id}</td>
         <td>${s.customer}</td>
-        <td>${s.date}</td>
+        <td><small>${s.date}</small></td>
         <td>${s.items}</td>
         <td>$${s.total.toFixed(2)}</td>
         <td>${statusBadge(s.status)}</td>
