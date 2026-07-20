@@ -396,7 +396,7 @@ function saveCust() {
 
           // update the page title in the topbar
           const pageTitle = document.getElementById('pageTitle');
-          if (pageTitle) pageTitle.textContent = [tabName] || '';
+          if (pageTitle) pageTitle.textContent = tabTitles[tabName] || '';
         });
       });
 
@@ -488,20 +488,20 @@ function saveCust() {
         { id: 6, name: "Coca-cola",               category: "ភេសជ្ជៈ", price: 2.50, stock: 49 },
         { id: 7, name: "fanta",              category: "ភេសជ្ជៈ", price: 2.30, stock: 48 },
         { id: 1, name: "កូកាកូឡា (Coca-Cola)", category: "ភេសជ្ជៈ", price: 0.60, stock: 120 },
-        { id: 2, name: "ភេសជ្ជៈ PION", category: "ភេសជ្ជៈ", price: 0.70, stock: 85 },
+        { id: 2, name: "PION", category: "ភេសជ្ជៈ", price: 0.70, stock: 85 },
         { id: 3, name: "កាហ្វេដប", category: "ភេសជ្ជៈ", price: 1.20, stock: 4 }, // ស្តុកទាប
         { id: 4, name: "ទឹកក្រូចដប", category: "ភេសជ្ជៈ", price: 2.50, stock: 50 },
         { id: 5, name: "ទឹកស៊ីអ៊ីវ", category: "គ្រឿងទេស", price: 1.50, stock: 100 },
         // --- ភេសជ្ជៈថែមថ្មីទាំង ១០ មុខ ---
         { id: 5, name: "តែបៃតង អូអ៊ិឈិ (Oishi)", category: "ភេសជ្ជៈ", price: 0.75, stock: 90 },
-        { id: 6, name: "ភេសជ្ជៈពៅកម្លាំង វើក (WURKZ)", category: "ភេសជ្ជៈ", price: 0.65, stock: 150 },
+        { id: 6, name: "ពៅកម្លាំង វើក (WURKZ)", category: "ភេសជ្ជៈ", price: 0.65, stock: 150 },
         { id: 7, name: "ទឹកបរិសុទ្ធ វីតាល់ (Vital) ៥០០ml", category: "ភេសជ្ជៈ", price: 0.25, stock: 250 },
-        { id: 8, name: "ភេសជ្ជៈការ៉ាបាវ (Carabao)", category: "ភេសជ្ជៈ", price: 0.70, stock: 5 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
-        { id: 9, name: "ភេសជ្ជៈ ស្តីងក្រហម (Sting)", category: "ភេសជ្ជៈ", price: 0.70, stock: 110 },
+        { id: 8, name: "ការ៉ាបាវ (Carabao)", category: "ភេសជ្ជៈ", price: 0.70, stock: 5 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 9, name: "ស្តីងក្រហម (Sting)", category: "ភេសជ្ជៈ", price: 0.70, stock: 110 },
         { id: 10, name: "ទឹកដោះគោជូរ ឌីឡាក់ (Delight)", category: "ភេសជ្ជៈ", price: 0.50, stock: 65 },
         { id: 11, name: "តែក្រូចឆ្មា ហ្វ្រូស (Iced Tea)", category: "ភេសជ្ជៈ", price: 0.80, stock: 3 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
         { id: 12, name: "ទឹកផ្លែឈើ ជូស៊ី (Juice)", category: "ភេសជ្ជៈ", price: 1.00, stock: 45 },
-        { id: 13, name: "ភេសជ្ជៈ ប៉ិបស៊ី (Pepsi)", category: "ភេសជ្ជៈ", price: 0.60, stock: 135 },
+        { id: 13, name: "ប៉ិបស៊ី (Pepsi)", category: "ភេសជ្ជៈ", price: 0.60, stock: 135 },
         { id: 14, name: "ទឹកដោះគោ កំប៉ុង BEAR BRAND", category: "ភេសជ្ជៈ", price: 0.85, stock: 70 },
 
         // --- គ្រឿងទេសផ្សេងៗ ---
@@ -798,8 +798,6 @@ function saveCust() {
       }
  
       renderInventory();
-   
-
    
   // ១. អនុគមន៍រក្សាទុកការកែប្រែប្រវត្តិរូប (Profile)
   function updateProfile() {
