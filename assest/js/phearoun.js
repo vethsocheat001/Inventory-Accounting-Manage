@@ -99,17 +99,44 @@ function clearCart() {
   renderCart();
 }
 
-// ៥. អនុគមន៍ចុច Checkout រួចរុញទិន្នន័យចូលទៅកាន់របាយការណ៍ (Tab Reports)
+// ៥. អនុគមន៍ចុច Checkout -> បើក Modal QR Code ឲ្យអតិថិជនស្កេនទូទាត់សិន
 function handleCheckout() {
   if (cart.length === 0) {
-    alert("អ្នកបានទូទាត់ដោយជោគជ័យ​!");
+    showPosToast("កន្ត្រកទទេ! សូមជ្រើសរើសទំនិញសិន");
+    return;
+  }
+
+  const totalPrice = document.getElementById('summary-total').textContent;
+  openQrPaymentModal(totalPrice);
+}
+
+// ៥.១ បើក Modal QR Code (ប្រើ QR ABA KHQR ពិតប្រាកដរបស់ហាង) ព្រមទាំងបង្ហាញចំនួនទឹកប្រាក់ត្រូវទូទាត់
+function openQrPaymentModal(totalPrice) {
+  const modal = document.getElementById('qrPaymentModal');
+  const totalEl = document.getElementById('qrPaymentTotal');
+  if (!modal || !totalEl) return;
+
+  totalEl.textContent = totalPrice;
+  modal.classList.add('open');
+}
+
+function closeQrPaymentModal() {
+  const modal = document.getElementById('qrPaymentModal');
+  if (modal) modal.classList.remove('open');
+}
+
+// ៥.២ ចុច "បានទទួលការទូទាត់" -> បញ្ចប់ការលក់ពិតប្រាកដ (កត់ត្រា invoice + សម្អាតកន្ត្រក)
+function confirmQrPayment() {
+  if (cart.length === 0) {
+    closeQrPaymentModal();
     return;
   }
 
   // ប្រមូលព័ត៌មានការទូទាត់
   const customerSelect = document.getElementById('pay-customer');
   const customerName = customerSelect.options[customerSelect.selectedIndex].text;
-  const paymentMethod = document.querySelector('input[name="payMethod"]:checked').value;
+  const paymentSelect = document.getElementById('pay-method-select');
+  const paymentMethod = paymentSelect ? paymentSelect.value : '';
   const totalPrice = document.getElementById('summary-total').textContent;
 
   // បង្កើតបញ្ជីឈ្មោះមុខទំនិញសរុប (ឧ. អង្ករ ៥គីឡូ x2)
@@ -136,8 +163,9 @@ function handleCheckout() {
     }
   }
 
-  alert("ការទូទាត់ប្រាក់ជោគជ័យ! ទិន្នន័យត្រូវបានបញ្ជូនទៅកាន់របាយការណ៍រួចរាល់។");
+  closeQrPaymentModal();
   clearCart(); // សម្អាតកន្ត្រកទទេវិញ
+  showPosToast("លក់ដោយជោគជ័យ! 🎉", 2500);
 }
 
 // customers
@@ -147,6 +175,19 @@ function handleCheckout() {
     { id: 3, name: "ចាន់​ សារ៉ាក់", phone: "088 777 666", email: "rak@mail.com", address: "បាត់ដំបង", hasDebt: false },
     { id: 3, name: "លីហេង ស៊ីម៉េង", phone: "088 777 666", email: "meng@mail.com", address: "បាត់ដំបង", hasDebt: false }
   ];
+
+  // ចាក់បញ្ចូលឈ្មោះអតិថិជនពិតប្រាកដទៅក្នុងបញ្ជីជ្រើសរើសអតិថិជននៅផ្ទាំងគិតលុយ
+  function populatePosCustomerSelect() {
+    const select = document.getElementById('pay-customer');
+    if (!select) return;
+    customers.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.name;
+      select.appendChild(opt);
+    });
+  }
+  populatePosCustomerSelect();
   function renderCustomers(data = customers) {
     const grid = document.getElementById('custGrid');
     if(data.length === 0) {
@@ -278,6 +319,10 @@ function saveCust() {
 
   // ដំណើរការដំបូងបង្អស់
   renderCustomers();
+
+
+
+    
         const currentSales = [
         { item_name: "កាហ្វេទឹកដោះគោទឹកកក", customer: "រឹម​ ភារុន", payment_method: "ABA", total_price: "$2.50", time: "08:30 AM" },
         { item_name: "តែបៃតងក្រូចឆ្មា", customer: "វ៉៉េង សុជាតិ", payment_method: "សាច់ប្រាក់", total_price: "$1.75", time: "09:15 AM" },
@@ -325,6 +370,7 @@ function saveCust() {
 
 
       const tabTitles = {
+        Dashboard: 'Dashboard',
         pos:       'លក់ទំនិញ',
         products:  'ផលិតផល',
         inventory: 'ស្ថានភាពស្តុក',
@@ -361,15 +407,17 @@ function saveCust() {
       const productCards = document.querySelectorAll('#productGrid .product-card');
 
       function applyPosFilter() {
-        const selectedCat = filterCat.value;
-        const keyword = searchBox.value.trim().toLowerCase();
+      const selectedCat = filterCat.value;
+      const keyword = searchBox.value.trim().toLowerCase();
 
-        productCards.forEach(card => {
-          const matchesCategory = selectedCat === 'all' || card.dataset.category === selectedCat;
-          const matchesSearch = card.dataset.name.toLowerCase().includes(keyword);
-          card.classList.toggle('d-none', !(matchesCategory && matchesSearch));
-        });
-      }
+      productCards.forEach(card => {
+        const matchesCategory = selectedCat === 'all' || card.dataset.category === selectedCat;
+        const nameEl = card.querySelector('.card-body h5');                        // ← បន្ថែម
+        const productName = nameEl ? nameEl.textContent.trim().toLowerCase() : ''; // ← បន្ថែម
+        const matchesSearch = productName.includes(keyword);                       // ← ប្តូរ
+        card.classList.toggle('d-none', !(matchesCategory && matchesSearch));
+      });
+    }
 
       filterCat.addEventListener('change', applyPosFilter);
       searchBox.addEventListener('input', applyPosFilter);
@@ -417,13 +465,13 @@ function saveCust() {
         });
       });
 
-      function showPosToast(message) {
+      function showPosToast(message, duration = 1500) {
         const toastEl = document.getElementById('posToast');
         if (!toastEl) return;
         toastEl.textContent = message;
         toastEl.classList.add('show');
         clearTimeout(showPosToast._t);
-        showPosToast._t = setTimeout(() => toastEl.classList.remove('show'), 1500);
+        showPosToast._t = setTimeout(() => toastEl.classList.remove('show'), duration);
       }
     
 
@@ -440,20 +488,20 @@ function saveCust() {
         { id: 6, name: "Coca-cola",               category: "ភេសជ្ជៈ", price: 2.50, stock: 49 },
         { id: 7, name: "fanta",              category: "ភេសជ្ជៈ", price: 2.30, stock: 48 },
         { id: 1, name: "កូកាកូឡា (Coca-Cola)", category: "ភេសជ្ជៈ", price: 0.60, stock: 120 },
-        { id: 2, name: "ភេសជ្ជៈ PION", category: "ភេសជ្ជៈ", price: 0.70, stock: 85 },
+        { id: 2, name: "PION", category: "ភេសជ្ជៈ", price: 0.70, stock: 85 },
         { id: 3, name: "កាហ្វេដប", category: "ភេសជ្ជៈ", price: 1.20, stock: 4 }, // ស្តុកទាប
         { id: 4, name: "ទឹកក្រូចដប", category: "ភេសជ្ជៈ", price: 2.50, stock: 50 },
         { id: 5, name: "ទឹកស៊ីអ៊ីវ", category: "គ្រឿងទេស", price: 1.50, stock: 100 },
         // --- ភេសជ្ជៈថែមថ្មីទាំង ១០ មុខ ---
         { id: 5, name: "តែបៃតង អូអ៊ិឈិ (Oishi)", category: "ភេសជ្ជៈ", price: 0.75, stock: 90 },
-        { id: 6, name: "ភេសជ្ជៈពៅកម្លាំង វើក (WURKZ)", category: "ភេសជ្ជៈ", price: 0.65, stock: 150 },
+        { id: 6, name: "ពៅកម្លាំង វើក (WURKZ)", category: "ភេសជ្ជៈ", price: 0.65, stock: 150 },
         { id: 7, name: "ទឹកបរិសុទ្ធ វីតាល់ (Vital) ៥០០ml", category: "ភេសជ្ជៈ", price: 0.25, stock: 250 },
-        { id: 8, name: "ភេសជ្ជៈការ៉ាបាវ (Carabao)", category: "ភេសជ្ជៈ", price: 0.70, stock: 5 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
-        { id: 9, name: "ភេសជ្ជៈ ស្តីងក្រហម (Sting)", category: "ភេសជ្ជៈ", price: 0.70, stock: 110 },
+        { id: 8, name: "ការ៉ាបាវ (Carabao)", category: "ភេសជ្ជៈ", price: 0.70, stock: 5 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
+        { id: 9, name: "ស្តីងក្រហម (Sting)", category: "ភេសជ្ជៈ", price: 0.70, stock: 110 },
         { id: 10, name: "ទឹកដោះគោជូរ ឌីឡាក់ (Delight)", category: "ភេសជ្ជៈ", price: 0.50, stock: 65 },
         { id: 11, name: "តែក្រូចឆ្មា ហ្វ្រូស (Iced Tea)", category: "ភេសជ្ជៈ", price: 0.80, stock: 3 }, // ស្តុកទាប (លោតផ្លាក 'ស្តុកទាប')
         { id: 12, name: "ទឹកផ្លែឈើ ជូស៊ី (Juice)", category: "ភេសជ្ជៈ", price: 1.00, stock: 45 },
-        { id: 13, name: "ភេសជ្ជៈ ប៉ិបស៊ី (Pepsi)", category: "ភេសជ្ជៈ", price: 0.60, stock: 135 },
+        { id: 13, name: "ប៉ិបស៊ី (Pepsi)", category: "ភេសជ្ជៈ", price: 0.60, stock: 135 },
         { id: 14, name: "ទឹកដោះគោ កំប៉ុង BEAR BRAND", category: "ភេសជ្ជៈ", price: 0.85, stock: 70 },
 
         // --- គ្រឿងទេសផ្សេងៗ ---
@@ -591,6 +639,12 @@ function saveCust() {
         productModal.classList.remove('open');
         state.editingId = null;
       }
+
+      // QR payment modal buttons
+      const qrCancelBtn = document.getElementById('cancelQrPaymentBtn');
+      const qrConfirmBtn = document.getElementById('confirmQrPaymentBtn');
+      if (qrCancelBtn) qrCancelBtn.addEventListener('click', () => closeQrPaymentModal());
+      if (qrConfirmBtn) qrConfirmBtn.addEventListener('click', () => confirmQrPayment());
 
       document.getElementById('saveProductBtn').addEventListener('click', () => {
         const name = fName.value.trim();
@@ -745,8 +799,6 @@ function saveCust() {
  
       renderInventory();
    
-
-   
   // ១. អនុគមន៍រក្សាទុកការកែប្រែប្រវត្តិរូប (Profile)
   function updateProfile() {
     const nameVal = document.getElementById('edit-acc-name').value.trim();
@@ -801,4 +853,38 @@ function saveCust() {
     }
   }
 
-    
+// Mobile sidebar toggle (kept local to staff.html, no other files touched) -->
+  
+      (function () {
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.getElementById('sidebarToggleBtn');
+        const closeBtn = document.getElementById('sidebarCloseBtn');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        if (!sidebar || !toggleBtn || !backdrop) return;
+
+        function openSidebar() {
+          sidebar.classList.add('sidebar-open');
+          backdrop.classList.add('show');
+        }
+        function closeSidebar() {
+          sidebar.classList.remove('sidebar-open');
+          backdrop.classList.remove('show');
+        }
+
+        toggleBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        backdrop.addEventListener('click', closeSidebar);
+
+        // Close the mobile drawer automatically after picking a menu item
+        sidebar.querySelectorAll('.nav-link[data-tab]').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 992) closeSidebar();
+          });
+        });
+
+        // If the window is resized back up to desktop width, make sure the drawer state resets
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 992) closeSidebar();
+        });
+      })();
+   
