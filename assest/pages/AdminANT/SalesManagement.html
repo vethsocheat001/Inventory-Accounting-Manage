@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>គ្រប់គ្រងការលក់ — Sales Management</title>
-  <!-- Bootstrap 5 CSS -->
+  <link rel="icon" href="/assest/image/logos.png">
+    <title>IAM System</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/assest/css/cheatDBAdmin.css">
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 </head>
@@ -51,9 +49,9 @@
   <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
     <div class="offcanvas-header">
       <div class="d-flex align-items-center gap-2">
-        <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:34px;height:34px;">
+        <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:34px;height:34px;">
           <i class="bi bi-bar-chart-fill"></i>
-        </div>
+        </div> -->
         <div class="d-flex gap-2">
             <img class="w-25 h-25" src="/assest/image/logos.png" alt="">
             <div>
@@ -96,7 +94,7 @@
           <i class="bi bi-list fs-5"></i>
         </button>
         <div>
-          <h1 class="h4 fw-bold mb-0">Sales Management</h1>
+          <h1 class="h4 fw-bold mb-0">ការគ្រប់គ្រងការលក់</h1>
           <div class="km text-secondary small">គ្រប់គ្រងការលក់ វិក្កយបត្រ និងបង្កាន់ដៃ</div>
         </div>
       </div>
@@ -119,7 +117,7 @@
     <div class="p-3 p-lg-4">
 
       <!-- ============ Purpose banner ============ -->
-      <div class="purpose-banner text-white rounded-4 p-4 mb-4 shadow">
+      <!-- <div class="purpose-banner text-white rounded-4 p-4 mb-4 shadow">
         <div class="text-uppercase small fw-bold mb-2 km" style="letter-spacing:.1em; color:#c2b8ff; font-size:.7rem;">
           <i class="bi bi-square-fill" style="font-size:.4rem; color:#f2b134;"></i> គោលបំណង / Purpose
         </div>
@@ -127,7 +125,7 @@
           គ្រប់គ្រងការលក់៖ បង្កើតវិក្កយបត្រលក់ ពុម្ពបង្កាន់ដៃ លុប/បោះបង់ការលក់ និងមើលប្រវត្តិការលក់ទាំងអស់។
         </p>
         <div class="small" style="color:#9d9fd6;">Create Sales Invoice, Print Receipt, Cancel Sales, and Sales History.</div>
-      </div>
+      </div> -->
 
       <!-- ============ KPI Cards ============ -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3 mb-4">
@@ -252,7 +250,7 @@
             <table class="table align-middle">
               <thead>
                 <tr class="text-secondary small text-uppercase">
-                  <th style="font-size:.72rem; letter-spacing:.05em;">Invoice #</th>
+                  <th style="font-size:.72rem; letter-spacing:.05em;">Invoice</th>
                   <th style="font-size:.72rem; letter-spacing:.05em;">Customer</th>
                   <th style="font-size:.72rem; letter-spacing:.05em;">Date</th>
                   <th style="font-size:.72rem; letter-spacing:.05em;">Items</th>
@@ -351,7 +349,7 @@
       </div>
       <div class="modal-body">
         <div class="km text-secondary small mb-3">ជ្រើសរើសវិក្កយបត្រ ដើម្បីពុម្ពបង្កាន់ដៃ</div>
-        <label class="form-label small fw-semibold">Invoice #</label>
+        <label class="form-label small fw-semibold">Invoice </label>
         <select class="form-select rounded-3 mb-3" id="printInvoiceSelect"></select>
 
         <div id="receiptPreview" class="border rounded-3 p-3" style="background:#fafafa; font-size:.85rem;">
@@ -381,7 +379,7 @@
       </div>
       <div class="modal-body">
         <div class="km text-secondary small mb-3">លុប ឬបោះបង់ការលក់ដែលមានកំហុស ឬអតិថិជនប្តូរចិត្ត</div>
-        <label class="form-label small fw-semibold">Invoice #</label>
+        <label class="form-label small fw-semibold">Invoice </label>
         <select class="form-select rounded-3 mb-3" id="cancelInvoiceSelect"></select>
         <label class="form-label small fw-semibold">Reason</label>
         <select class="form-select rounded-3 mb-3">

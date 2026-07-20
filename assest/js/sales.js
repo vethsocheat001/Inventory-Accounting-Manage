@@ -13,22 +13,48 @@ document.addEventListener('DOMContentLoaded', function () {
     { name: 'កាបូបស្ពាយ Canvas', price: 29.00 },
   ];
 
-  const sales = [
-    { id: 'INV-1001', customer: 'សុខា', date: '2026-07-14', items: 3, total: 86.00, status: 'paid' },
-    { id: 'INV-1002', customer: 'Walk-in', date: '2026-07-14', items: 1, total: 12.00, status: 'paid' },
-    { id: 'INV-1003', customer: 'ដារា', date: '2026-07-13', items: 2, total: 100.00, status: 'unpaid' },
-    { id: 'INV-1004', customer: 'ស្រីនាង', date: '2026-07-13', items: 4, total: 143.50, status: 'paid' },
-    { id: 'INV-1005', customer: 'Walk-in', date: '2026-07-12', items: 1, total: 68.00, status: 'cancelled' },
-    { id: 'INV-1006', customer: 'វិសាល', date: '2026-07-12', items: 2, total: 50.50, status: 'paid' },
-    { id: 'INV-1007', customer: 'ចាន់ថា', date: '2026-07-11', items: 1, total: 32.00, status: 'unpaid' },
-  ];
+ const sales = [
+  { id: '1001', customer: 'សុខា', date: '2026/07/14', items: 3, total: 86.00, status: 'paid' },
+  { id: '1002', customer: 'Walk-in', date: '2026-07-14', items: 1, total: 12.00, status: 'paid' },
+  { id: '1003', customer: 'ដារា', date: '2026-07-13', items: 2, total: 100.00, status: 'unpaid' },
+  { id: '1004', customer: 'ស្រីនាង', date: '2026-07-13', items: 4, total: 143.50, status: 'paid' },
+  { id: '1005', customer: 'Walk-in', date: '2026-07-12', items: 1, total: 68.00, status: 'cancelled' },
+  { id: '1006', customer: 'វិសាល', date: '2026-07-12', items: 2, total: 50.50, status: 'paid' },
+  { id: '1007', customer: 'ចាន់ថា', date: '2026-07-11', items: 1, total: 32.00, status: 'unpaid' },
+
+  { id: '1008', customer: 'មាលី', date: '2026-07-11', items: 5, total: 210.00, status: 'paid' },
+  { id: '1009', customer: 'ពិសិដ្ឋ', date: '2026-07-10', items: 3, total: 75.50, status: 'paid' },
+  { id: '1010', customer: 'Walk-in', date: '2026-07-10', items: 2, total: 45.00, status: 'cancelled' },
+  { id: '1011', customer: 'រតនា', date: '2026-07-09', items: 6, total: 320.00, status: 'paid' },
+  { id: '1012', customer: 'សុភា', date: '2026-07-09', items: 2, total: 95.00, status: 'unpaid' },
+  { id: '1013', customer: 'វណ្ណា', date: '2026-07-08', items: 4, total: 180.50, status: 'paid' },
+  { id: '1014', customer: 'Walk-in', date: '2026-07-08', items: 1, total: 25.00, status: 'paid' },
+  { id: '1015', customer: 'សុវណ្ណ', date: '2026-07-07', items: 3, total: 120.00, status: 'cancelled' },
+
+  { id: '1016', customer: 'កក្កដា', date: '2026-07-07', items: 2, total: 65.00, status: 'paid' },
+  { id: '1017', customer: 'នារី', date: '2026-07-06', items: 7, total: 350.00, status: 'paid' },
+  { id: '1018', customer: 'Walk-in', date: '2026-07-06', items: 1, total: 18.50, status: 'unpaid' },
+  { id: '1019', customer: 'ចរិយា', date: '2026-07-05', items: 4, total: 220.00, status: 'paid' },
+  { id: '1020', customer: 'ហេង', date: '2026-07-05', items: 3, total: 90.00, status: 'paid' },
+  { id: '1021', customer: 'Walk-in', date: '2026-07-04', items: 2, total: 40.00, status: 'cancelled' },
+  { id: '1022', customer: 'ស្រីពៅ', date: '2026-07-04', items: 5, total: 275.00, status: 'paid' },
+  { id: '1023', customer: 'វីរៈ', date: '2026-07-03', items: 1, total: 55.00, status: 'unpaid' },
+  { id: '1024', customer: 'ដានី', date: '2026-07-03', items: 6, total: 410.00, status: 'paid' },
+
+  { id: '1025', customer: 'Walk-in', date: '2026-07-02', items: 2, total: 35.00, status: 'paid' },
+  { id: '1026', customer: 'សុភ័ក្រ', date: '2026-07-02', items: 3, total: 150.00, status: 'paid' },
+  { id: '1027', customer: 'ប៊ុនថា', date: '2026-07-01', items: 4, total: 185.50, status: 'unpaid' },
+  { id: '1028', customer: 'Walk-in', date: '2026-07-01', items: 1, total: 22.00, status: 'paid' },
+  { id: '1029', customer: 'ស្រីមុំ', date: '2026-06-30', items: 5, total: 260.00, status: 'paid' },
+  { id: '1030', customer: 'វុទ្ធី', date: '2026-06-30', items: 3, total: 130.00, status: 'cancelled' }
+];
 
   const salesHistory = [
-    { type: 'create', title: 'Invoice created — INV-1007', date: '11 Jul 2026, 3:40 PM', note: 'អតិថិជន ចាន់ថា • $32.00' },
-    { type: 'paid', title: 'Payment received — INV-1006', date: '12 Jul 2026, 5:10 PM', note: 'បានទូទាត់ពេញលេញ $50.50' },
-    { type: 'cancel', title: 'Sale cancelled — INV-1005', date: '12 Jul 2026, 6:00 PM', note: 'មូលហេតុ៖ Wrong item / pricing error' },
-    { type: 'create', title: 'Invoice created — INV-1004', date: '13 Jul 2026, 11:00 AM', note: 'អតិថិជន ស្រីនាង • $143.50' },
-    { type: 'paid', title: 'Payment received — INV-1001', date: '14 Jul 2026, 9:15 AM', note: 'បានទូទាត់ពេញលេញ $86.00' },
+    { type: 'create', title: 'Invoice created — 1007', date: '11 Jul 2026, 3:40 PM', note: 'អតិថិជន ចាន់ថា • $32.00' },
+    { type: 'paid', title: 'Payment received — 1006', date: '12 Jul 2026, 5:10 PM', note: 'បានទូទាត់ពេញលេញ $50.50' },
+    { type: 'cancel', title: 'Sale cancelled — 1005', date: '12 Jul 2026, 6:00 PM', note: 'មូលហេតុ៖ Wrong item / pricing error' },
+    { type: 'create', title: 'Invoice created — 1004', date: '13 Jul 2026, 11:00 AM', note: 'អតិថិជន ស្រីនាង • $143.50' },
+    { type: 'paid', title: 'Payment received — 1001', date: '14 Jul 2026, 9:15 AM', note: 'បានទូទាត់ពេញលេញ $86.00' },
   ];
 
   const historyIcon = {
@@ -84,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
       tr.innerHTML = `
         <td class="fw-semibold">${s.id}</td>
         <td>${s.customer}</td>
-        <td>${s.date}</td>
+        <td><small>${s.date}</small></td>
         <td>${s.items}</td>
         <td>$${s.total.toFixed(2)}</td>
         <td>${statusBadge(s.status)}</td>

@@ -99,17 +99,44 @@ function clearCart() {
   renderCart();
 }
 
-// ៥. អនុគមន៍ចុច Checkout រួចរុញទិន្នន័យចូលទៅកាន់របាយការណ៍ (Tab Reports)
+// ៥. អនុគមន៍ចុច Checkout -> បើក Modal QR Code ឲ្យអតិថិជនស្កេនទូទាត់សិន
 function handleCheckout() {
   if (cart.length === 0) {
-    alert("អ្នកបានទូទាត់ដោយជោគជ័យ​!");
+    showPosToast("កន្ត្រកទទេ! សូមជ្រើសរើសទំនិញសិន");
+    return;
+  }
+
+  const totalPrice = document.getElementById('summary-total').textContent;
+  openQrPaymentModal(totalPrice);
+}
+
+// ៥.១ បើក Modal QR Code (ប្រើ QR ABA KHQR ពិតប្រាកដរបស់ហាង) ព្រមទាំងបង្ហាញចំនួនទឹកប្រាក់ត្រូវទូទាត់
+function openQrPaymentModal(totalPrice) {
+  const modal = document.getElementById('qrPaymentModal');
+  const totalEl = document.getElementById('qrPaymentTotal');
+  if (!modal || !totalEl) return;
+
+  totalEl.textContent = totalPrice;
+  modal.classList.add('open');
+}
+
+function closeQrPaymentModal() {
+  const modal = document.getElementById('qrPaymentModal');
+  if (modal) modal.classList.remove('open');
+}
+
+// ៥.២ ចុច "បានទទួលការទូទាត់" -> បញ្ចប់ការលក់ពិតប្រាកដ (កត់ត្រា invoice + សម្អាតកន្ត្រក)
+function confirmQrPayment() {
+  if (cart.length === 0) {
+    closeQrPaymentModal();
     return;
   }
 
   // ប្រមូលព័ត៌មានការទូទាត់
   const customerSelect = document.getElementById('pay-customer');
   const customerName = customerSelect.options[customerSelect.selectedIndex].text;
-  const paymentMethod = document.querySelector('input[name="payMethod"]:checked').value;
+  const paymentSelect = document.getElementById('pay-method-select');
+  const paymentMethod = paymentSelect ? paymentSelect.value : '';
   const totalPrice = document.getElementById('summary-total').textContent;
 
   // បង្កើតបញ្ជីឈ្មោះមុខទំនិញសរុប (ឧ. អង្ករ ៥គីឡូ x2)
@@ -136,8 +163,9 @@ function handleCheckout() {
     }
   }
 
-  alert("ការទូទាត់ប្រាក់ជោគជ័យ! ទិន្នន័យត្រូវបានបញ្ជូនទៅកាន់របាយការណ៍រួចរាល់។");
+  closeQrPaymentModal();
   clearCart(); // សម្អាតកន្ត្រកទទេវិញ
+  showPosToast("លក់ដោយជោគជ័យ! 🎉", 2500);
 }
 
 // customers
@@ -147,6 +175,19 @@ function handleCheckout() {
     { id: 3, name: "ចាន់​ សារ៉ាក់", phone: "088 777 666", email: "rak@mail.com", address: "បាត់ដំបង", hasDebt: false },
     { id: 3, name: "លីហេង ស៊ីម៉េង", phone: "088 777 666", email: "meng@mail.com", address: "បាត់ដំបង", hasDebt: false }
   ];
+
+  // ចាក់បញ្ចូលឈ្មោះអតិថិជនពិតប្រាកដទៅក្នុងបញ្ជីជ្រើសរើសអតិថិជននៅផ្ទាំងគិតលុយ
+  function populatePosCustomerSelect() {
+    const select = document.getElementById('pay-customer');
+    if (!select) return;
+    customers.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.name;
+      select.appendChild(opt);
+    });
+  }
+  populatePosCustomerSelect();
   function renderCustomers(data = customers) {
     const grid = document.getElementById('custGrid');
     if(data.length === 0) {
@@ -278,6 +319,10 @@ function saveCust() {
 
   // ដំណើរការដំបូងបង្អស់
   renderCustomers();
+
+
+
+    
         const currentSales = [
         { item_name: "កាហ្វេទឹកដោះគោទឹកកក", customer: "រឹម​ ភារុន", payment_method: "ABA", total_price: "$2.50", time: "08:30 AM" },
         { item_name: "តែបៃតងក្រូចឆ្មា", customer: "វ៉៉េង សុជាតិ", payment_method: "សាច់ប្រាក់", total_price: "$1.75", time: "09:15 AM" },
@@ -325,6 +370,7 @@ function saveCust() {
 
 
       const tabTitles = {
+        Dashboard: 'Dashboard',
         pos:       'លក់ទំនិញ',
         products:  'ផលិតផល',
         inventory: 'ស្ថានភាពស្តុក',
@@ -350,7 +396,7 @@ function saveCust() {
 
           // update the page title in the topbar
           const pageTitle = document.getElementById('pageTitle');
-          if (pageTitle) pageTitle.textContent = tabTitles[tabName] || '';
+          if (pageTitle) pageTitle.textContent = [tabName] || '';
         });
       });
 
@@ -361,15 +407,17 @@ function saveCust() {
       const productCards = document.querySelectorAll('#productGrid .product-card');
 
       function applyPosFilter() {
-        const selectedCat = filterCat.value;
-        const keyword = searchBox.value.trim().toLowerCase();
+      const selectedCat = filterCat.value;
+      const keyword = searchBox.value.trim().toLowerCase();
 
-        productCards.forEach(card => {
-          const matchesCategory = selectedCat === 'all' || card.dataset.category === selectedCat;
-          const matchesSearch = card.dataset.name.toLowerCase().includes(keyword);
-          card.classList.toggle('d-none', !(matchesCategory && matchesSearch));
-        });
-      }
+      productCards.forEach(card => {
+        const matchesCategory = selectedCat === 'all' || card.dataset.category === selectedCat;
+        const nameEl = card.querySelector('.card-body h5');                        // ← បន្ថែម
+        const productName = nameEl ? nameEl.textContent.trim().toLowerCase() : ''; // ← បន្ថែម
+        const matchesSearch = productName.includes(keyword);                       // ← ប្តូរ
+        card.classList.toggle('d-none', !(matchesCategory && matchesSearch));
+      });
+    }
 
       filterCat.addEventListener('change', applyPosFilter);
       searchBox.addEventListener('input', applyPosFilter);
@@ -417,13 +465,13 @@ function saveCust() {
         });
       });
 
-      function showPosToast(message) {
+      function showPosToast(message, duration = 1500) {
         const toastEl = document.getElementById('posToast');
         if (!toastEl) return;
         toastEl.textContent = message;
         toastEl.classList.add('show');
         clearTimeout(showPosToast._t);
-        showPosToast._t = setTimeout(() => toastEl.classList.remove('show'), 1500);
+        showPosToast._t = setTimeout(() => toastEl.classList.remove('show'), duration);
       }
     
 
@@ -591,6 +639,12 @@ function saveCust() {
         productModal.classList.remove('open');
         state.editingId = null;
       }
+
+      // QR payment modal buttons
+      const qrCancelBtn = document.getElementById('cancelQrPaymentBtn');
+      const qrConfirmBtn = document.getElementById('confirmQrPaymentBtn');
+      if (qrCancelBtn) qrCancelBtn.addEventListener('click', () => closeQrPaymentModal());
+      if (qrConfirmBtn) qrConfirmBtn.addEventListener('click', () => confirmQrPayment());
 
       document.getElementById('saveProductBtn').addEventListener('click', () => {
         const name = fName.value.trim();
@@ -801,4 +855,38 @@ function saveCust() {
     }
   }
 
-    
+// Mobile sidebar toggle (kept local to staff.html, no other files touched) -->
+  
+      (function () {
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.getElementById('sidebarToggleBtn');
+        const closeBtn = document.getElementById('sidebarCloseBtn');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        if (!sidebar || !toggleBtn || !backdrop) return;
+
+        function openSidebar() {
+          sidebar.classList.add('sidebar-open');
+          backdrop.classList.add('show');
+        }
+        function closeSidebar() {
+          sidebar.classList.remove('sidebar-open');
+          backdrop.classList.remove('show');
+        }
+
+        toggleBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        backdrop.addEventListener('click', closeSidebar);
+
+        // Close the mobile drawer automatically after picking a menu item
+        sidebar.querySelectorAll('.nav-link[data-tab]').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 992) closeSidebar();
+          });
+        });
+
+        // If the window is resized back up to desktop width, make sure the drawer state resets
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 992) closeSidebar();
+        });
+      })();
+   

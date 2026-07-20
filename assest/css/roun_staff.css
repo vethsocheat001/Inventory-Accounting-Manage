@@ -493,6 +493,57 @@ body {
   .fs-7 { font-size: 0.85rem !important; }
 
 
+      /* Hamburger button: hidden on desktop, shown on tablet/mobile */
+      #sidebarToggleBtn { display: none; }
+
+      /* Backdrop shown behind the sidebar when it's open on mobile */
+      .sidebar-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        z-index: 1035;
+      }
+      .sidebar-backdrop.show { display: block; }
+
+      @media (max-width: 991.98px) {
+        #sidebarToggleBtn { display: inline-flex; }
+
+        .sidebar {
+          transform: translateX(-100%);
+          transition: transform .28s ease;
+          z-index: 1040;
+          width: 260px !important;
+        }
+        .sidebar.sidebar-open {
+          transform: translateX(0);
+        }
+
+        .main {
+          margin-left: 0 !important;
+          width: 100% !important;
+          padding: 14px !important;
+        }
+
+        .topbar {
+          flex-wrap: wrap;
+          gap: .5rem;
+        }
+        .topbar h5 { font-size: 1rem; }
+
+        /* Product grid cards: tighten spacing a bit on small screens */
+        #productGrid .product-card .card img { height: 120px; }
+
+        /* Cart panel: don't let it get too tall before the fold on phones */
+        #cart-items-wrapper { max-height: 160px !important; }
+      }
+
+      @media (max-width: 575.98px) {
+        .main { padding: 10px !important; }
+        #productGrid .product-card .card-body h5.h6 { font-size: .85rem; }
+        #productGrid .product-card .card img { height: 100px; }
+      }
+   
       
   
 

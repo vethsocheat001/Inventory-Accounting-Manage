@@ -15,16 +15,55 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.show();
   }
 
-  let categories = ['Beverages', 'Snacks', 'Household', 'Personal Care'];
-  let suppliers  = ['ABC Distribution', 'Golden Trade Co.', 'Mekong Supply'];
+let categories = [
+  'ភេសជ្ជៈ',
+  'អាហារសម្រន់',
+  'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ',
+  'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន'
+];
 
-  let products = [
-    { id: 1, name: 'Coca-Cola 330ml',   category: 'Beverages',      supplier: 'ABC Distribution', price: 0.75, active: true  },
-    { id: 2, name: 'Bottled Water 500ml', category: 'Beverages',    supplier: 'Golden Trade Co.',  price: 0.40, active: true  },
-    { id: 3, name: 'Dish Soap',         category: 'Household',      supplier: 'Mekong Supply',     price: 1.85, active: true  },
-    { id: 4, name: 'Sunscreen',         category: 'Personal Care',  supplier: 'Golden Trade Co.',  price: 4.50, active: true  },
-    { id: 5, name: 'Instant Noodles',   category: 'Snacks',         supplier: 'ABC Distribution',  price: 0.55, active: false }
-  ];
+let suppliers = [
+  'ក្រុមហ៊ុនចែកចាយ ABC',
+  'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន',
+  'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ'
+];
+
+let products = [
+  { id: 1,  name: 'កូកា-កូឡា 330ml',      category: 'ភេសជ្ជៈ', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 0.75, active: true },
+  { id: 2,  name: 'Fan Ta 330ml', category: 'ភេសជ្ជៈ', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 0.75, active: true },
+  { id: 3,  name: 'ទឹកសុទ្ធ 500ml',       category: 'ភេសជ្ជៈ', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 0.40, active: true },
+  { id: 4,  name: 'ទឹកក្រូច',            category: 'ភេសជ្ជៈ', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 1.20, active: true },
+  { id: 5,  name: 'ទឹកផ្លែប៉ោម',         category: 'ភេសជ្ជៈ', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 1.30, active: true },
+
+  { id: 6,  name: 'មីកញ្ចប់',            category: 'អាហារសម្រន់', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 0.55, active: true },
+  { id: 7,  name: 'នំប៉័ង',              category: 'អាហារសម្រន់', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 0.80, active: true },
+  { id: 8,  name: 'នំប៊ីស្គីត',           category: 'អាហារសម្រន់', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 1.20, active: true },
+  { id: 9,  name: 'ដំឡូងបំពង',           category: 'អាហារសម្រន់', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 1.50, active: false },
+  { id: 10, name: 'សណ្តែកដីលីង',         category: 'អាហារសម្រន់', supplier: 'ក្រុមហ៊ុនចែកចាយ ABC', price: 1.00, active: true },
+
+  { id: 11, name: 'អង្ករ 25kg',          category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 20.00, active: true },
+  { id: 12, name: 'ប្រេងឆា 1L',          category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 2.80, active: true },
+  { id: 13, name: 'ទឹកត្រី',             category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 1.60, active: true },
+  { id: 14, name: 'ទឹកស៊ីអ៊ីវ',          category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 1.50, active: false },
+  { id: 15, name: 'ស្ករស 1kg',           category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 1.40, active: true },
+
+  { id: 16, name: 'អំបិល 1kg',           category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 0.60, active: true },
+  { id: 17, name: 'សាប៊ូបោកខោអាវ',      category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 4.50, active: true },
+  { id: 18, name: 'សាប៊ូលាងចាន',         category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 2.30, active: true },
+  { id: 19, name: 'ក្រដាសអនាម័យ',        category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 1.80, active: true },
+  { id: 20, name: 'ថង់សំរាម',            category: 'សម្ភារៈប្រើប្រាស់ក្នុងផ្ទះ', supplier: 'ក្រុមហ៊ុនផ្គត់ផ្គង់ មេគង្គ', price: 1.20, active: false },
+
+  { id: 21, name: 'សាប៊ូដុសខ្លួន',        category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 1.50, active: true },
+  { id: 22, name: 'សាប៊ូកក់សក់',         category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 3.50, active: true },
+  { id: 23, name: 'ថ្នាំដុសធ្មេញ',        category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 2.20, active: true },
+  { id: 24, name: 'ច្រាសដុសធ្មេញ',        category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 1.00, active: true },
+  { id: 25, name: 'ឡេការពារកម្ដៅថ្ងៃ',    category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 5.50, active: false },
+  { id: 26, name: 'ឡេលាបខ្លួន',          category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 4.80, active: true },
+  { id: 27, name: 'កន្សែងសើម',           category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 1.70, active: true },
+  { id: 28, name: 'ទឹកអប់',              category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 8.50, active: true },
+  { id: 29, name: 'សាប៊ូលាងដៃ',          category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 2.10, active: false },
+  { id: 30, name: 'ទឹកខ្ពុរមាត់',         category: 'ផលិតផលថែរក្សាផ្ទាល់ខ្លួន', supplier: 'ក្រុមហ៊ុនពាណិជ្ជកម្ម ហ្គោលដិន', price: 3.20, active: true }
+];
   let nextId = products.length + 1;
 
   const tbody = document.getElementById('productTableBody');

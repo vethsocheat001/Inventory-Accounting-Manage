@@ -79,7 +79,7 @@
   .tone-amber  { background: #FAEEDA; color: #854F0B; }
  
   .modal-content { border-radius: 16px; }
-  .form-label { font-size: 13px; font-weight: 500; color: #374151; }
+  .form-label { font-size: 13px; font-weight: 500; color: #374151;}
  
   .pagination-footer { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f1f1f4; font-size: 13px; color: #6b7280; }
  
