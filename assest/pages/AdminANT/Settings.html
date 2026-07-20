@@ -21,59 +21,8 @@
 
 <body>
    <div class="d-flex flex-lg-row flex-column">
-    <aside class="sidebar text-white p-3 d-none d-lg-flex flex-column" style="width:250px; flex-shrink:0;">
-      <div class="d-flex align-items-center gap-2 px-2 mb-4">
-        <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:38px;height:38px;">
-          <i class="bi bi-bar-chart-fill fs-5"></i>
-        </div> -->
-        <div class="d-flex gap-2">
-          <img class="w-25 h-25" src="/assest/image/logos.png" alt="">
-          <div>
-            <div class="fw-bold text-white ">IAM System</div>
-            <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">
-        Main</div>
-      <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenu">
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i
-              class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i
-              class="bi bi-people-fill"></i> Employee Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i
-              class="bi bi-box-seam-fill"></i> Product Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2"
-            href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i
-              class="bi bi-cart-check-fill"></i> Sales Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i
-              class="bi bi-truck"></i> Purchase Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i
-              class="bi bi-calculator-fill"></i> Accounting</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i
-              class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
-        <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="Settings.html"><i
-              class="bi bi-gear-fill"></i> Settings</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="/index.html"><i
-              class="bi bi-box-arrow-right"></i> Log Out</a></li>
-
-      </ul>
-
-      <div class="mt-auto p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
-        <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
-      </div>
-    </aside>
-
-    <!-- ============ OFFCANVAS SIDEBAR (mobile / tablet, below lg) ============ -->
-    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
-      <div class="offcanvas-header">
-        <div class="d-flex align-items-center gap-2">
-          <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center"
-            style="width:34px;height:34px;">
-            <i class="bi bi-bar-chart-fill"></i>
-          </div> -->
+      <aside class="sidebar text-white p-3 d-none d-lg-flex flex-column" style="width:250px; flex-shrink:0;">
+        <div class="d-flex align-items-center gap-2 px-2 mb-4">
           <div class="d-flex gap-2">
             <img class="w-25 h-25" src="/assest/image/logos.png" alt="">
             <div>
@@ -82,12 +31,10 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body p-3">
-        <div class="text-uppercase small text-secondary fw-bold px-2 mb-2"
-          style="letter-spacing:.08em; font-size:.7rem;">Main</div>
-        <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenuOff">
+ 
+        <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">
+          Main</div>
+        <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenu">
           <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i
                 class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
           <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i
@@ -104,268 +51,311 @@
                 class="bi bi-calculator-fill"></i> Accounting</a></li>
           <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i
                 class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
-          <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="Settings.html"><i
-                class="bi bi-gear-fill"></i> Settings</a></li>
+          <li class="nav-item" id="settingsNavItem">
+          <a class="nav-link active d-flex align-items-center gap-2" href="#" id="settingsToggle">
+            <i class="bi bi-gear-fill"></i> 
+            Settings
+            <i class="bi bi-chevron-right nav-caret"></i>
+          </a>
+          <div class="nav-drawer" id="settingsDrawer">
+            <div class="nav-drawer-inner">
+              <a class="drawer-link" data-panel="profile">ត៌មានអាជីវកម្ម</a>
+              <a class="drawer-link" data-panel="password">ប្តូរពាក្យសម្ងាត់</a>
+              <a class="drawer-link" data-panel="backup">បម្រុងទុកទិន្នន័យ</a>
+              <a class="drawer-link active" data-panel="system">ការកំណត់ប្រព័ន្ធ</a>
+            </div>
+          </div>
+        </li>
           <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="/index.html"><i
                 class="bi bi-box-arrow-right"></i> Log Out</a></li>
+ 
         </ul>
-
-        <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+ 
+        <div class="mt-auto p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
           <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
         </div>
+      </aside>
+ 
+      <!-- ============ OFFCANVAS SIDEBAR (mobile / tablet, below lg) ============ -->
+      <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+          <div class="d-flex align-items-center gap-2">
+            <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center"
+              style="width:34px;height:34px;">
+              <i class="bi bi-bar-chart-fill"></i>
+            </div>
+            <div class="d-flex gap-2">
+              <img class="w-25 h-25" src="/assest/image/logos.png" alt="">
+              <div>
+                <div class="fw-bold text-white ">IAM System</div>
+                <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-3">
+          <div class="text-uppercase small text-secondary fw-bold px-2 mb-2"
+            style="letter-spacing:.08em; font-size:.7rem;">Main</div>
+          <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenuOff">
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i
+                  class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i
+                  class="bi bi-people-fill"></i> Employee Management</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i
+                  class="bi bi-box-seam-fill"></i> Product Management</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2"
+                href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i
+                  class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i
+                  class="bi bi-truck"></i> Purchase Management</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i
+                  class="bi bi-calculator-fill"></i> Accounting</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i
+                  class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+            <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="Settings.html"><i
+                class="bi bi-gear-fill"></i> Settings</a></li>
+            <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="/index.html"><i
+                  class="bi bi-box-arrow-right"></i> Log Out</a></li>
+          </ul>
+ 
+          <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+            <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
+          </div>
+        </div>
+      </div>
+      <main class="flex-grow-1 main-offset" style="min-width:0;">
+        <!-- ============ STICKY NAVBAR ============ -->
+        <nav class="sticky-nav px-3 px-lg-4 d-flex align-items-center justify-content-between flex-wrap">
+            <div class="d-flex align-items-center gap-2">
+              <button class="btn btn-light border rounded-3 d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+                <i class="bi bi-list fs-5"></i>
+              </button>
+              <div>
+                <h1 class="h4 fw-bold mb-0" id="pageTitle">ការកំណត់ប្រព័ន្ធ</h1>
+                <div class="km text-secondary small" id="pageSub">កំណត់ព័ត៌មានប្រព័ន្ធទូទៅ</div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+              <button class="btn btn-light border rounded-3"><i class="bi bi-search"></i></button>
+              <button class="btn btn-light border rounded-3 position-relative" id="bellBtn">
+                <i class="bi bi-bell-fill"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  style="font-size:.6rem;">3</span>
+              </button>
+              <div class="d-flex align-items-center gap-2 bg-white border rounded-pill ps-2 pe-3 py-1">
+                <div class="avatar-circle d-flex align-items-center justify-content-center">S</div>
+                <div>
+                  <div class="small fw-bold lh-1">Socheat</div>
+                  <div class="text-secondary lh-1" style="font-size:.7rem;">Admin</div>
+                </div>
+              </div>
+            </div>
+          </nav>
+ 
+        <!-- ================= MAIN ================= -->
+       <div class="content">
+ 
+        <!-- Panel: Business Profile -->
+        <div class="panel" id="panel-profile">
+          <div class="card">
+            <h2 class="card-title km">ព័ត៌មានអាជីវកម្ម</h2>
+            <p class="card-desc km">គ្រប់គ្រងព័ត៌មានលម្អិតអំពីអាជីវកម្មរបស់អ្នក</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="field-label km">ឈ្មោះក្រុមហ៊ុន</label>
+                <input class="form-control" type="text" value="IAM Trading Co., Ltd">
+              </div>
+              <div class="col-md-6">
+                <label class="field-label km">លេខទូរស័ព្ទ</label>
+                <input class="form-control" type="text" value="+855 12 345 678">
+              </div>
+              <div class="col-12">
+                <label class="field-label km">អាសយដ្ឋាន</label>
+                <input class="form-control" type="text" value="ភ្នំពេញ, កម្ពុជា">
+              </div>
+            </div>
+            <div class="actions-row">
+              <button class="btn-primary-x"><i class="bi bi-check2"></i>រក្សាទុកការផ្លាស់ប្តូរ</button>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Panel: Change Password -->
+        <div class="panel" id="panel-password">
+          <div class="card">
+            <h2 class="card-title km">ប្តូរពាក្យសម្ងាត់</h2>
+            <p class="card-desc km">ធ្វើបច្ចុប្បន្នភាពពាក្យសម្ងាត់ចូលប្រព័ន្ធរបស់អ្នក</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="field-label km">ពាក្យសម្ងាត់បច្ចុប្បន្ន</label>
+                <input class="form-control" type="password" value="••••••••">
+              </div>
+              <div class="col-md-6"></div>
+              <div class="col-md-6">
+                <label class="field-label km">ពាក្យសម្ងាត់ថ្មី</label>
+                <input class="form-control" type="password" placeholder="បញ្ចូលពាក្យសម្ងាត់ថ្មី">
+              </div>
+              <div class="col-md-6">
+                <label class="field-label km">បញ្ជាក់ពាក្យសម្ងាត់ថ្មី</label>
+                <input class="form-control" type="password" placeholder="បញ្ជាក់ពាក្យសម្ងាត់ថ្មី">
+              </div>
+            </div>
+            <div class="actions-row">
+              <button class="btn-primary-x"><i class="bi bi-check2"></i>ប្តូរពាក្យសម្ងាត់</button>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Panel: Backup Database -->
+        <div class="panel" id="panel-backup">
+          <div class="card">
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <h2 class="card-title km mb-0">បម្រុងទុកទិន្នន័យ</h2>
+              <span class="status-pill km" id="backupStatusPill">មិនទាន់ចាប់</span>
+            </div>
+            <p class="card-desc km mt-1">ការពារទិន្នន័យអាជីវកម្មរបស់អ្នកកុំឱ្យបាត់បង់</p>
+ 
+            <div class="row g-3">
+              <!-- Create backup -->
+              <div class="col-md-6">
+                <div class="backup-tile">
+                  <div class="backup-tile-icon backup-icon-download">
+                    <i class="bi bi-cloud-arrow-down-fill"></i>
+                  </div>
+                  <div class="backup-tile-title km">បង្កើតការបម្រុងទុកថ្មី</div>
+                  <div class="backup-tile-desc km">ចាញយកទិន្នន័យអាជីវកម្មរបស់អ្នកទាំងអស់</div>
+                  <button class="btn-primary-x w-100 justify-content-center" id="createBackupBtn">
+                    <i class="bi bi-cloud-arrow-down"></i>
+                    <span class="km">បម្រុងទុកឥឡូវនេះ</span>
+                  </button>
+                </div>
+              </div>
+ 
+              <!-- Restore backup -->
+              <div class="col-md-6">
+                <div class="backup-tile">
+                  <div class="backup-tile-icon backup-icon-restore">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                  </div>
+                  <div class="backup-tile-title km">ស្តារពីឯកសារបម្រុងទុក</div>
+                  <div class="backup-tile-desc km">ផ្ទុកឡើងឯកសារបម្រុងទុកចាស់ដើម្បីស្តារទិន្នន័យ</div>
+                  <button class="btn-outline-x w-100 justify-content-center" id="restoreBackupBtn">
+                    <i class="bi bi-upload"></i>
+                    <span class="km">ជ្រើសរើសឯកសារ</span>
+                  </button>
+                  <input type="file" id="restoreFileInput" accept=".sql,.zip,.bak" hidden>
+                </div>
+              </div>
+            </div>
+ 
+            <!-- Auto backup toggle -->
+            <div class="toggle-row" style="margin-top:20px;">
+              <div>
+                <div class="t-title km">បម្រុងទុកស្វ័យប្រវត្តិ</div>
+                <div class="t-desc km">បម្រុងទុកទិន្នន័យរាល់ថ្ងៃ វេលា ២:00 ព្រឹក ដោយស្វ័យប្រវត្តិ</div>
+              </div>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" id="autoBackupSwitch" checked>
+              </div>
+            </div>
+ 
+            <!-- Backup history -->
+            <div class="backup-history">
+              <h3 class="backup-history-title km">ប្រវត្តិបម្រុងទុក</h3>
+              <ul class="backup-history-list" id="backupHistoryList">
+                <li class="backup-history-item">
+                  <span class="dot dot-green"></span>
+                  <span class="km hist-label">បម្រុងទុកបានជោគជ័យ</span>
+                  <span class="hist-sep">—</span>
+                  <span class="km hist-date">១៣ កក្កដា ២០២៦, ២:00 ព្រឹក</span>
+                </li>
+                <li class="backup-history-item">
+                  <span class="dot dot-green"></span>
+                  <span class="km hist-label">បម្រុងទុកបានជោគជ័យ</span>
+                  <span class="hist-sep">—</span>
+                  <span class="km hist-date">១២ កក្កដា ២០២៦, ២:00 ព្រឹក</span>
+                </li>
+                <li class="backup-history-item">
+                  <span class="dot dot-amber"></span>
+                  <span class="km hist-label">រំលងការបម្រុងទុក (គ្មានទិន្នន័យផ្លាស់ប្តូរ)</span>
+                  <span class="hist-sep">—</span>
+                  <span class="km hist-date">១១ កក្កដា ២០២៦</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Panel: System Settings (default active) -->
+        <div class="panel active" id="panel-system">
+          <div class="card">
+            <h2 class="card-title km">ការកំណត់ប្រព័ន្ធ</h2>
+            <p class="card-desc km">កំណត់ព័ត៌មានប្រព័ន្ធទូទៅ</p>
+ 
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="field-label km">ភាសា</label>
+                <input class="form-control km" type="text" value="ខ្មែរ">
+              </div>
+              <div class="col-md-6">
+                <label class="field-label km">ទម្រង់កាលបរិច្ឆេទ</label>
+                <input class="form-control" type="text" value="DD/MM/YYYY">
+              </div>
+              <div class="col-md-6">
+                <label class="field-label km">តំបន់ពេលវេលា</label>
+                <input class="form-control km" type="text" value="(GMT+7) ភ្នំពេញ">
+              </div>
+              <div class="col-md-6">
+                <label class="field-label km">ក្រិតស្តុកទាប</label>
+                <input class="form-control" type="text" value="10">
+              </div>
+            </div>
+ 
+            <div style="margin-top:22px; display:flex; flex-direction:column; gap:0;">
+              <div class="toggle-row">
+                <div>
+                  <div class="t-title km">បើកការជូនដំណឹង</div>
+                  <div class="t-desc km">ទទួលការជូនដំណឹងអំពីស្តុកទាប ការលក់ និងរបាយការណ៍</div>
+                </div>
+                <div class="form-check form-switch m-0">
+                  <input class="form-check-input" type="checkbox" checked>
+                </div>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="t-title km">របៀបងងឹត</div>
+                  <div class="t-desc km">ប្រើប្រាស់រូបរាងងងឹតទូទាំងកម្មវិធី</div>
+                </div>
+                <div class="form-check form-switch m-0">
+                  <input class="form-check-input" type="checkbox">
+                </div>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="t-title km">ការផ្ទៀងផ្ទាត់ពីរជាន់</div>
+                  <div class="t-desc km">បន្ថែមស្រទាប់សុវត្ថិភាពបន្ថែមទៅដល់គណនីរបស់អ្នក</div>
+                </div>
+                <div class="form-check form-switch m-0">
+                  <input class="form-check-input" type="checkbox">
+                </div>
+              </div>
+            </div>
+ 
+            <div class="actions-row">
+              <button class="btn-primary-x"><i class="bi bi-check2"></i>រក្សាទុកការកំណត់</button>
+              <button class="btn-danger-x"><i class="bi bi-trash"></i>កំណត់ត្រឡប់ដើម</button>
+            </div>
+          </div>
+        </div>
+ 
       </div>
     </div>
-    <main class="flex-grow-1 main-offset" style="min-width:0;">
-      <!-- ============ STICKY NAVBAR ============ -->
-      <nav class="sticky-nav px-3 px-lg-4 d-flex align-items-center justify-content-between flex-wrap">
-        <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-light border rounded-3 d-lg-none" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-            <i class="bi bi-list fs-5"></i>
-          </button>
-          <div>
-            <h1 class="h4 fw-bold mb-0">ស្តុកទំនិញ</h1>
-            <div class="km text-secondary small">គ្រប់គ្រងស្តុក និងសម្ភារៈក្នុងស្ថានភាពគ្រប់គ្រង</div>
-          </div>
-        </div>
-        <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
-          <button class="btn btn-light border rounded-3"><i class="bi bi-search"></i></button>
-          <button class="btn btn-light border rounded-3 position-relative" id="bellBtn">
-            <i class="bi bi-bell-fill"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-              style="font-size:.6rem;">3</span>
-          </button>
-          <div class="d-flex align-items-center gap-2 bg-white border rounded-pill ps-2 pe-3 py-1">
-            <div class="avatar-circle d-flex align-items-center justify-content-center">S</div>
-            <div>
-              <div class="small fw-bold lh-1">Socheat</div>
-              <div class="text-secondary lh-1" style="font-size:.7rem;">Admin</div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-
-
-      <!-- ================= MAIN ================= -->
-      <div class="settings-grid p-3 p-lg-4">
-        <div class="settings-nav">
-          <div class="settings-nav-item active" data-target="panel-profile">
-            <div class="icon-wrap"><i class="fa-regular fa-building"></i></div>
-            <div>ព័ត៌មានអាជីវកម្ម<small>Business Profile</small></div>
-          </div>
-          <div class="settings-nav-item" data-target="panel-password">
-            <div class="icon-wrap"><i class="fa-solid fa-lock"></i></div>
-            <div>ប្តូរពាក្យសម្ងាត់<small>Change Password</small></div>
-          </div>
-          <div class="settings-nav-item" data-target="panel-backup">
-            <div class="icon-wrap"><i class="fa-solid fa-database"></i></div>
-            <div>បម្រុងទុកទិន្នន័យ<small>Backup Database</small></div>
-          </div>
-          <div class="settings-nav-item" data-target="panel-system">
-            <div class="icon-wrap"><i class="fa-solid fa-sliders"></i></div>
-            <div>ការកំណត់ប្រព័ន្ធ<small>System Settings</small></div>
-          </div>
-        </div>
-
-        <div>
-          <!-- ព័ត៌មានអាជីវកម្ម -->
-          <section id="panel-profile" class="settings-panel active">
-            <div class="panel-head">
-              <div>
-                <h5>ព័ត៌មានអាជីវកម្ម</h5>
-                <p>កែប្រែព័ត៌មានអាជីវកម្មរបស់អ្នក</p>
-              </div>
-            </div>
-            <div class="d-flex align-items-center gap-3 mb-4">
-              <div class="avatar-upload">KS<div class="cam-btn"><i class="fa-solid fa-camera"></i></div>
-              </div>
-              <div>
-                <div class="fw-semibold">និមិត្តសញ្ញាហាង</div>
-                <div style="color:var(--text-dim); font-size:0.8rem;">ប្រភេទ PNG ឬ JPG មិនលើសពី 2MB គួរជាការ៉េ</div>
-              </div>
-            </div>
-            <form id="profileForm">
-              <div class="row g-3">
-                <div class="col-md-6"><label class="form-label">ឈ្មោះអាជីវកម្ម</label><input type="text"
-                    class="form-control" value="Khmer Dose Retail Co."></div>
-                <div class="col-md-6"><label class="form-label">ប្រភេទអាជីវកម្ម</label>
-                  <select class="form-select">
-                    <option>ហាងលក់រាយ</option>
-                    <option>ភោជនីយដ្ឋាន</option>
-                    <option>លក់ដុំ</option>
-                    <option>សេវាកម្ម</option>
-                  </select>
-                </div>
-                <div class="col-md-6"><label class="form-label">លេខទូរស័ព្ទ</label><input type="tel"
-                    class="form-control" value="+855 12 345 678"></div>
-                <div class="col-md-6"><label class="form-label">អ៊ីមែល</label><input type="email" class="form-control"
-                    value="contact@khmerdose.com"></div>
-                <div class="col-12"><label class="form-label">អាសយដ្ឋាន</label><input type="text" class="form-control"
-                    value="St. 271, ភ្នំពេញ, កម្ពុជា"></div>
-                <div class="col-md-6"><label class="form-label">រូបិយប័ណ្ណ</label><select class="form-select">
-                    <option>ដុល្លារ (USD)</option>
-                    <option>រៀល (KHR)</option>
-                  </select></div>
-                <div class="col-md-6"><label class="form-label">លេខអាករ / VAT</label><input type="text"
-                    class="form-control" placeholder="មិនចាំបាច់"></div>
-              </div>
-              <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-primary-app"><i class="fa-solid fa-check me-1"></i>
-                  រក្សាទុកការផ្លាស់ប្តូរ</button>
-                <button type="reset" class="btn btn-ghost-app">បោះបង់</button>
-              </div>
-            </form>
-          </section>
-
-          <!-- ប្តូរពាក្យសម្ងាត់ -->
-          <section id="panel-password" class="settings-panel">
-            <div class="panel-head">
-              <div>
-                <h5>ប្តូរពាក្យសម្ងាត់</h5>
-                <p>ធ្វើឲ្យគណនីរបស់អ្នកមានសុវត្ថិភាពជាមួយពាក្យសម្ងាត់ថ្មី</p>
-              </div>
-            </div>
-            <form id="passwordForm" style="max-width:440px;">
-              <div class="mb-3">
-                <label class="form-label">ពាក្យសម្ងាត់បច្ចុប្បន្ន</label>
-                <div class="input-group"><input type="password" class="form-control pwd-toggle-target"
-                    placeholder="បញ្ចូលពាក្យសម្ងាត់បច្ចុប្បន្ន"><button class="btn btn-ghost-app pwd-toggle"
-                    type="button"><i class="fa-regular fa-eye"></i></button></div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">ពាក្យសម្ងាត់ថ្មី</label>
-                <div class="input-group"><input type="password" id="newPassword" class="form-control pwd-toggle-target"
-                    placeholder="បញ្ចូលពាក្យសម្ងាត់ថ្មី"><button class="btn btn-ghost-app pwd-toggle" type="button"><i
-                      class="fa-regular fa-eye"></i></button></div>
-                <div class="strength-meter">
-                  <div id="strengthFill" class="strength-meter-fill"></div>
-                </div>
-                <div id="strengthLabel" style="font-size:0.74rem; color:var(--text-faint); margin-top:6px;">
-                  ប្រើអក្សរយ៉ាងតិច 8 តួ រួមមានលេខ និងសញ្ញា</div>
-              </div>
-              <div class="mb-4">
-                <label class="form-label">បញ្ជាក់ពាក្យសម្ងាត់ថ្មី</label>
-                <div class="input-group"><input type="password" id="confirmPassword"
-                    class="form-control pwd-toggle-target" placeholder="បញ្ចូលពាក្យសម្ងាត់ថ្មីម្តងទៀត"><button
-                    class="btn btn-ghost-app pwd-toggle" type="button"><i class="fa-regular fa-eye"></i></button></div>
-                <div id="matchMsg" style="font-size:0.74rem; margin-top:6px;"></div>
-              </div>
-              <button type="submit" class="btn btn-primary-app"><i class="fa-solid fa-lock me-1"></i>
-                ធ្វើបច្ចុប្បន្នភាពពាក្យសម្ងាត់</button>
-            </form>
-          </section>
-
-          <!-- បម្រុងទុកទិន្នន័យ -->
-          <section id="panel-backup" class="settings-panel">
-            <div class="panel-head">
-              <div>
-                <h5>បម្រុងទុកទិន្នន័យ <span class="badge-soft ms-1">មិនចាំបាច់</span></h5>
-                <p>ការពារទិន្នន័យអាជីវកម្មរបស់អ្នកកុំឲ្យបាត់បង់</p>
-              </div>
-            </div>
-            <div class="row g-3 mb-4">
-              <div class="col-md-6">
-                <div class="backup-card">
-                  <i class="fa-solid fa-cloud-arrow-down"></i>
-                  <div class="fw-semibold mb-1">បង្កើតការបម្រុងទុកឥឡូវនេះ</div>
-                  <div style="color:var(--text-dim); font-size:0.8rem; margin-bottom:14px;">
-                    ទាញយកទិន្នន័យអាជីវកម្មរបស់អ្នកទាំងអស់</div>
-                  <button id="backupBtn" class="btn btn-primary-app w-100"><i class="fa-solid fa-download me-1"></i>
-                    បម្រុងទុកឥឡូវនេះ</button>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="backup-card">
-                  <i class="fa-solid fa-clock-rotate-left"></i>
-                  <div class="fw-semibold mb-1">ស្តារពីឯកសារបម្រុងទុក</div>
-                  <div style="color:var(--text-dim); font-size:0.8rem; margin-bottom:14px;">
-                    ផ្ទុកឡើងឯកសារបម្រុងទុកចាស់ដើម្បីស្តារទិន្នន័យ</div>
-                  <button class="btn btn-ghost-app w-100"><i class="fa-solid fa-upload me-1"></i> ជ្រើសរើសឯកសារ</button>
-                </div>
-              </div>
-            </div>
-            <div class="info-row">
-              <div>
-                <div class="label">បម្រុងទុកស្វ័យប្រវត្តិ</div>
-                <div class="sub">បម្រុងទុកទិន្នន័យរាល់ថ្ងៃ វេលា ២:00 ព្រឹក ដោយស្វ័យប្រវត្តិ</div>
-              </div>
-              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked></div>
-            </div>
-            <div class="mt-4">
-              <div class="fw-semibold mb-2" style="font-size:0.88rem;">ប្រវត្តិបម្រុងទុក</div>
-              <div class="history-item"><span class="history-dot"></span> បម្រុងទុកបានជោគជ័យ &nbsp;<span
-                  style="color:var(--text-dim);">— ១៣ កក្កដា ២០២៦, ២:00 ព្រឹក</span></div>
-              <div class="history-item"><span class="history-dot"></span> បម្រុងទុកបានជោគជ័យ &nbsp;<span
-                  style="color:var(--text-dim);">— ១២ កក្កដា ២០២៦, ២:00 ព្រឹក</span></div>
-              <div class="history-item"><span class="history-dot" style="background:var(--warning);"></span>
-                រំលងការបម្រុងទុក (គ្មានអ៊ីនធឺណិត) &nbsp;<span style="color:var(--text-dim);">— ១១ កក្កដា ២០២៦</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- ការកំណត់ប្រព័ន្ធ -->
-          <section id="panel-system" class="settings-panel">
-            <div class="panel-head">
-              <div>
-                <h5>ការកំណត់ប្រព័ន្ធ</h5>
-                <p>កំណត់ព័ត៌មានប្រព័ន្ធទូទៅ</p>
-              </div>
-            </div>
-            <div class="row g-3 mb-4">
-              <div class="col-md-6"><label class="form-label">ភាសា</label><select class="form-select">
-                  <option>ខ្មែរ</option>
-                  <option>English</option>
-                </select></div>
-              <div class="col-md-6"><label class="form-label">ទម្រង់កាលបរិច្ឆេទ</label><select class="form-select">
-                  <option>DD/MM/YYYY</option>
-                  <option>MM/DD/YYYY</option>
-                  <option>YYYY-MM-DD</option>
-                </select></div>
-              <div class="col-md-6"><label class="form-label">តំបន់ពេលវេលា</label><select class="form-select">
-                  <option>(GMT+7) ភ្នំពេញ</option>
-                  <option>(GMT+7) បាងកក</option>
-                  <option>(GMT+8) សិង្ហបុរី</option>
-                </select></div>
-              <div class="col-md-6"><label class="form-label">កម្រិតស្តុកទាប</label><input type="number"
-                  class="form-control" value="10"></div>
-            </div>
-            <div class="info-row">
-              <div>
-                <div class="label">បើកការជូនដំណឹង</div>
-                <div class="sub">ទទួលការជូនដំណឹងអំពីស្តុកទាប ការលក់ និងរបាយការណ៍</div>
-              </div>
-              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked></div>
-            </div>
-            <div class="info-row">
-              <div>
-                <div class="label">របៀបងងឹត</div>
-                <div class="sub">ប្រើប្រាស់រូបរាងងងឹតទូទាំងកម្មវិធី</div>
-              </div>
-              <div class="form-check form-switch"><input class="form-check-input" type="checkbox"></div>
-            </div>
-            <div class="info-row">
-              <div>
-                <div class="label">ការផ្ទៀងផ្ទាត់ពីរជាន់</div>
-                <div class="sub">បន្ថែមស្រទាប់សុវត្ថិភាពមួយទៀតដល់គណនីរបស់អ្នក</div>
-              </div>
-              <div class="form-check form-switch"><input class="form-check-input" type="checkbox"></div>
-            </div>
-            <div class="d-flex gap-2 mt-4">
-              <button id="saveSystemBtn" class="btn btn-primary-app"><i class="fa-solid fa-check me-1"></i>
-                រក្សាទុកការកំណត់</button>
-              <button class="btn btn-danger-app"><i class="fa-solid fa-trash me-1"></i> កំណត់ត្រឡប់ដើម</button>
-            </div>
-          </section>
-        </div>
-      </div>
-    </main>
   </div>
+    <script src="/assest/js/setting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  </body>
 
-  <div id="appToast" class="toast-app"><i class="fa-solid fa-circle-check"></i><span
-      id="toastMsg">រក្សាទុកបានជោគជ័យ</span></div>
-  <script src="/assest/js/setting.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+  </html>
