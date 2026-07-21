@@ -1,266 +1,1386 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assest/image/logos.png">
+    <title>IAM System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/assest/css/cheatDBAdmin.css">
   <link rel="stylesheet" href="/assest/css/invantory.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
+    rel="stylesheet">
 
 </head>
+
 <body>
   <div class="d-flex flex-lg-row flex-column">
-    <!-- ============ SIDEBAR fixed (sticky, desktop only, lg and up) ============ -->
     <aside class="sidebar text-white p-3 d-none d-lg-flex flex-column" style="width:250px; flex-shrink:0;">
       <div class="d-flex align-items-center gap-2 px-2 mb-4">
         <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:38px;height:38px;">
           <i class="bi bi-bar-chart-fill fs-5"></i>
         </div> -->
-        <div>
-          <div class="fw-bold text-white">IAM</div>
-          <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+        <div class="d-flex gap-2">
+          <img class="w-25 h-25" src="/assest/image/logos.png" alt="">
+          <div>
+            <div class="fw-bold text-white ">IAM System</div>
+            <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+          </div>
         </div>
       </div>
 
-    <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">Main</div>
-    <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenu">
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i class="bi bi-people-fill"></i> Employee Management</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i class="bi bi-box-seam-fill"></i> Product Management</a></li>
-      <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i class="bi bi-cart-check-fill"></i> Sales Management</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i class="bi bi-truck"></i> Purchase Management</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i class="bi bi-calculator-fill"></i> Accounting</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
-      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+      <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">
+        Main</div>
+      <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenu">
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i
+              class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i
+              class="bi bi-people-fill"></i> Employee Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i
+              class="bi bi-box-seam-fill"></i> Product Management</a></li>
+        <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2"
+            href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i
+              class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i
+              class="bi bi-truck"></i> Purchase Management</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i
+              class="bi bi-calculator-fill"></i> Accounting</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i
+              class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i
+              class="bi bi-gear-fill"></i> Settings</a></li>
+        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="/index.html"><i
+              class="bi bi-box-arrow-right"></i> Log Out</a></li>
 
-    </ul>
-
-    <div class="mt-auto p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
-      <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
-    </div>
-  </aside>
-
-  <!-- ============ OFFCANVAS SIDEBAR (mobile / tablet, below lg) ============ -->
-  <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
-    <div class="offcanvas-header">
-      <div class="d-flex align-items-center gap-2">
-        <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center" style="width:34px;height:34px;">
-          <i class="bi bi-bar-chart-fill"></i>
-        </div>
-        <div>
-          <div class="fw-bold text-white">ខ្មែរដាស</div>
-          <div class="km small text-secondary" style="font-size:.7rem;">ប្រព័ន្ធគ្រប់គ្រង</div>
-        </div>
-      </div>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body p-3">
-      <div class="text-uppercase small text-secondary fw-bold px-2 mb-2" style="letter-spacing:.08em; font-size:.7rem;">Main</div>
-      <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenuOff">
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i class="bi bi-people-fill"></i> Employee Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i class="bi bi-box-seam-fill"></i> Product Management</a></li>
-        <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i class="bi bi-cart-check-fill"></i> Sales Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i class="bi bi-truck"></i> Purchase Management</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i class="bi bi-calculator-fill"></i> Accounting</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
-        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
       </ul>
 
-      <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+      <div class="mt-auto p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
         <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
       </div>
-    </div>
-  </div>
-  <main class="flex-grow-1 main-offset" style="min-width:0;">
-    <!-- ============ STICKY NAVBAR ============ -->
-    <nav class="sticky-nav px-3 px-lg-4 d-flex align-items-center justify-content-between flex-wrap">
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-light border rounded-3 d-lg-none" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-          <i class="bi bi-list fs-5"></i>
-        </button>
-        <div>
-          <h1 class="h4 fw-bold mb-0">ស្តុកទំនិញ</h1>
-          <div class="km text-secondary small">គ្រប់គ្រងស្តុក និងសម្ភារៈក្នុងស្ថានភាពគ្រប់គ្រង</div>
+    </aside>
+
+    <!-- ============ OFFCANVAS SIDEBAR (mobile / tablet, below lg) ============ -->
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
+      <div class="offcanvas-header">
+        <div class="d-flex align-items-center gap-2">
+          <!-- <div class="bg-violet rounded-3 d-flex align-items-center justify-content-center"
+            style="width:34px;height:34px;">
+            <i class="bi bi-bar-chart-fill"></i>
+          </div> -->
+          <div class="d-flex gap-2">
+            <img class="w-25 h-25" src="/assest/image/logos.png" alt="">
+            <div>
+              <div class="fw-bold text-white ">IAM System</div>
+              <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-3">
+        <div class="text-uppercase small text-secondary fw-bold px-2 mb-2"
+          style="letter-spacing:.08em; font-size:.7rem;">Main</div>
+        <ul class="nav nav-pills flex-column gap-1 mb-4" id="sidebarMenuOff">
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Dashboardadmin.html"><i
+                class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="EmployeeManagement.html"><i
+                class="bi bi-people-fill"></i> Employee Management</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="ProductManagement.html"><i
+                class="bi bi-box-seam-fill"></i> Product Management</a></li>
+          <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2"
+              href="InventoryManagement.html"><i class="bi bi-boxes"></i> Inventory Management</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="SalesManagement.html"><i
+                class="bi bi-cart-check-fill"></i> Sales Management</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i
+                class="bi bi-truck"></i> Purchase Management</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Accounting.html"><i
+                class="bi bi-calculator-fill"></i> Accounting</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i
+                class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i
+                class="bi bi-gear-fill"></i> Settings</a></li>
+          <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="/index.html"><i
+                class="bi bi-box-arrow-right"></i> Log Out</a></li>
+        </ul>
+
+        <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
+          <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
         </div>
       </div>
-      <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
-        <button class="btn btn-light border rounded-3"><i class="bi bi-search"></i></button>
-        <button class="btn btn-light border rounded-3 position-relative" id="bellBtn">
-          <i class="bi bi-bell-fill"></i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:.6rem;">3</span>
-        </button>
-        <div class="d-flex align-items-center gap-2 bg-white border rounded-pill ps-2 pe-3 py-1">
-          <div class="avatar-circle d-flex align-items-center justify-content-center">S</div>
+    </div>
+    <main class="flex-grow-1 main-offset" style="min-width:0;">
+      <!-- ============ STICKY NAVBAR ============ -->
+      <nav class="sticky-nav px-3 px-lg-4 d-flex align-items-center justify-content-between flex-wrap">
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-light border rounded-3 d-lg-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+            <i class="bi bi-list fs-5"></i>
+          </button>
           <div>
-            <div class="small fw-bold lh-1">Socheat</div>
-            <div class="text-secondary lh-1" style="font-size:.7rem;">Admin</div>
+            <h1 class="h4 fw-bold mb-0">ស្តុកទំនិញ</h1>
+            <div class="km text-secondary small">គ្រប់គ្រងស្តុក និងសម្ភារៈក្នុងស្ថានភាពគ្រប់គ្រង</div>
           </div>
         </div>
-      </div>
-    </nav>
-
-    <div class="p-3 p-lg-4">
-
-      <!-- ============ Purpose banner ============ -->
-      <div class="purpose-banner text-white rounded-4 p-4 mb-4 shadow">
-        <div class="text-uppercase small fw-bold mb-2 km" style="letter-spacing:.1em; color:#c2b8ff; font-size:.7rem;">
-          <i class="bi bi-square-fill" style="font-size:.4rem; color:#f2b134;"></i> គោលបំណង / Purpose
+        <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+          <button class="btn btn-light border rounded-3"><i class="bi bi-search"></i></button>
+          <button class="btn btn-light border rounded-3 position-relative" id="bellBtn">
+            <i class="bi bi-bell-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size:.6rem;">3</span>
+          </button>
+          <div class="d-flex align-items-center gap-2 bg-white border rounded-pill ps-2 pe-3 py-1">
+            <div class="avatar-circle d-flex align-items-center justify-content-center">S</div>
+            <div>
+              <div class="small fw-bold lh-1">Socheat</div>
+              <div class="text-secondary lh-1" style="font-size:.7rem;">Admin</div>
+            </div>
+          </div>
         </div>
-        <p class="km mb-1" style="max-width:640px; line-height:1.8;">
-          តាមដានបរិមាណស្តុកទំនិញដែលមាននៅក្នុងឃ្លាំងជាប្រចាំ។
-        </p>
-        <div class="small" style="color:#9d9fd6;">To monitor stock levels in real time.</div>
-      </div>
+      </nav>
 
-      <!-- ============ KPI Cards ============ -->
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3 mb-4">
-        <!-- <div class="row g-3 mb-4"> -->
-          <div class="col-12 col-sm-6 col-xl-3">
-            <div class="card border-0 shadow-sm rounded-3 h-100">
-              <div class="card-body d-flex align-items-center gap-3">
-                <i class="bi bi-box-seam-fill fs-3 text-primary"></i>
+      <div class="p-3 p-lg-4">
+
+        <!-- ============ Purpose banner ============ -->
+        <div class="row g-3 mb-3">
+          <div class="col-6 col-lg-3">
+            <div class="toolbar-card d-flex align-items-center gap-3 mb-0">
+              <div class="prod-thumb tone-purple"><i class="fa-solid fa-box"></i></div>
+              <div>
+                <div class="text-secondary" style="font-size:12px;">ទំនិញសរុប</div>
+                <div class="fw-semibold" style="font-size:18px;">3,300</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="toolbar-card d-flex align-items-center gap-3 mb-0">
+              <div class="prod-thumb tone-green"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div class="text-secondary" style="font-size:12px;">មានស្តុកគ្រប់គ្រាន់</div>
+                <div class="fw-semibold" style="font-size:18px;">3,162</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="toolbar-card d-flex align-items-center gap-3 mb-0">
+              <div class="prod-thumb tone-amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div>
+                <div class="text-secondary" style="font-size:12px;">ជិតអស់ស្តុក</div>
+                <div class="fw-semibold" style="font-size:18px;">123</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="toolbar-card d-flex align-items-center gap-3 mb-0">
+              <div class="prod-thumb tone-pink"><i class="fa-solid fa-xmark"></i></div>
+              <div>
+                <div class="text-secondary" style="font-size:12px;">អស់ស្តុក</div>
+                <div class="fw-semibold" style="font-size:18px;">15</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick actions: matches the 5 core purposes of Inventory Management -->
+        <div class="toolbar-card mb-3">
+          <p class="text-secondary mb-3" style="font-size:12px; font-weight:600; letter-spacing:.3px;">សកម្មភាពរហ័ស /
+            QUICK ACTIONS</p>
+          <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg">
+              <button class="quick-action-btn w-100" data-bs-toggle="modal" data-bs-target="#stockInModal">
+                <div class="qa-icon tone-green"><i class="fa-solid fa-arrow-down"></i></div>
                 <div>
-                  <div class="fw-bold">ទំនិញសរុប <span class="mx-3">3,300</span></div>
-                  <div class="km text-secondary small mt-1">សរុបទំនិញក្នុងឃ្លាំង</div>
+                  <div class="qa-title">Stock In</div>
+                  <div class="qa-sub">បញ្ចូលទំនិញចូលស្តុក</div>
                 </div>
-              </div>
+              </button>
             </div>
-          </div>
-          <div class="col-12 col-sm-6 col-xl-3 ">
-            <div class="card border-0 shadow-sm rounded-3 h-100">
-              <div class="card-body d-flex align-items-center gap-3">
-                <i class="bi bi-arrow-left-circle-fill fs-3 text-danger"></i>
+            <div class="col-6 col-md-4 col-lg">
+              <button class="quick-action-btn w-100" data-bs-toggle="modal" data-bs-target="#stockOutModal">
+                <div class="qa-icon tone-pink"><i class="fa-solid fa-arrow-up"></i></div>
                 <div>
-                  <div class="fw-bold">ទំនិញដែរត្រូវចេញ<span class="mx-3">567</span></div>
-                  <div class="km text-secondary small mt-1">មានស្តុក</div>
+                  <div class="qa-title">Stock Out</div>
+                  <div class="qa-sub">ដកទំនិញចេញពីស្តុក</div>
                 </div>
-              </div>
+              </button>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <button class="quick-action-btn w-100" data-bs-toggle="modal" data-bs-target="#stockAdjustModal">
+                <div class="qa-icon tone-amber"><i class="fa-solid fa-sliders"></i></div>
+                <div>
+                  <div class="qa-title">Stock Adjustment</div>
+                  <div class="qa-sub">កែតម្រូវបរិមាណស្តុក</div>
+                </div>
+              </button>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <button class="quick-action-btn w-100" data-bs-toggle="modal" data-bs-target="#stockHistoryModal">
+                <div class="qa-icon tone-blue"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div>
+                  <div class="qa-title">Stock History</div>
+                  <div class="qa-sub">មើលប្រវត្តិស្តុក</div>
+                </div>
+              </button>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <button class="quick-action-btn w-100" data-bs-toggle="modal" data-bs-target="#lowStockAlertModal">
+                <div class="qa-icon tone-purple"><i class="fa-solid fa-bell"></i></div>
+                <div>
+                  <div class="qa-title">Low Stock Alerts</div>
+                  <div class="qa-sub">ការជូនដំណឹងស្តុកទាប</div>
+                </div>
+              </button>
             </div>
           </div>
-          <div class="col-12 col-sm-6 col-xl-3">
-            <div class="card border-0 shadow-sm rounded-3 h-100">
-              <div class="card-body d-flex align-items-center gap-3">
-                <i class="bi bi-exclamation-triangle-fill fs-3 text-danger"></i>
-                 <div>
-                    <div class="fw-bold">ទំនិញដែរនៅសល់<span class="mx-3">123</span></div>
-                    <div class="km text-secondary small mt-1">ទំនិញជិតអស់ស្ទុក</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-xl-3">
-            <div class="card border-0 shadow-sm rounded-3 h-100">
-              <div class="card-body d-flex align-items-center gap-3">
-                <i class="bi bi-tags-fill fs-3 text-primary"></i>
-                 <div>
-                    <div class="fw-bold">ប្រភេទទំនិញ<span class="mx-3">25 <span class="text-danger">មុខ</span></span></div>
-                    <div class="km text-secondary small mt-1">មានស្តុក</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <!-- </div> -->
-        
-    </div>
-    <section class="mt-4 sce1">
-    <div class="row g-4">
-
-        <!-- Card 1 -->
-        <div class="col-12 col-md-6">
-            <div class="card border-0 shadow-sm rounded-4 ">
-                <div class="card-body">
-                    <div class=" d-flex align-items-center gap-3">
-                      <i class="bi bi-arrow-bar-down text-success"></i>
-                      <h5 class="fw-bold mb-1">ទំនិញចូល</h5>
-                    </div>
-                    <p class="text-secondary">
-                        ផលិតផលដែលទទួលបានពីអ្នកផ្គត់ផ្គង់
-                    </p>
-                    <div class="d-flex justify-content-between">
-                        <span>Total Items</span>
-                        <span class="fw-bold">1,250</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="col-12 col-md-6">
-            <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body">
+        <!-- Toolbar: search / filter / add -->
+        <div class="toolbar-card d-flex flex-wrap align-items-center gap-3">
+          <div class="search-box flex-grow-1" style="min-width:220px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="form-control" id="searchInput" placeholder="ស្វែងរកតាមឈ្មោះ ឬ SKU...">
+          </div>
+          <select class="form-select" id="categoryFilter" style="width:auto; min-width:160px;">
+            <option value="">គ្រប់ប្រភេទទាំងអស់</option>
+            <option value="សម្លៀកបំពាក់">សម្លៀកបំពាក់</option>
+            <option value="ស្បែកជើង">ស្បែកជើង</option>
+            <option value="គ្រឿងសំអាង">គ្រឿងសំអាង</option>
+            <option value="គ្រឿងអេឡិចត្រូនិច">គ្រឿងអេឡិចត្រូនិច</option>
+          </select>
+          <select class="form-select" id="statusFilter" style="width:auto; min-width:160px;">
+            <option value="">គ្រប់ស្ថានភាពទាំងអស់</option>
+            <option value="instock">មានស្តុក</option>
+            <option value="low">ជិតអស់ស្តុក</option>
+            <option value="out">អស់ស្តុក</option>
+          </select>
+          <button class="btn btn-primary-brand text-white ms-auto" data-bs-toggle="modal"
+            data-bs-target="#addProductModal">
+            <i class="fa-solid fa-plus me-1"></i> បន្ថែមទំនិញថ្មី
+          </button>
+        </div>
+
+        <div class="mb-3"></div>
+
+        <!-- Products table -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="table" id="productTable">
+              <thead>
+                <tr>
+                  <th>ទំនិញ</th>
+                  <th>ប្រភេទ</th>
+                  <th>ស្តុកនៅសល់</th>
+                  <th>តម្លៃ</th>
+                  <th>ស្ថានភាព</th>
+                  <th class="text-end">សកម្មភាព</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr data-category="កាបូប" data-status="low" data-name="កាបូបស្បែក ម៉ូដថ្មី SKU-1042">
+                  <td>
                     <div class="d-flex align-items-center gap-3">
-                      <i class="bi bi-arrow-bar-up text-danger"></i>
-                      <h5 class="fw-bold mb-1">ទំនិញចេញ</h5>
+                      <div class="prod-thumb tone-purple"><i class="fa-solid fa-bag-shopping"></i></div>
+                      <div>
+                        <div class="prod-name">កាបូបស្បែក ម៉ូដថ្មី</div>
+                        <div class="prod-sku">SKU-1042</div>
+                      </div>
                     </div>
-                    <p class="text-secondary">
-                        ផលិតផលដែលបានលក់ទៅអតិថិជន
-                    </p>
+                  </td>
+                  <td>កាបូប</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:20%; background:#E24B4A;"></div>
+                    </span>4 / 20</td>
+                  <td>$45.00</td>
+                  <td><span class="badge-status badge-low">ជិតអស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
 
-                    <div class="d-flex justify-content-between">
-                        <span>Total Items</span>
-                        <span class="fw-bold">980</span>
+                <tr data-category="សម្លៀកបំពាក់" data-status="instock" data-name="អាវយឺតកប្បាស ពណ៌ខ្មៅ SKU-1078">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-blue"><i class="fa-solid fa-shirt"></i></div>
+                      <div>
+                        <div class="prod-name">អាវយឺតកប្បាស</div>
+                        <div class="prod-sku">SKU-1078</div>
+                      </div>
                     </div>
-                </div>
-            </div>
+                  </td>
+                  <td>សម្លៀកបំពាក់</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:78%; background:#639922;"></div>
+                    </span>78 / 100</td>
+                  <td>$12.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="ស្បែកជើង" data-status="out" data-name="ស្បែកជើងកីឡា Size 41 SKU-1103">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-pink"><i class="fa-solid fa-shoe-prints"></i></div>
+                      <div>
+                        <div class="prod-name">ស្បែកជើងកីឡា Size 41</div>
+                        <div class="prod-sku">SKU-1103</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>ស្បែកជើង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:0%; background:#E24B4A;"></div>
+                    </span>0 / 30</td>
+                  <td>$68.00</td>
+                  <td><span class="badge-status badge-out">អស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងសំអាង" data-status="instock" data-name="ក្រែមការពារថ្ងៃ SPF50 SKU-2033">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-green"><i class="fa-solid fa-pump-soap"></i></div>
+                      <div>
+                        <div class="prod-name">ក្រែមការពារថ្ងៃ SPF50</div>
+                        <div class="prod-sku">SKU-2033</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងសំអាង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:68%; background:#639922;"></div>
+                    </span>34 / 50</td>
+                  <td>$18.50</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងអេឡិចត្រូនិច" data-status="low" data-name="កាសស្តាប់ត្រចៀក Bluetooth SKU-3012">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-blue"><i class="fa-solid fa-headphones"></i></div>
+                      <div>
+                        <div class="prod-name">កាសស្តាប់ត្រចៀក Bluetooth</div>
+                        <div class="prod-sku">SKU-3012</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងអេឡិចត្រូនិច</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:16%; background:#E24B4A;"></div>
+                    </span>8 / 50</td>
+                  <td>$32.00</td>
+                  <td><span class="badge-status badge-low">ជិតអស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="សម្លៀកបំពាក់" data-status="instock" data-name="ខោខូវប៊យទឹកប្រផេះ SKU-1156">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-purple"><i class="fa-solid fa-vest"></i></div>
+                      <div>
+                        <div class="prod-name">ខោខូវប៊យ​ពណ៏ផេះ</div>
+                        <div class="prod-sku">SKU-1156</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>សម្លៀកបំពាក់</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:45%; background:#EF9F27;"></div>
+                    </span>9 / 20</td>
+                  <td>$24.00</td>
+                  <td><span class="badge-status badge-low">ជិតអស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="កាបូប" data-status="instock" data-name="កាបូបស្ពាយ Canvas SKU-1210">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-blue"><i class="fa-solid fa-briefcase"></i></div>
+                      <div>
+                        <div class="prod-name">កាបូបស្ពាយ Canvas</div>
+                        <div class="prod-sku">SKU-1210</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>កាបូប</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:82%; background:#639922;"></div>
+                    </span>41 / 50</td>
+                  <td>$29.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="ស្បែកជើង" data-status="instock" data-name="ស្បែកជើងសម្រាប់ដើរលេង Size 39 SKU-1305">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-pink"><i class="fa-solid fa-shoe-prints"></i></div>
+                      <div>
+                        <div class="prod-name">ស្បែកជើងសម្រាប់ដើរលេង Size 39</div>
+                        <div class="prod-sku">SKU-1305</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>ស្បែកជើង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:60%; background:#639922;"></div>
+                    </span>18 / 30</td>
+                  <td>$52.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងសំអាង" data-status="out" data-name="ទឹកអប់ Lavender 100ml SKU-2011">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-green"><i class="fa-solid fa-spray-can"></i></div>
+                      <div>
+                        <div class="prod-name">ទឹកអប់ Lavender 100ml</div>
+                        <div class="prod-sku">SKU-2011</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងសំអាង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:0%; background:#E24B4A;"></div>
+                    </span>0 / 40</td>
+                  <td>$22.00</td>
+                  <td><span class="badge-status badge-out">អស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងសំអាង" data-status="instock" data-name="វីតាមីន C Serum SKU-2050">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-purple"><i class="fa-solid fa-flask"></i></div>
+                      <div>
+                        <div class="prod-name">វីតាមីន C Serum</div>
+                        <div class="prod-sku">SKU-2050</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងសំអាង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:60%; background:#639922;"></div>
+                    </span>12 / 20</td>
+                  <td>$34.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងអេឡិចត្រូនិច" data-status="instock"
+                  data-name="បន្ទះសាកថ្ម Power Bank 10000mAh SKU-3050">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-blue"><i class="fa-solid fa-battery-full"></i></div>
+                      <div>
+                        <div class="prod-name"> Power Bank 10000mAh</div>
+                        <div class="prod-sku">SKU-3050</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងអេឡិចត្រូនិច</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:70%; background:#639922;"></div>
+                    </span>35 / 50</td>
+                  <td>$19.90</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងអេឡិចត្រូនិច" data-status="low"
+                  data-name="កណ្តុរឥតខ្សែ Wireless Mouse SKU-3078">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-pink"><i class="fa-solid fa-computer-mouse"></i></div>
+                      <div>
+                        <div class="prod-name">Mouse Bluetooth </div>
+                        <div class="prod-sku">SKU-3078</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងអេឡិចត្រូនិច</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:24%; background:#EF9F27;"></div>
+                    </span>6 / 25</td>
+                  <td>$15.00</td>
+                  <td><span class="badge-status badge-low">ជិតអស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="សម្លៀកបំពាក់" data-status="instock" data-name="អាវធំរដូវរងា Hoodie SKU-1420">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-green"><i class="fa-solid fa-shirt"></i></div>
+                      <div>
+                        <div class="prod-name">អាវរងា Hoodie</div>
+                        <div class="prod-sku">SKU-1420</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>សម្លៀកបំពាក់</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:88%; background:#639922;"></div>
+                    </span>44 / 50</td>
+                  <td>$38.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="ស្បែកជើង" data-status="low" data-name="ស្បែកជើងកវែង Boots Size 42 SKU-1512">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-purple">
+                        <!-- <img style="width: 10px; height: 10px; object-fit: cover;" src="https://www.ebay.co.uk/itm/380970307916" alt=""> -->
+                        <i class="fa-solid fa-socks"></i></div>
+                      <div>
+                        <div class="prod-name">ស្បែកជើងកវែង Boots Size 42</div>
+                        <div class="prod-sku">SKU-1512</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>ស្បែកជើង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:30%; background:#EF9F27;"></div>
+                    </span>6 / 20</td>
+                  <td>$74.00</td>
+                  <td><span class="badge-status badge-low">ជិតអស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="កាបូប" data-status="out" data-name="កាបូបលុយស្បែក SKU-1289">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-blue"><i class="fa-solid fa-wallet"></i></div>
+                      <div>
+                        <div class="prod-name">កាបូបលុយស្បែក</div>
+                        <div class="prod-sku">SKU-1289</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>កាបូប</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:0%; background:#E24B4A;"></div>
+                    </span>0 / 25</td>
+                  <td>$16.50</td>
+                  <td><span class="badge-status badge-out">អស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងអេឡិចត្រូនិច" data-status="instock" data-name="ខ្សែសាកទូរស័ព្ទ USB-C SKU-3102">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-green"><i class="fa-solid fa-plug"></i></div>
+                      <div>
+                        <div class="prod-name">ខ្សែសាកទូរស័ព្ទ USB-C</div>
+                        <div class="prod-sku">SKU-3102</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងអេឡិចត្រូនិច</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:92%; background:#639922;"></div>
+                    </span>92 / 100</td>
+                  <td>$6.50</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="សម្លៀកបំពាក់" data-status="low" data-name="ខោខ្លីកីឡា Shorts SKU-1455">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-pink"><i class="fa-solid fa-person-running"></i></div>
+                      <div>
+                        <div class="prod-name">ខោខ្លីកីឡា Shorts</div>
+                        <div class="prod-sku">SKU-1455</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>សម្លៀកបំពាក់</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:35%; background:#EF9F27;"></div>
+                    </span>7 / 20</td>
+                  <td>$14.00</td>
+                  <td><span class="badge-status badge-low">ជិតអស់ស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="គ្រឿងសំអាង" data-status="instock" data-name="ស្នាមញើស Deodorant Roll-on SKU-2098">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-purple"><i class="fa-solid fa-droplet"></i></div>
+                      <div>
+                        <div class="prod-name">Deodorant Roll-on</div>
+                        <div class="prod-sku">SKU-2098</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>គ្រឿងសំអាង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:76%; background:#639922;"></div>
+                    </span>38 / 50</td>
+                  <td>$8.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+                <tr data-category="ស្បែកជើង" data-status="instock" data-name="ស្បែកជើងផ្លាស្ទិច Sandals SKU-1600">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="prod-thumb tone-blue"><i class="fa-solid fa-socks"></i></div>
+                      <div>
+                        <div class="prod-name">ស្បែកជើង Sandals</div>
+                        <div class="prod-sku">SKU-1600</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>ស្បែកជើង</td>
+                  <td><span class="stock-bar-mini">
+                      <div style="width:64%; background:#639922;"></div>
+                    </span>32 / 50</td>
+                  <td>$9.00</td>
+                  <td><span class="badge-status badge-instock">មានស្តុក</span></td>
+                  <td class="text-end">
+                    <button class="row-action-btn" title="មើលលម្អិត"><i class="fa-regular fa-eye"></i></button>
+                    <button class="row-action-btn" title="កែប្រែ"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="row-action-btn danger" title="លុប" data-bs-toggle="modal"
+                      data-bs-target="#deleteConfirmModal"><i class="fa-regular fa-trash-can"></i></button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination-footer">
+            <span>បង្ហាញ <strong id="visibleCount">18</strong> ក្នុងចំណោម 3,300 ទំនិញ</span>
+            <nav>
+              <ul class="pagination pagination-sm mb-0">
+                <li class="page-item disabled"><a class="page-link" href="#">មុន</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">បន្ទាប់</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="col-12 col-md-6">
-            <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body">
-                  <div class="d-flex align-items-center gap-3">
-                      <i class="bi bi-box-seam-fill fs-3 text-primary"></i>
-                      <h5 class="fw-bold mb-1">ស្តុកនៅសល់តិច</h5>
-                    </div>
-                    <p class="text-secondary">
-                        ផលិតផលដែលត្រូវបានបន្តពីការផ្ទះ
-                    </p>
-                    <div class="d-flex justify-content-between">
-                        <span>Products</span>
-                        <strong class="text-danger">15</strong>
-                    </div>
-                </div>
+      </div>
+
+      <!-- Modal: Add product -->
+      <div class="modal fade" id="addProductModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+              <div>
+                <h5 class="modal-title fw-medium">បន្ថែមទំនិញថ្មី</h5>
+                <p class="text-secondary mb-0" style="font-size:13px;">បំពេញព័ត៌មានទំនិញខាងក្រោម
+                  ដើម្បីបន្ថែមទៅក្នុងស្តុក</p>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="col-12 col-md-6">
-            <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body">
-                  <div class="d-flex align-items-center gap-3">
-                      <i class="bi bi-cash-coin fs-3 text-primary"></i>
-                      <h5 class="fw-bold mb-1">តម្លៃទំនិញក្នុងស្តុក</h5>
-                    </div>
-                    <p class="text-secondary">
-                        តម្លៃសរុបនៃទំនិញក្នុងស្តុក
-                    </p>
-
-                    <div class="d-flex justify-content-between">
-                        <span>Total Value</span>
-                        <strong>$12,450</strong>
-                    </div>
+            <div class="modal-body">
+              <form id="addProductForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">ឈ្មោះទំនិញ</label>
+                    <input type="text" class="form-control" placeholder="ឧ. អាវយឺតកប្បាស" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">SKU / លេខកូដ</label>
+                    <input type="text" class="form-control" placeholder="ឧ. SKU-1234" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">ប្រភេទ</label>
+                    <select class="form-select">
+                      <option>សម្លៀកបំពាក់</option>
+                      <option>ស្បែកជើង</option>
+                      <option>គ្រឿងសំអាង</option>
+                      <option>គ្រឿងអេឡិចត្រូនិច</option>
+                      <option>កាបូប</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">អ្នកផ្គត់ផ្គង់</label>
+                    <input type="text" class="form-control" placeholder="ឈ្មោះអ្នកផ្គត់ផ្គង់">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">បរិមាណស្តុក</label>
+                    <input type="number" class="form-control" placeholder="0" min="0" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">កម្រិតអប្បបរមា</label>
+                    <input type="number" class="form-control" placeholder="0" min="0">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">តម្លៃ ($)</label>
+                    <input type="number" class="form-control" placeholder="0.00" min="0" step="0.01" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">ចំណាំបន្ថែម (ស្រេចចិត្ត)</label>
+                    <textarea class="form-control" rows="2" placeholder="ព័ត៌មានបន្ថែម..."></textarea>
+                  </div>
                 </div>
+              </form>
             </div>
+            <div class="modal-footer border-0 pt-0">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">បោះបង់</button>
+              <button type="button" class="btn btn-primary-brand text-white" id="saveProductBtn">រក្សាទុកទំនិញ</button>
+            </div>
+          </div>
         </div>
+      </div>
 
-    </div>
-        </section>
+      <!-- Modal: Delete confirm -->
+      <div class="modal fade" id="deleteConfirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body text-center py-4">
+              <div class="mx-auto mb-3 d-flex align-items-center justify-content-center"
+                style="width:56px; height:56px; border-radius:50%; background:#FCEBEB; color:#A32D2D; font-size:22px;">
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+              <h5 class="fw-medium mb-1">លុបទំនិញនេះ?</h5>
+              <p class="text-secondary mb-4" style="font-size:14px;">សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។
+                ទំនិញនេះនឹងត្រូវបានលុបចេញពីស្តុកជាអចិន្ត្រៃយ៍។</p>
+              <div class="d-flex justify-content-center gap-2">
+                <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">បោះបង់</button>
+                <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">លុបចេញ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal: Stock In -->
+      <div class="modal fade" id="stockInModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+              <div>
+                <h5 class="modal-title fw-medium"><i class="fa-solid fa-arrow-down text-success me-2"></i>Stock In</h5>
+                <p class="text-secondary mb-0" style="font-size:13px;">បញ្ចូលទំនិញចូលស្តុក (ពីអ្នកផ្គត់ផ្គង់
+                  ឬដឹកជញ្ជូនត្រឡប់)</p>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">ជ្រើសរើសទំនិញ</label>
+                  <select class="form-select">
+                    <option>កាបូបស្បែក ម៉ូដថ្មី — SKU-1042</option>
+                    <option>អាវយឺតកប្បាស ពណ៌ខ្មៅ — SKU-1078</option>
+                    <option>ស្បែកជើងកីឡា Size 41 — SKU-1103</option>
+                    <option>ទឹកអប់ Lavender 100ml — SKU-2011</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">អ្នកផ្គត់ផ្គង់</label>
+                  <input type="text" class="form-control" placeholder="ឈ្មោះអ្នកផ្គត់ផ្គង់">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">ថ្ងៃខែទទួល</label>
+                  <input type="date" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">បរិមាណចូល</label>
+                  <input type="number" class="form-control" placeholder="0" min="1">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">ថ្លៃទិញក្នុងមួយឯកតា ($)</label>
+                  <input type="number" class="form-control" placeholder="0.00" step="0.01">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">ចំណាំ</label>
+                  <textarea class="form-control" rows="2" placeholder="ឧ. វិក្កយបត្រលេខ INV-2201..."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">បោះបង់</button>
+              <button type="button" class="btn btn-success text-white qa-save-btn">បញ្ជាក់ស្តុកចូល</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal: Stock Out -->
+      <div class="modal fade" id="stockOutModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+              <div>
+                <h5 class="modal-title fw-medium"><i class="fa-solid fa-arrow-up text-danger me-2"></i>Stock Out</h5>
+                <p class="text-secondary mb-0" style="font-size:13px;">ដកទំនិញចេញពីស្តុក (លក់, ខូចខាត, ឬផ្ទេរចេញ)</p>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">ជ្រើសរើសទំនិញ</label>
+                  <select class="form-select">
+                    <option>អាវយឺតកប្បាស ពណ៌ខ្មៅ — SKU-1078 (78 នៅសល់)</option>
+                    <option>ក្រែមការពារថ្ងៃ SPF50 — SKU-2033 (34 នៅសល់)</option>
+                    <option>បន្ទះសាកថ្ម Power Bank — SKU-3050 (35 នៅសល់)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">មូលហេតុ</label>
+                  <select class="form-select">
+                    <option>លក់ដល់អតិថិជន</option>
+                    <option>ទំនិញខូចខាត</option>
+                    <option>ផ្ទេរទៅសាខាផ្សេង</option>
+                    <option>ត្រឡប់ទៅអ្នកផ្គត់ផ្គង់</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">បរិមាណចេញ</label>
+                  <input type="number" class="form-control" placeholder="0" min="1">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">ចំណាំ</label>
+                  <textarea class="form-control" rows="2" placeholder="ព័ត៌មានបន្ថែម..."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">បោះបង់</button>
+              <button type="button" class="btn btn-danger text-white qa-save-btn">បញ្ជាក់ស្តុកចេញ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal: Stock Adjustment -->
+      <div class="modal fade" id="stockAdjustModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+              <div>
+                <h5 class="modal-title fw-medium"><i class="fa-solid fa-sliders me-2" style="color:#854F0B;"></i>Stock
+                  Adjustment</h5>
+                <p class="text-secondary mb-0" style="font-size:13px;">កែតម្រូវបរិមាណស្តុក ក្នុងករណីរាប់ស្តុកឃើញខុសគ្នា
+                </p>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">ជ្រើសរើសទំនិញ</label>
+                  <select class="form-select">
+                    <option>ខោខូវប៊យទឹកប្រផេះ — SKU-1156 (ស្តុកបច្ចុប្បន្ន: 9)</option>
+                    <option>កណ្តុរឥតខ្សែ Wireless Mouse — SKU-3078 (ស្តុកបច្ចុប្បន្ន: 6)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">ស្តុកបច្ចុប្បន្ន (System)</label>
+                  <input type="number" class="form-control" value="9" disabled>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">ស្តុកពិតប្រាកដ (រាប់បាន)</label>
+                  <input type="number" class="form-control" placeholder="ឧ. 7">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">មូលហេតុនៃការកែតម្រូវ</label>
+                  <select class="form-select">
+                    <option>រាប់ស្តុកប្រចាំខែ</option>
+                    <option>ទំនិញខូច / បាត់</option>
+                    <option>កំហុសបញ្ចូលទិន្នន័យ</option>
+                    <option>ផ្សេងៗ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">បោះបង់</button>
+              <button type="button" class="btn text-white qa-save-btn"
+                style="background:#EF9F27;">រក្សាទុកការកែតម្រូវ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal: Stock History -->
+      <div class="modal fade" id="stockHistoryModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+              <div>
+                <h5 class="modal-title fw-medium"><i class="fa-solid fa-clock-rotate-left me-2"
+                    style="color:#0C447C;"></i>ប្រវត្តិស្តុក</h5>
+                <p class="text-secondary mb-0" style="font-size:13px;">ព្រឹត្តិការណ៍ស្តុកចូល-ចេញ និងការកែតម្រូវថ្មីៗ</p>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="history-item">
+                <div class="history-dot tone-green"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span style="font-size:14px; font-weight:500;">Stock In — បន្ទះសាកថ្ម Power Bank</span>
+                    <span style="font-size:12px; color:#9ca3af;">14 Jul 2026, 10:20 AM</span>
+                  </div>
+                  <p class="mb-0 text-secondary" style="font-size:12.5px;">ចូល +20 ឯកតា ពីអ្នកផ្គត់ផ្គង់ Tech Supply Co.
+                  </p>
+                </div>
+              </div>
+              <div class="history-item">
+                <div class="history-dot tone-pink"><i class="fa-solid fa-arrow-up"></i></div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span style="font-size:14px; font-weight:500;">Stock Out — អាវយឺតកប្បាស ពណ៌ខ្មៅ</span>
+                    <span style="font-size:12px; color:#9ca3af;">13 Jul 2026, 4:05 PM</span>
+                  </div>
+                  <p class="mb-0 text-secondary" style="font-size:12.5px;">ចេញ -12 ឯកតា ការលក់ដល់អតិថិជន</p>
+                </div>
+              </div>
+              <div class="history-item">
+                <div class="history-dot tone-amber"><i class="fa-solid fa-sliders"></i></div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span style="font-size:14px; font-weight:500;">Adjustment — ខោខូវប៊យទឹកប្រផេះ</span>
+                    <span style="font-size:12px; color:#9ca3af;">12 Jul 2026, 9:00 AM</span>
+                  </div>
+                  <p class="mb-0 text-secondary" style="font-size:12.5px;">កែពី 12 ទៅ 9 ឯកតា (រាប់ស្តុកប្រចាំខែ)</p>
+                </div>
+              </div>
+              <div class="history-item">
+                <div class="history-dot tone-green"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span style="font-size:14px; font-weight:500;">Stock In — ស្បែកជើងកីឡា Size 41</span>
+                    <span style="font-size:12px; color:#9ca3af;">10 Jul 2026, 2:30 PM</span>
+                  </div>
+                  <p class="mb-0 text-secondary" style="font-size:12.5px;">ចូល +30 ឯកតា ពីអ្នកផ្គត់ផ្គង់ Sport Line Ltd.
+                  </p>
+                </div>
+              </div>
+              <div class="history-item">
+                <div class="history-dot tone-pink"><i class="fa-solid fa-arrow-up"></i></div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span style="font-size:14px; font-weight:500;">Stock Out — ទឹកអប់ Lavender 100ml</span>
+                    <span style="font-size:12px; color:#9ca3af;">9 Jul 2026, 11:15 AM</span>
+                  </div>
+                  <p class="mb-0 text-secondary" style="font-size:12.5px;">ចេញ -40 ឯកតា (ទំនិញអស់ស្តុកទាំងស្រុង)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal: Low Stock Alerts / Notification settings -->
+      <script>
+// ============ salesManagement.js ============
+// Renders the sales/invoice table, KPI cards, invoice builder,
+// receipt preview, cancel-sale flow, and sales history for SalesManagement.html
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ---------- Sample data (replace with API data later) ----------
+  const catalog = [
+    { name: 'អាវយឺតកប្បាស ពណ៌ខ្មៅ', price: 12.00 },
+    { name: 'ស្បែកជើងកីឡា Size 41', price: 68.00 },
+    { name: 'ក្រែមការពារថ្ងៃ SPF50', price: 18.50 },
+    { name: 'កាសស្តាប់ត្រចៀក Bluetooth', price: 32.00 },
+    { name: 'កាបូបស្ពាយ Canvas', price: 29.00 },
+  ];
+
+  const sales = [
+    { id: 'INV-1001', customer: 'សុខា', date: '2026-07-14', items: 3, total: 86.00, status: 'paid' },
+    { id: 'INV-1002', customer: 'Walk-in', date: '2026-07-14', items: 1, total: 12.00, status: 'paid' },
+    { id: 'INV-1003', customer: 'ដារា', date: '2026-07-13', items: 2, total: 100.00, status: 'unpaid' },
+    { id: 'INV-1004', customer: 'ស្រីនាង', date: '2026-07-13', items: 4, total: 143.50, status: 'paid' },
+    { id: 'INV-1005', customer: 'Walk-in', date: '2026-07-12', items: 1, total: 68.00, status: 'cancelled' },
+    { id: 'INV-1006', customer: 'វិសាល', date: '2026-07-12', items: 2, total: 50.50, status: 'paid' },
+    { id: 'INV-1007', customer: 'ចាន់ថា', date: '2026-07-11', items: 1, total: 32.00, status: 'unpaid' },
+  ];
+
+  const salesHistory = [
+    { type: 'create', title: 'Invoice created — INV-1007', date: '11 Jul 2026, 3:40 PM', note: 'អតិថិជន ចាន់ថា • $32.00' },
+    { type: 'paid', title: 'Payment received — INV-1006', date: '12 Jul 2026, 5:10 PM', note: 'បានទូទាត់ពេញលេញ $50.50' },
+    { type: 'cancel', title: 'Sale cancelled — INV-1005', date: '12 Jul 2026, 6:00 PM', note: 'មូលហេតុ៖ Wrong item / pricing error' },
+    { type: 'create', title: 'Invoice created — INV-1004', date: '13 Jul 2026, 11:00 AM', note: 'អតិថិជន ស្រីនាង • $143.50' },
+    { type: 'paid', title: 'Payment received — INV-1001', date: '14 Jul 2026, 9:15 AM', note: 'បានទូទាត់ពេញលេញ $86.00' },
+  ];
+
+  const historyIcon = {
+    create: { icon: 'bi-receipt', bg: '#ece9fb', color: 'var(--violet, #6b4fe0)' },
+    paid:   { icon: 'bi-check-circle', bg: '#e6f2ef', color: '#1f4d43' },
+    cancel: { icon: 'bi-x-circle', bg: '#fbe9e9', color: '#b23b3b' },
+  };
+
+  let invoiceLineCount = 0;
+
+  // ---------- Helpers ----------
+  function statusBadge(status) {
+    if (status === 'paid') return '<span class="badge rounded-pill" style="background:#e6f2ef; color:#1f4d43;">បានទូទាត់</span>';
+    if (status === 'unpaid') return '<span class="badge rounded-pill" style="background:#faf1e6; color:#c1793a;">មិនទាន់ទូទាត់</span>';
+    return '<span class="badge rounded-pill" style="background:#fbe9e9; color:#b23b3b;">បានលុបចោល</span>';
+  }
+
+  function showToast(message) {
+    document.getElementById('toastBody').textContent = message;
+    new bootstrap.Toast(document.getElementById('liveToast')).show();
+  }
+
+  // ---------- Render KPI cards ----------
+  function renderKpis() {
+    const today = '2026-07-14';
+    const todaySales = sales.filter(s => s.date === today && s.status !== 'cancelled');
+    const todayRevenue = todaySales.reduce((sum, s) => sum + s.total, 0);
+    const unpaid = sales.filter(s => s.status === 'unpaid').length;
+    const cancelled = sales.filter(s => s.status === 'cancelled').length;
+
+    document.getElementById('kpiTodaySales').textContent = '$' + todayRevenue.toFixed(2);
+    document.getElementById('kpiTodayInvoices').textContent = todaySales.length;
+    document.getElementById('kpiUnpaid').textContent = unpaid;
+    document.getElementById('kpiCancelled').textContent = cancelled;
+  }
+
+  // ---------- Render sales table ----------
+  function renderTable() {
+    const term = (document.getElementById('invoiceSearch').value || '').toLowerCase();
+    const status = document.getElementById('statusFilter').value;
+
+    const tbody = document.getElementById('salesTableBody');
+    tbody.innerHTML = '';
+
+    const filtered = sales.filter(s => {
+      const matchesTerm = s.id.toLowerCase().includes(term) || s.customer.toLowerCase().includes(term);
+      const matchesStatus = !status || s.status === status;
+      return matchesTerm && matchesStatus;
+    });
+
+    filtered.forEach(s => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="fw-semibold">${s.id}</td>
+        <td>${s.customer}</td>
+        <td>${s.date}</td>
+        <td>${s.items}</td>
+        <td>$${s.total.toFixed(2)}</td>
+        <td>${statusBadge(s.status)}</td>
+        <td class="text-end">
+          <button class="btn btn-sm btn-light border rounded-3 me-1" title="View"><i class="bi bi-eye"></i></button>
+          <button class="btn btn-sm btn-light border rounded-3 me-1 print-row-btn" data-id="${s.id}" title="Print" data-bs-toggle="modal" data-bs-target="#printReceiptModal"><i class="bi bi-printer"></i></button>
+          ${s.status !== 'cancelled' ? `<button class="btn btn-sm btn-light border rounded-3 cancel-row-btn" data-id="${s.id}" title="Cancel" data-bs-toggle="modal" data-bs-target="#cancelSalesModal"><i class="bi bi-x-lg"></i></button>` : ''}
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('visibleCount').textContent = filtered.length;
+    document.getElementById('totalCount').textContent = sales.length;
+  }
+
+  // ---------- Invoice builder (Create Sales Invoice modal) ----------
+  function addInvoiceLine() {
+    invoiceLineCount++;
+    const rowId = 'line-' + invoiceLineCount;
+    const options = catalog.map(c => `<option value="${c.price}">${c.name}</option>`).join('');
+    const tr = document.createElement('tr');
+    tr.id = rowId;
+    tr.innerHTML = `
+      <td><select class="form-select form-select-sm line-item">${options}</select></td>
+      <td><input type="number" class="form-control form-control-sm line-qty" value="1" min="1" style="width:70px;"></td>
+      <td class="line-price">$${catalog[0].price.toFixed(2)}</td>
+      <td class="line-subtotal fw-semibold">$${catalog[0].price.toFixed(2)}</td>
+      <td><button type="button" class="btn btn-sm btn-light border rounded-3 remove-line-btn"><i class="bi bi-trash"></i></button></td>
+    `;
+    document.getElementById('invoiceItemsBody').appendChild(tr);
+    recalcInvoice();
+  }
+
+  function recalcInvoice() {
+    let subtotal = 0;
+    document.querySelectorAll('#invoiceItemsBody tr').forEach(row => {
+      const price = parseFloat(row.querySelector('.line-item').value);
+      const qty = parseInt(row.querySelector('.line-qty').value, 10) || 0;
+      const lineTotal = price * qty;
+      row.querySelector('.line-price').textContent = '$' + price.toFixed(2);
+      row.querySelector('.line-subtotal').textContent = '$' + lineTotal.toFixed(2);
+      subtotal += lineTotal;
+    });
+    document.getElementById('invoiceSubtotal').textContent = '$' + subtotal.toFixed(2);
+    document.getElementById('invoiceTotal').textContent = '$' + subtotal.toFixed(2);
+  }
+
+  document.getElementById('addInvoiceLineBtn').addEventListener('click', addInvoiceLine);
+
+  document.getElementById('invoiceItemsBody').addEventListener('change', function (e) {
+    if (e.target.classList.contains('line-item') || e.target.classList.contains('line-qty')) recalcInvoice();
+  });
+
+  document.getElementById('invoiceItemsBody').addEventListener('click', function (e) {
+    if (e.target.closest('.remove-line-btn')) {
+      e.target.closest('tr').remove();
+      recalcInvoice();
+    }
+  });
+
+  document.getElementById('createInvoiceModal').addEventListener('shown.bs.modal', function () {
+    if (document.getElementById('invoiceItemsBody').children.length === 0) addInvoiceLine();
+  });
+
+  document.getElementById('saveInvoiceBtn').addEventListener('click', function () {
+    bootstrap.Modal.getInstance(document.getElementById('createInvoiceModal')).hide();
+    showToast('Invoice created successfully');
+    // TODO: push the new invoice into `sales`, then renderTable()/renderKpis()
+  });
+
+  // ---------- Print Receipt modal ----------
+  function populatePrintSelect() {
+    const select = document.getElementById('printInvoiceSelect');
+    select.innerHTML = sales.map(s => `<option value="${s.id}">${s.id} — ${s.customer} ($${s.total.toFixed(2)})</option>`).join('');
+    renderReceiptPreview(select.value);
+  }
+
+  function renderReceiptPreview(invoiceId) {
+    const s = sales.find(x => x.id === invoiceId) || sales[0];
+    document.getElementById('receiptBody').innerHTML = `
+      <div class="d-flex justify-content-between"><span>Invoice</span><span class="fw-semibold">${s.id}</span></div>
+      <div class="d-flex justify-content-between"><span>Customer</span><span>${s.customer}</span></div>
+      <div class="d-flex justify-content-between"><span>Date</span><span>${s.date}</span></div>
+      <div class="d-flex justify-content-between"><span>Items</span><span>${s.items}</span></div>
+      <div class="d-flex justify-content-between fw-bold mt-2"><span>Total</span><span>$${s.total.toFixed(2)}</span></div>
+    `;
+  }
+
+  document.getElementById('printInvoiceSelect').addEventListener('change', function () {
+    renderReceiptPreview(this.value);
+  });
+
+  document.getElementById('confirmPrintBtn').addEventListener('click', function () {
+    bootstrap.Modal.getInstance(document.getElementById('printReceiptModal')).hide();
+    showToast('Receipt sent to printer');
+    // TODO: trigger window.print() or a dedicated print template
+  });
+
+  // ---------- Cancel Sales modal ----------
+  function populateCancelSelect() {
+    const select = document.getElementById('cancelInvoiceSelect');
+    select.innerHTML = sales.filter(s => s.status !== 'cancelled')
+      .map(s => `<option value="${s.id}">${s.id} — ${s.customer} ($${s.total.toFixed(2)})</option>`).join('');
+  }
+
+  document.getElementById('confirmCancelSaleBtn').addEventListener('click', function () {
+    bootstrap.Modal.getInstance(document.getElementById('cancelSalesModal')).hide();
+    showToast('Sale cancelled and stock restored');
+    // TODO: set matching sale's status to 'cancelled', then renderTable()/renderKpis()
+  });
+
+  // ---------- Sales History modal ----------
+  function renderHistory() {
+    const list = document.getElementById('salesHistoryList');
+    list.innerHTML = salesHistory.map(h => {
+      const cfg = historyIcon[h.type];
+      return `
+        <div class="d-flex gap-3 pb-2 border-bottom">
+          <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:34px; height:34px; background:${cfg.bg}; color:${cfg.color};">
+            <i class="bi ${cfg.icon}"></i>
+          </div>
+          <div class="flex-grow-1">
+            <div class="d-flex justify-content-between">
+              <span class="fw-semibold small">${h.title}</span>
+              <span class="text-secondary" style="font-size:.75rem;">${h.date}</span>
+            </div>
+            <p class="km text-secondary mb-0" style="font-size:.8rem;">${h.note}</p>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // ---------- Wire up table filters ----------
+  document.getElementById('invoiceSearch').addEventListener('input', renderTable);
+  document.getElementById('statusFilter').addEventListener('change', renderTable);
+
+  // ---------- Modal show events to (re)populate dynamic content ----------
+  document.getElementById('printReceiptModal').addEventListener('show.bs.modal', populatePrintSelect);
+  document.getElementById('cancelSalesModal').addEventListener('show.bs.modal', populateCancelSelect);
+
+  // ---------- Initial render ----------
+  renderKpis();
+  renderTable();
+  renderHistory();
+});
+      </script>
+
+      <!-- Modal: Low Stock Alerts / Notification settings -->
+      <div class="modal fade" id="lowStockAlerts" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+              <div>
+                <h5 class="modal-title fw-medium"><i class="fa-solid fa-bell me-2"
+                    style="color:#3C3489;"></i>ការជូនដំណឹងស្តុកទាប</h5>
+                <p class="text-secondary mb-0" style="font-size:13px;">ទំនិញ 5 មុខខាងក្រោមកំពុងស្ថិតក្រោមកម្រិតកំណត់</p>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex flex-column gap-2 mb-3">
+                <div class="d-flex justify-content-between align-items-center border rounded-3 p-3">
+                  <div>
+                    <div style="font-size:14px; font-weight:500;">កាបូបស្បែក ម៉ូដថ្មី</div>
+                    <div style="font-size:11px; color:#9ca3af;">SKU-1042 • អប្បបរមា 20</div>
+                  </div>
+                  <span class="badge-status badge-out">4 នៅសល់</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center border rounded-3 p-3">
+                  <div>
+                    <div style="font-size:14px; font-weight:500;">ស្បែកជើងកីឡា Size 41</div>
+                    <div style="font-size:11px; color:#9ca3af;">SKU-1103 • អប្បបរមា 15</div>
+                  </div>
+                  <span class="badge-status badge-out">2 នៅសល់</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center border rounded-3 p-3">
+                  <div>
+                    <div style="font-size:14px; font-weight:500;">កណ្តុរឥតខ្សែ Wireless Mouse</div>
+                    <div style="font-size:11px; color:#9ca3af;">SKU-3078 • អប្បបរមា 25</div>
+                  </div>
+                  <span class="badge-status badge-low">6 នៅសល់</span>
+                </div>
+              </div>
+              <div class="border-top pt-3">
+                <p class="form-label mb-2">កំណត់រយៈពេលទទួលការជូនដំណឹង</p>
+                <div class="form-check form-switch mb-1">
+                  <input class="form-check-input" type="checkbox" checked>
+                  <label class="form-check-label" style="font-size:13.5px;">ជូនដំណឹងតាមអ៊ីមែល</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" checked>
+                  <label class="form-check-label" style="font-size:13.5px;">ជូនដំណឹងភ្លាមៗក្នុងប្រព័ន្ធ (Push)</label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">បិទ</button>
+              <button type="button" class="btn btn-primary-brand text-white">កម្មង់ទំនិញទាំងអស់</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast: saved confirmation -->
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+        <div id="saveToast" class="toast align-items-center text-white border-0" style="background:#5B4FE8;"
+          role="alert">
+          <div class="d-flex">
+            <div class="toast-body"><i class="fa-solid fa-circle-check me-2"></i>បានរក្សាទុកទំនិញដោយជោគជ័យ!</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        </div>
+      </div>
+  </div>
   </main>
-</div>
+  </div>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/assest/js/employeeManagement.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assest/js/employeeManagement.js"></script>
+  <script src="/assest/js/inventory.js"></script>
 </body>
+
 </html>

@@ -625,12 +625,92 @@ a {
 
     .hero-section {
         min-height: 70vh;
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
     }
 
     .shape-circle-1,
     .shape-circle-2 {
         display: none;
     }
+}
+/* ------------ Offcanvas navbar ------------ */
+.offcanvas {
+    --bs-offcanvas-width: 300px;
+}
+
+.offcanvas-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.offcanvas-header .btn-close {
+    box-shadow: none;
+}
+
+.offcanvas-header .btn-close:focus {
+    box-shadow: none;
+}
+
+.offcanvas-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas-body .navbar-nav {
+    gap: .35rem !important;
+}
+
+.offcanvas-body .nav-link {
+    font-weight: 600;
+    padding: .8rem 1rem !important;
+    color: var(--bs-body-color);
+    transition: all .25s ease;
+}
+
+.offcanvas-body .nav-link:hover,
+.offcanvas-body .nav-link:focus {
+    background: var(--bs-primary-bg-subtle);
+    color: var(--bs-primary) !important;
+}
+
+.offcanvas-cta {
+    margin-top: 1.5rem;
+}
+
+.offcanvas-cta .btn-login {
+    width: 100%;
+    text-align: center;
+}
+.stats-row {
+    flex-wrap: nowrap !important;
+    width: 100%;
+    gap: .5rem !important;
+}
+
+.floating-card {
+    min-width: 0;
+    flex: 1 1 0;
+    padding: .6rem .5rem;
+    gap: .4rem;
+    border-radius: 10px;
+}
+
+.floating-card .fc-icon {
+    width: 32px;
+    height: 32px;
+    font-size: .9rem;
+    border-radius: 8px;
+}
+
+.floating-card .fc-num {
+    font-size: .95rem;
+}
+
+.floating-card .fc-label {
+    font-size: .62rem;
+    white-space: nowrap;
 }
 /* ===== Modal Styles ===== */
 .modal-content {
