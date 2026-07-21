@@ -19,11 +19,12 @@ html, body {
     display:flex;
     justify-content:center;
     align-items:center;
+    padding: 24px;
 }
 
 .login-card{
-    width:400px;
-    padding:40px;
+    width: min(100%, 400px);
+    padding: 40px;
     border-radius:20px;
 
     background:rgba(255,255,255,.15);
@@ -44,6 +45,56 @@ html, body {
     object-fit:cover;
     z-index:-2;
 }
+
+.sp {
+    gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 20px;
+  }
+
+  .icon-circle {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 20px;
+  }
+
+  .icon-circle i {
+    font-size: 24px;
+  }
+
+  .form-control {
+    height: 46px;
+    font-size: 0.95rem;
+  }
+
+  .forgot-link,
+  .signup-text,
+  .form-check-label {
+    font-size: 0.88rem;
+  }
+
+  .sp {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sp .form-check,
+  .sp .forgot-link {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .sp .forgot-link {
+    margin-top: 0;
+    text-align: right;
+  }
+}
+
 
 .overlay{
     position:fixed;
@@ -527,8 +578,4 @@ img{
   @media (max-width: 991px){
     .visual-side{display:none;}
     .form-side{padding:44px 28px;}
-  }
-
-
-
-  
+  } 

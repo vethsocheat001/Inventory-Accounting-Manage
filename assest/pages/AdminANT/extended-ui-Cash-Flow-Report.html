@@ -9,6 +9,7 @@
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/assest/css/cheatDBAdmin.css">
+  <link rel="stylesheet" href="/assest/css/lymeng.css">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -47,30 +48,30 @@
         <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="PurchaseManagement.html"><i
               class="bi bi-truck"></i> Purchase Management</a></li>
         <li class="nav-item"><a class="nav-link active d-flex align-items-center gap-2" href="#Accounting.html"><i
-                class="bi bi-calculator-fill"></i> Accounting</a>
-            <ul class="menu-sub">
-              <li class="menu-item active">
-                <a href="extended-ui-record-income.html" class="nav-link">
-                  <div class="text-truncate" data-i18n="Perfect Scrollbar">Record - Income</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="extended-ui-Record-Expenses.html" class="nav-link">
-                  <div class="text-truncate" data-i18n="Text Divider">Record - Expenses</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="extended-ui-Profit-Loss-Report.html" class="nav-link">
-                  <div class="text-truncate" data-i18n="Text Divider">Profit Loss Report</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="extended-ui-Cash-Flow-Report.html" class="nav-link">
-                  <div class="text-truncate" data-i18n="Text Divider">Cash Flow Report</div>
-                </a>
-              </li>
-            </ul>
-          </li>
+              class="bi bi-calculator-fill"></i> Accounting</a>
+          <ul class="menu-sub">
+            <li class="menu-item active">
+              <a href="extended-ui-record-income.html" class="nav-link">
+                <div class="text-truncate" data-i18n="Perfect Scrollbar">Record - Income</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="extended-ui-Record-Expenses.html" class="nav-link">
+                <div class="text-truncate" data-i18n="Text Divider">Record - Expenses</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="extended-ui-Profit-Loss-Report.html" class="nav-link">
+                <div class="text-truncate" data-i18n="Text Divider">Profit Loss Report</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="extended-ui-Cash-Flow-Report.html" class="nav-link">
+                <div class="text-truncate" data-i18n="Text Divider">Cash Flow Report</div>
+              </a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Reports.html"><i
               class="bi bi-bar-chart-line-fill"></i> Reports</a></li>
         <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="Settings.html"><i
@@ -152,12 +153,136 @@
 
         <div class="mt-4 p-3 rounded-3 km small text-secondary" style="background:rgba(255,255,255,.05);">
           <b class="text-white">គន្លឹះ៖</b> ចុចលើម៉ឺនុយខាងលើ ដើម្បីមើលព័ត៌មានលម្អិតបន្ថែម។
-        </div>
+
         </div>
       </div>
     </div>
-  </div>
-     <main class="flex-grow-1 main-offset" style="min-width:0;">
+    <main class="flex-grow-1 main-offset" style="min-width:0;">
 
+      <!-- ============ STICKY NAVBAR ============ -->
+      <nav class="sticky-nav px-3 px-lg-4 d-flex align-items-center justify-content-between flex-wrap">
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-light border rounded-3 d-lg-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <div>
+            <h1 class="h4 fw-bold mb-0">Product Management</h1>
+            <div class="km text-secondary small">គ្រប់គ្រងព័ត៌មានផលិតផលទាំងអស់</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+          <button class="btn btn-light border rounded-3"><i class="bi bi-search"></i></button>
+          <button class="btn btn-light border rounded-3 position-relative" id="bellBtn">
+            <i class="bi bi-bell-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size:.6rem;">3</span>
+          </button>
+          <div class="d-flex align-items-center gap-2 bg-white border rounded-pill ps-2 pe-3 py-1">
+            <div class="avatar-circle d-flex align-items-center justify-content-center">S</div>
+            <div>
+              <div class="small fw-bold lh-1">Socheat</div>
+              <div class="text-secondary lh-1" style="font-size:.7rem;">Admin</div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- ==== -->
+
+      <div class="container py-4">
+        <div class="card p-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="icon-wrap bg-purple-subtle text-purple">
+              <i class="fa-solid fa-wave-square"></i>
+            </div>
+            <h2 class="fs-6 fw-bold mb-0">របាយការណ៍លំហូរសាច់ប្រាក់</h2>
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="form-label small text-muted fw-semibold">ពី</label>
+              <input type="date" class="form-control" id="cfFrom" value="2026-07-01">
+            </div>
+            <div class="col-6">
+              <label class="form-label small text-muted fw-semibold">ដល់</label>
+              <input type="date" class="form-control" id="cfTo" value="2026-07-14">
+            </div>
+          </div>
+          <button class="btn btn-purple w-100 fw-semibold mb-3" id="generateCFBtn">បង្កើតរបាយការណ៍</button>
+
+          <div class="report-summary mb-3">
+            <div class="summary-line"><span class="text-muted">សមតុល្យដើមគ្រា</span><span class="fw-bold"
+                id="cfOpening">$2,000.00</span></div>
+            <div class="summary-line"><span class="text-muted">លំហូរចូលសាច់ប្រាក់</span><span
+                class="fw-bold text-success" id="cfInflow">$4,850.00</span></div>
+            <div class="summary-line"><span class="text-muted">លំហូរចេញសាច់ប្រាក់</span><span
+                class="fw-bold text-danger" id="cfOutflow">$1,620.00</span></div>
+            <div class="summary-line total"><span>សមតុល្យចុងគ្រា</span><span class="fw-bold text-primary fs-6"
+                id="cfClosing">$5,230.00</span></div>
+          </div>
+
+          <div class="line-canvas-wrap"><canvas id="cfLineChart"></canvas></div>
+        </div>
+      </div>
+
+      <script>
+        function fmt(n) { return '$' + n.toFixed(2); }
+        function parseAmt(s) { return parseFloat(s.replace(/[$,]/g, '')) || 0; }
+
+        const cfLineChart = new Chart(document.getElementById('cfLineChart'), {
+          type: 'line',
+          data: {
+            labels: ['01/07', '04/07', '07/07', '10/07', '14/07'],
+            datasets: [{
+              data: [2000, 2800, 3300, 4600, 5230],
+              borderColor: '#8B5CF6',
+              backgroundColor: 'rgba(139,92,246,0.12)',
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#8B5CF6',
+              pointRadius: 4,
+              borderWidth: 2.5
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: true, ticks: { callback: v => v >= 1000 ? (v / 1000) + 'K' : v, font: { size: 10.5 } }, grid: { color: '#EEF1F8' } },
+              x: { grid: { display: false }, ticks: { font: { size: 10.5 } } }
+            },
+            responsive: true, maintainAspectRatio: false
+          }
+        });
+
+        // Sample transactions to compute the report from (would come from your backend/date filter in production)
+        const sampleInflow = [850.00, 620.00, 150.00, 1230.00, 900.00, 1100.00];
+        const sampleOutflow = [45.00, 120.00, 30.00, 380.00, 615.00, 430.00];
+
+        document.getElementById('generateCFBtn').addEventListener('click', function () {
+          const from = document.getElementById('cfFrom').value;
+          const to = document.getElementById('cfTo').value;
+          if (from > to) { alert('កាលបរិច្ឆេទ "ពី" ត្រូវតែមុនកាលបរិច្ឆេទ "ដល់"។'); return; }
+
+          const opening = parseAmt(document.getElementById('cfOpening').textContent);
+          const inflow = sampleInflow.reduce((s, v) => s + v, 0);
+          const outflow = sampleOutflow.reduce((s, v) => s + v, 0);
+          const closing = opening + inflow - outflow;
+
+          document.getElementById('cfInflow').textContent = fmt(inflow);
+          document.getElementById('cfOutflow').textContent = fmt(outflow);
+          document.getElementById('cfClosing').textContent = fmt(closing);
+
+          const steps = 5;
+          const data = [opening];
+          for (let i = 1; i < steps; i++) {
+            data.push(Math.round(opening + ((inflow - outflow) * i / (steps - 1))));
+          }
+          cfLineChart.data.datasets[0].data = data;
+          cfLineChart.update();
+        });
+      </script>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

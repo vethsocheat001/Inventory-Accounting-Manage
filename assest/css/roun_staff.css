@@ -1,9 +1,9 @@
 :root {
-  --ink: #0a5c23;
-  --paper: rgba(248, 243, 243, 0.849);
+  --ink: #171933;
+  --paper: #cdcdcd3d;
   --moss: #71bedc;
   --moss-light: #e7efe9;
-  --clay: #b6562f;
+  --clay: #4F46E5;
   --line: #d9d3c4;
 }
 
@@ -21,7 +21,6 @@ body {
 }
 /* Dashboard Elements */
 .purpose-banner {
-  background: linear-gradient(135deg, #1f4d43 0%, #0b5e28 100%);
   color: white;
 }
 .chart-container {
@@ -118,9 +117,8 @@ body {
 }
 
 .sidebar .nav-link.active {
-  background: rgba(255, 255, 255, 0.08);
+  background: #4F46E5;
   color: #fff;
-  border-left-color: var(--clay);
 }
 
 .sidebar .sidebar-foot {

@@ -19,7 +19,7 @@
 
 <body>
     <!-- ------------ NAVBAR ------------ -->
-    <nav class="navbar navbar-expand-lg navbar-iam sticky-top shadow-sm border-bottom py-2">
+    <!-- <nav class="navbar navbar-expand-lg navbar-iam sticky-top shadow-sm border-bottom py-2">
         <div class="container">
             <div class="d-flex align-items-center">
                 <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
@@ -36,15 +36,66 @@
                     <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#features">មុខងារ</a></li>
                     <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#pricing">តម្លៃ</a></li>
                     <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#faq">សំណួរ</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link px-3 rounded-3" href="/contactUs.html">ទំនាក់ទំនង</a></li> -->
+                    
                 </ul>
                 <div class="d-flex gap-2">
                     <a href="/contactUs.html" class="btn btn-login shadow-sm fw-bold text-light">ទំនាក់ទំនង</a>
                 </div>
             </div>
         </div>
+    </nav> -->
+    <!-- ------------ NAVBAR ------------ -->
+    <nav class="navbar navbar-expand-lg navbar-iam sticky-top shadow-sm border-bottom py-2">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
+                <a class="navbar-brand fw-bold text-primary fs-4 ms-2" href="#">IAM</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-lg-flex">
+                <ul class="navbar-nav mx-auto gap-1 d-none d-lg-flex">
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#hero">ទំព័រដើម</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#why">ហេតុអ្វីជ្រើសរើស</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#features">មុខងារ</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#pricing">តម្លៃ</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#faq">សំណួរ</a></li>
+                </ul>
+                <div class="d-none d-lg-flex gap-2">
+                    <a href="/contactUs.html" class="btn btn-login shadow-sm fw-bold text-light">ទំនាក់ទំនង</a>
+                </div>
+            </div>
+        </div>
     </nav>
 
+    <!-- Offcanvas menu lives outside the navbar on purpose: the navbar uses backdrop-filter,
+     which would otherwise trap this fixed-position panel inside the navbar's own box. -->
+    <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                <div class="d-flex align-items-center">
+                    <img class="logoimg" src="assest/image/logos.png" alt="IAM Logo">
+                    <a class="navbar-brand fw-bold text-primary fs-4 ms-2" href="#">IAM</a>
+                </div>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav gap-1">
+                <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#hero">ទំព័រដើម</a></li>
+                <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#why">ហេតុអ្វីជ្រើសរើស</a></li>
+                <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#features">មុខងារ</a></li>
+                <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#pricing">តម្លៃ</a></li>
+                <li class="nav-item"><a class="nav-link px-3 rounded-3" href="#faq">សំណួរ</a></li>
+            </ul>
+            <div class="offcanvas-cta d-flex gap-2">
+                <a href="/contactUs.html" class="btn btn-login shadow-sm fw-bold text-light">ទំនាក់ទំនង</a>
+            </div>
+        </div>
+    </div>
     <!-- ------------ HERO ------------ -->
     <section class="hero-section" id="hero">
         <div class="shape-circle shape-circle-1"></div>
@@ -1463,8 +1514,8 @@
                 អាចផ្លាស់ប្តូរកញ្ចប់បានគ្រប់ពេល</p>
             <div class="row g-4 justify-content-center text-start">
                 <div class="col-md-6 col-lg-4">
-                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
-                        data-aos-duration="1000">
+                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-right"
+                        data-aos-offset="500" data-aos-easing="ease-in-sine">
                         <h5 class="fw-bold">Starter</h5>
                         <div class="display-6 fw-bold text-primary mt-2">$9<small
                                 class="fs-6 text-secondary fw-semibold"> / ខែ</small></div>
@@ -1510,8 +1561,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-up"
-                        data-aos-duration="1000">
+                    <div class="price-card border rounded-4 p-4 h-100 bg-white text-center" data-aos="fade-left"
+                        data-aos-offset="500" data-aos-easing="ease-in-sine">
                         <h5 class="fw-bold">Enterprise</h5>
                         <div class="display-6 fw-bold text-primary mt-2">Custom</div>
                         <p class="text-center text-secondary" style="font-size:.88rem;">សម្រាប់ក្រុមហ៊ុនធំ
@@ -1692,7 +1743,7 @@
                     <ul class="footer-links list-unstyled">
                         <li class="mb-2"><i class="bi bi-youtube"></i> Youtube</li>
                         <li class="mb-2"><i class="bi bi-person-badge"></i> IAM</li>
-                        <li class="mb-2"><i class="bi bi-envelope"></i> info@inventoryaccounting.com</li>
+                        <li class="mb-2"><i class="bi bi-envelope"></i> IAM@gmail.com</li>
                         <li class="mb-2"><i class="bi bi-telegram"></i> @IAM</li>
                         <li class="mb-2"><i class="bi bi-telephone"></i> +855 70 25 83 802 | +855 98 765 432</li>
                     </ul>
@@ -1735,6 +1786,15 @@
                 });
             }
         });
+        const offcanvasNavbar = document.getElementById('offcanvasNavbar');
+        if (offcanvasNavbar) {
+            offcanvasNavbar.querySelectorAll('.nav-link, .offcanvas-cta a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    const instance = bootstrap.Offcanvas.getInstance(offcanvasNavbar);
+                    if (instance) instance.hide();
+                });
+            });
+        }
     </script>
 </body>
 

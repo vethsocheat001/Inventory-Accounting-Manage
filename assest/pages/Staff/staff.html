@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/assest/vendor/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head> 
-  <body>
+  <body style="background-color: #F4F5FB;">
     <div class="app-shell">
       <!-- Backdrop for mobile sidebar -->
       <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -30,14 +30,23 @@
           </button>
         </div>
         <nav class="nav flex-column mt-2">
-          <a class="nav-link active"  data-tab="Dashboard" href="#"><i class="fa-solid fa-cash-register"></i>Dashboard</a>
+          <div class=" rounded-3 d-flex align-items-center p-3 gap-3">
+            <img src="/assest/image/logos.png" style="width:50px;height:50px;" alt="">
+          <div>
+          <div class="fw-bold text-white">IAM</div>
+          <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
+        </div>
+          </div>
+          
+        
+          <a class="nav-link active"  data-tab="Dashboard" href="#"><i class="fa-solid fa-chart-column"></i>Dashboard</a>
           <a class="nav-link        " data-tab="pos"       href="#"><i class="fa-solid fa-cash-register"></i>លក់ទំនិញ</a>
           <a class="nav-link"        data-tab="products"  href="#"><i class="fa-solid fa-box"></i>ផលិតផល</a>
           <a class="nav-link"        data-tab="inventory" href="#"><i class="fa-solid fa-boxes-stacked"></i>ស្ថានភាពស្តុក</a>
           <a class="nav-link"        data-tab="customers" href="#"><i class="fa-solid fa-users"></i>អតិថិជន</a>
           <a class="nav-link"        data-tab="reports"   href="#"><i class="fa-solid fa-chart-simple"></i>របាយការណ៍</a>
           <a class="nav-link"        data-tab="account"   href="#"><i class="fa-solid fa-user-gear"></i>គណនីខ្ញុំ</a>
-         <a class="nav-link" data-tab="logout" href="/index.html"><i class="fa-solid fa-user-gear"></i> Logout</a>
+         <a class="nav-link" data-tab="logout" href="/index.html"><i class="fa-solid fa-user-gear"></i> ចាកចេញ</a>
         </nav>
       </div>
       <!-- Main -->
@@ -56,17 +65,17 @@
           <!-- ============ TAB: DASHBOARD ============ -->
           <div id="tab-Dashboard" class="tab-content active">
             <div class="p-3 p-lg-4">
-       <!-- Purpose banner -->
-      <div class="purpose-banner text-white rounded-4 p-4 mb-4 shadow">
-        <div class="text-uppercase small fw-bold mb-2 km" style="letter-spacing:.1em; color:#c2b8ff; font-size:.7rem;">
-          <i class="bi bi-square-fill" style="font-size:.4rem; color:#f2b134;"></i> គោលបំណង / Purpose
-        </div>
-        <p class="km mb-1" style="max-width:640px; line-height:1.8;">
-          មើលព័ត៌មានដែលពាក់ព័ន្ធនឹងការលក់ និងការងាររបស់ខ្លួន Dashboard ផ្តល់នូវទិដ្ឋភាពរហ័សអំពីការលក់ប្រចាំថ្ងៃ
-          និងការងារដែលបានប្រគល់ជូនអ្នក
-        </p>
-        <div class="small" style="color:#9d9fd6;">Quick overview of today's sales performance and tasks assigned to you.</div>
-      </div>
+            <!-- Purpose banner -->
+            <div class="purpose-banner text-white rounded-4 p-4 mb-4 shadow">
+              <div class="text-uppercase small fw-bold mb-2 km" style="letter-spacing:.1em; color:#c2b8ff; font-size:.7rem;">
+                <i class="bi bi-square-fill" style="font-size:.4rem; color:#f2b134;"></i> គោលបំណង / Purpose
+              </div>
+              <p class="km mb-1" style="max-width:640px; line-height:1.8;">
+                មើលព័ត៌មានដែលពាក់ព័ន្ធនឹងការលក់ និងការងាររបស់ខ្លួន Dashboard ផ្តល់នូវទិដ្ឋភាពរហ័សអំពីការលក់ប្រចាំថ្ងៃ
+                និងការងារដែលបានប្រគល់ជូនអ្នក
+              </p>
+              <div class="small" style="color:#9d9fd6;">Quick overview of today's sales performance and tasks assigned to you.</div>
+            </div>
 
       <!-- ============ Top KPI Cards ============ -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3 mb-4">
