@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Noto Sans Khmer', sans-serif;
+  background-color: #F3F5FB;
+  color: #1E2A44;
+  font-size: 20px;
+}
+a {
+  color: #1E2A44;
+  text-decoration: none;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.container {
+  max-width: 1560px;
+}
+
+
+/* Card look */
+.card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 1px 1px 3px rgba(30, 42, 68, 0.05);
+}
+
+/* Icon badge next to card titles - pair with Bootstrap's
+   bg-success-subtle / bg-danger-subtle / bg-primary-subtle / bg-purple-subtle */
+.icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+/* Bootstrap has no built-in purple theme color - added here for the Cash Flow card */
+.bg-purple-subtle {
+  background-color: #F1EBFE;
+}
+
+.text-purple {
+  color: #8B5CF6;
+}
+
+.btn-purple {
+  background-color: #8B5CF6;
+  border-color: #8B5CF6;
+  color: #fff;
+}
+
+.btn-purple:hover {
+  background-color: #6D3FE0;
+  border-color: #6D3FE0;
+  color: #fff;
+}
+
+/* Report summary box (Profit & Loss / Cash Flow) */
+.report-summary {
+  background: #FAFBFF;
+  border: 1px solid #E6E9F2;
+  border-radius: 11px;
+  padding: 14px 16px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  padding: 6px 0;
+}
+
+.summary-line.total {
+  border-top: 1px solid #E6E9F2;
+  margin-top: 4px;
+  padding-top: 10px;
+  font-weight: 700;
+}
+
+/* Recent income/expense tables */
+table.recent td.amt {
+  text-align: right;
+  font-weight: 700;
+}
+
+.pie-canvas-wrap {
+  width: 130px;
+  height: 130px;
+}
+
+.line-canvas-wrap {
+  height: 180px;
+}
