@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Noto Sans Khmer', sans-serif;
+  background-color: #F3F5FB;
+  color: #1E2A44;
+  font-size: 8px;
+}
+th , td ,a{
+  color: #060707;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+}
+.container-fluid {
+  max-width: 1560px;
+
+}
+.ph-card {
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;  
+}
+
+
