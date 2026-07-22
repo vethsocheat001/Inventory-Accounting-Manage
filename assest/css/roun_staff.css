@@ -1,6 +1,6 @@
 :root {
   --ink: #171933;
-  --paper: #cdcdcd3d;
+  --paper: #ffffff;
   --moss: #71bedc;
   --moss-light: #e7efe9;
   --clay: #4F46E5;
@@ -145,7 +145,7 @@ body {
   z-index: 900;
   background: var(--paper);   /* ពណ៌ដូចផ្ទៃខាងក្រោយទំព័រ ដើម្បីកុំឲ្យខ្លឹមសារបាំង */
   padding: 14px 25px;
-  /* border-bottom: 1px solid var(--line); */
+
 }
 
 .stat-card {

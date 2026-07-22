@@ -22,7 +22,6 @@
     <div class="app-shell">
       <!-- Backdrop for mobile sidebar -->
       <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-
       <div class="sidebar">
         <div class="d-flex d-lg-none justify-content-end px-2 pt-2">
           <button type="button" class="btn btn-sm btn-outline-light rounded-circle" id="sidebarCloseBtn" aria-label="Close menu">
@@ -37,16 +36,16 @@
           <div class="km small text-secondary">ប្រព័ន្ធគ្រប់គ្រង</div>
         </div>
           </div>
-          
-        
           <a class="nav-link active"  data-tab="Dashboard" href="#"><i class="fa-solid fa-chart-column"></i>Dashboard</a>
           <a class="nav-link        " data-tab="pos"       href="#"><i class="fa-solid fa-cash-register"></i>លក់ទំនិញ</a>
           <a class="nav-link"        data-tab="products"  href="#"><i class="fa-solid fa-box"></i>ផលិតផល</a>
           <a class="nav-link"        data-tab="inventory" href="#"><i class="fa-solid fa-boxes-stacked"></i>ស្ថានភាពស្តុក</a>
           <a class="nav-link"        data-tab="customers" href="#"><i class="fa-solid fa-users"></i>អតិថិជន</a>
           <a class="nav-link"        data-tab="reports"   href="#"><i class="fa-solid fa-chart-simple"></i>របាយការណ៍</a>
+          <a class="nav-link"        data-tab="communication" href="#"><i class="fa-solid fa-comments"></i>ទំនាក់ទំនង</a>
+          <a class="nav-link"        data-tab="attendance" href="#"><i class="fa-solid fa-calendar-check"></i>វត្តមាន</a>
           <a class="nav-link"        data-tab="account"   href="#"><i class="fa-solid fa-user-gear"></i>គណនីខ្ញុំ</a>
-         <a class="nav-link" data-tab="logout" href="/index.html"><i class="fa-solid fa-user-gear"></i> ចាកចេញ</a>
+         <a class="nav-link" href="#" id="logoutBtn"><i class="fa-solid fa-user-gear"></i>ចាកចេញ</a>
         </nav>
       </div>
       <!-- Main -->
@@ -1014,6 +1013,123 @@
               </div>
 
             </div>
+            <!-- ============ TAB: COMMUNICATION ============ -->
+        <div id="tab-communication" class="tab-content">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4 mb-3">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">ផ្ញើសារទៅអ្នកគ្រប់គ្រង</h6>
+                <div class="font-khmer">
+                  <div class="mb-3">
+                    <label class="form-label small fw-semibold text-secondary">ប្រភេទសារ</label>
+                    <select class="form-select form-select-sm shadow-none" id="comm-type">
+                      <option value="message">សារជូនដំណឹងទូទៅ</option>
+                      <option value="support">សំណើសុំការគាំទ្រ (Support)</option>
+                      <option value="issue">រាយការណ៍បញ្ហាប្រព័ន្ធ (Bug/Issue)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label small fw-semibold text-secondary">ខ្លឹមសារ</label>
+                    <textarea class="form-control form-control-custom shadow-none" id="comm-content" rows="4" placeholder="សរសេរសាររបស់អ្នកនៅទីនេះ..."></textarea>
+                  </div>
+                  <button class="btn btn-moss btn-sm px-4 rounded-2 shadow-sm font-khmer" onclick="sendCommMessage()">
+                    <i class="fa-solid fa-paper-plane me-1"></i>ផ្ញើសារ
+                  </button>
+                </div>
+              </div>
+
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">ប្រវត្តិសារដែលបានផ្ញើ</h6>
+                <div id="commHistoryList" class="font-khmer" style="max-height:340px; overflow-y:auto;"></div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">
+                  <i class="fa-solid fa-bullhorn me-1 text-moss"></i>សេចក្តីជូនដំណឹងពីអ្នកគ្រប់គ្រង
+                </h6>
+                <div id="announcementList" class="font-khmer" style="max-height:520px; overflow-y:auto;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- ============ TAB: ATTENDANCE ============ -->
+        <div id="tab-attendance" class="tab-content">
+          <div class="row g-3">
+            <div class="col-12 col-md-5">
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4 mb-3 text-center">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">វត្តមានថ្ងៃនេះ</h6>
+                <div class="font-khmer mb-2 text-secondary small" id="att-current-date"></div>
+                <div class="font-khmer fw-bold mb-3" id="att-status-label" style="font-size:1.1rem;color:#1f4d43;">មិនទាន់ចូលធ្វើការ</div>
+                <button class="btn btn-moss w-100 rounded-2 shadow-sm font-khmer fw-bold" id="attCheckBtn" onclick="toggleAttendance()">
+                  <i class="fa-solid fa-right-to-bracket me-1"></i>ចូលធ្វើការ (Check In)
+                </button>
+              </div>
+
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">សំណើសុំច្បាប់</h6>
+                <div class="font-khmer">
+                  <div class="row g-2 mb-2">
+                    <div class="col-6">
+                      <label class="form-label small fw-semibold text-secondary">ថ្ងៃចាប់ផ្តើម</label>
+                      <input type="date" class="form-control form-control-custom shadow-none form-control-sm" id="leave-start">
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small fw-semibold text-secondary">ថ្ងៃបញ្ចប់</label>
+                      <input type="date" class="form-control form-control-custom shadow-none form-control-sm" id="leave-end">
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label small fw-semibold text-secondary">មូលហេតុ</label>
+                    <textarea class="form-control form-control-custom shadow-none" id="leave-reason" rows="2" placeholder="ឧ. ឈឺ, រវល់ការគ្រួសារ..."></textarea>
+                  </div>
+                  <button class="btn btn-moss btn-sm px-4 rounded-2 shadow-sm font-khmer" onclick="submitLeaveRequest()">ដាក់សំណើ</button>
+                </div>
+                <hr class="my-3">
+                <h6 class="fw-bold text-dark font-khmer mb-2" style="font-size:.9rem;">សំណើដែលបានដាក់</h6>
+                <div id="leaveRequestList" class="font-khmer" style="max-height:220px; overflow-y:auto;"></div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-7">
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4 mb-3">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">កាលវិភាគការងារប្រចាំសប្តាហ៍</h6>
+                <div class="table-responsive">
+                  <table class="table table-borderless align-middle mb-0 text-secondary font-khmer" style="font-size:0.88rem;">
+                    <thead>
+                      <tr class="text-muted small">
+                        <th>ថ្ងៃ</th>
+                        <th>ម៉ោងចូល</th>
+                        <th>ម៉ោងចេញ</th>
+                        <th>ស្ថានភាព</th>
+                      </tr>
+                    </thead>
+                    <tbody id="workScheduleTbody"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="card border-0 shadow-sm rounded-3 bg-white p-4">
+                <h6 class="fw-bold text-dark font-khmer mb-3 pb-2 border-bottom border-light-subtle">ប្រវត្តិវត្តមាន</h6>
+                <div class="table-responsive">
+                  <table class="table table-borderless align-middle mb-0 text-secondary font-khmer" style="font-size:0.88rem;">
+                    <thead>
+                      <tr class="text-muted small">
+                        <th>កាលបរិច្ឆេទ</th>
+                        <th>ចូល</th>
+                        <th>ចេញ</th>
+                        <th>រយៈពេលធ្វើការ</th>
+                      </tr>
+                    </thead>
+                    <tbody id="attendanceHistoryTbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
  
         <!-- ============ TAB: ACCOUNT (placeholder) ============ -->
         <div id="tab-account" class="tab-content">

@@ -367,8 +367,6 @@ function saveCust() {
         }
 
         renderReportTable(currentSales);
-
-
       const tabTitles = {
         Dashboard: 'Dashboard',
         pos:       'លក់ទំនិញ',
@@ -376,6 +374,8 @@ function saveCust() {
         inventory: 'ស្ថានភាពស្តុក',
         customers: 'អតិថិជន',
         reports:   'របាយការណ៍',
+        communication: 'ទំនាក់ទំនង',
+        attendance: 'វត្តមាន',
         history:   'ប្រវត្តិលក់',
         account:   'គណនីខ្ញុំ'
       };
@@ -887,4 +887,317 @@ function saveCust() {
           if (window.innerWidth >= 992) closeSidebar();
         });
       })();
+
+
+  document.getElementById('logoutBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.location.href = "../../../index.html";
+});
+
+
+  function loadFromStorage(key, fallback) {
+    try {
+      const raw = localStorage.getItem(STAFF_STORAGE_PREFIX + key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      console.warn('localStorage read failed for', key, e);
+      return fallback;
+    }
+  }
+
+  function saveToStorage(key, value) {
+    try {
+      localStorage.setItem(STAFF_STORAGE_PREFIX + key, JSON.stringify(value));
+    } catch (e) {
+      console.warn('localStorage save failed for', key, e);
+    }
+  }
+
+  let commHistory = loadFromStorage('commHistory', []);
+
+  const commTypeLabels = {
+    message: 'សារទូទៅ',
+    support: 'សំណើគាំទ្រ',
+    issue:   'រាយការណ៍បញ្ហា'
+  };
+  const commTypeBadgeClass = {
+    message: 'bg-primary-subtle text-primary',
+    support: 'bg-warning-subtle text-warning-emphasis',
+    issue:   'bg-danger-subtle text-danger'
+  };
+
+  const announcements = [
+    {
+      title: 'កាលវិភាគចែកវេនប្រចាំខែក្រោយ',
+      body: 'សូមបុគ្គលិកទាំងអស់ពិនិត្យកាលវិភាគវេនប្រចាំខែក្រោយ ដែលនឹងបិទផ្សាយនៅចុងសប្តាហ៍នេះ។',
+      date: '20-Jul-2026'
+    },
+    {
+      title: 'ការធ្វើបច្ចុប្បន្នភាពប្រព័ន្ធលក់ទំនិញ',
+      body: 'ប្រព័ន្ធលក់ទំនិញ (POS) ត្រូវបានធ្វើបច្ចុប្បន្នភាព បន្ថែមមុខងារទូទាត់តាម QR Code។ សូមធ្វើតេស្តប្រើប្រាស់ ហើយរាយការណ៍បញ្ហាមកអ្នកគ្រប់គ្រងបើមាន។',
+      date: '16-Jul-2026'
+    },
+    {
+      title: 'ការប្រកួតប្រជែងលក់ប្រចាំខែ',
+      body: 'បុគ្គលិកលក់បានច្រើនបំផុតប្រចាំខែនេះ នឹងទទួលបានប្រាក់រង្វាន់! សូមខិតខំបន្ថែម។',
+      date: '10-Jul-2026'
+    }
+  ];
+
+  function renderCommHistory() {
+    const list = document.getElementById('commHistoryList');
+    if (!list) return;
+
+    if (commHistory.length === 0) {
+      list.innerHTML = `<p class="text-muted small text-center py-3">មិនទាន់មានសារត្រូវបានផ្ញើទេ</p>`;
+      return;
+    }
+
+    list.innerHTML = commHistory.map(item => `
+      <div class="border-bottom border-light-subtle py-2">
+        <div class="d-flex justify-content-between align-items-start mb-1">
+          <span class="badge ${commTypeBadgeClass[item.type]} px-2 py-1" style="font-size:10px;">${item.typeLabel}</span>
+          <span class="text-muted" style="font-size:11px;">${item.time}</span>
+        </div>
+        <div class="text-dark" style="font-size:.85rem;">${item.content}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderAnnouncements() {
+    const list = document.getElementById('announcementList');
+    if (!list) return;
+
+    list.innerHTML = announcements.map(a => `
+      <div class="border-bottom border-light-subtle py-2 mb-1">
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="fw-bold text-dark" style="font-size:.9rem;">${a.title}</div>
+          <span class="text-muted flex-shrink-0 ms-2" style="font-size:11px;">${a.date}</span>
+        </div>
+        <div class="text-secondary mt-1" style="font-size:.83rem;">${a.body}</div>
+      </div>
+    `).join('');
+  }
+
+  function sendCommMessage() {
+    const typeSelect = document.getElementById('comm-type');
+    const contentBox = document.getElementById('comm-content');
+    const content = contentBox.value.trim();
+
+    if (!content) {
+      showPosToast('សូមបញ្ចូលខ្លឹមសារជាមុនសិន');
+      return;
+    }
+
+    const type = typeSelect.value;
+    const now = new Date();
+
+    commHistory.unshift({
+      type,
+      typeLabel: commTypeLabels[type],
+      content,
+      time: now.toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+    });
+
+    contentBox.value = '';
+    saveToStorage('commHistory', commHistory);
+    renderCommHistory();
+    showPosToast('បានផ្ញើសារទៅអ្នកគ្រប់គ្រងដោយជោគជ័យ! 📨');
+  }
+
+// ========================= 11. Attendance =========================
+  let attendanceState = loadFromStorage('attendanceState', { checkedIn: false, checkInTime: null });
+
+  let attendanceHistory = loadFromStorage('attendanceHistory', [
+    { date: '19-Jul-2026', in: '08:02', out: '17:05', hours: '9ម៉ោង 03នាទី' },
+    { date: '18-Jul-2026', in: '07:58', out: '17:00', hours: '9ម៉ោង 02នាទី' },
+    { date: '17-Jul-2026', in: '08:10', out: '16:55', hours: '8ម៉ោង 45នាទី' }
+  ]);
+
+  let leaveRequests = loadFromStorage('leaveRequests', []);
+
+  const workSchedule = [
+    { day: 'ច័ន្ទ',     in: '08:00', out: '17:00', status: 'ធម្មតា' },
+    { day: 'អង្គារ',    in: '08:00', out: '17:00', status: 'ធម្មតា' },
+    { day: 'ពុធ',       in: '08:00', out: '17:00', status: 'ធម្មតា' },
+    { day: 'ព្រហស្បតិ៍', in: '08:00', out: '17:00', status: 'ធម្មតា' },
+    { day: 'សុក្រ',     in: '08:00', out: '17:00', status: 'ធម្មតា' },
+    { day: 'សៅរ៍',      in: '08:00', out: '12:00', status: 'ព្រឹកតែម្តង' },
+    { day: 'អាទិត្យ',   in: '-', out: '-', status: 'ថ្ងៃឈប់សម្រាក' }
+  ];
+
+  function renderWorkSchedule() {
+    const tbody = document.getElementById('workScheduleTbody');
+    if (!tbody) return;
+    tbody.innerHTML = workSchedule.map(s => `
+      <tr>
+        <td class="fw-semibold text-dark">${s.day}</td>
+        <td>${s.in}</td>
+        <td>${s.out}</td>
+        <td>${s.status}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderAttendanceHistory() {
+    const tbody = document.getElementById('attendanceHistoryTbody');
+    if (!tbody) return;
+
+    if (attendanceHistory.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-3">មិនទាន់មានប្រវត្តិវត្តមានទេ</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = attendanceHistory.map(r => `
+      <tr>
+        <td>${r.date}</td>
+        <td>${r.in}</td>
+        <td>${r.out}</td>
+        <td>${r.hours}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderLeaveRequests() {
+    const list = document.getElementById('leaveRequestList');
+    if (!list) return;
+
+    if (leaveRequests.length === 0) {
+      list.innerHTML = `<p class="text-muted small text-center py-2">មិនទាន់មានសំណើសុំច្បាប់ទេ</p>`;
+      return;
+    }
+
+    list.innerHTML = leaveRequests.map(r => `
+      <div class="border-bottom border-light-subtle py-2">
+        <div class="d-flex justify-content-between align-items-start mb-1">
+          <span class="fw-semibold text-dark" style="font-size:.85rem;">${r.start} → ${r.end}</span>
+          <span class="badge bg-warning-subtle text-warning-emphasis px-2 py-1" style="font-size:10px;">${r.status}</span>
+        </div>
+        <div class="text-secondary" style="font-size:.8rem;">${r.reason}</div>
+      </div>
+    `).join('');
+  }
+
+  function updateAttendanceUI() {
+    const label = document.getElementById('att-status-label');
+    const btn = document.getElementById('attCheckBtn');
+    if (!label || !btn) return;
+
+    if (attendanceState.checkedIn) {
+      label.textContent = `កំពុងធ្វើការ (ចូលម៉ោង ${attendanceState.checkInTime})`;
+      btn.innerHTML = `<i class="fa-solid fa-right-from-bracket me-1"></i>ចេញពីការងារ (Check Out)`;
+      btn.classList.remove('btn-moss');
+      btn.classList.add('btn-danger');
+    } else {
+      label.textContent = 'មិនទាន់ចូលធ្វើការ';
+      btn.innerHTML = `<i class="fa-solid fa-right-to-bracket me-1"></i>ចូលធ្វើការ (Check In)`;
+      btn.classList.remove('btn-danger');
+      btn.classList.add('btn-moss');
+    }
+  }
+
+  function toggleAttendance() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+    if (!attendanceState.checkedIn) {
+      attendanceState.checkedIn = true;
+      attendanceState.checkInTime = timeStr;
+      saveToStorage('attendanceState', attendanceState);
+      updateAttendanceUI();
+      showPosToast('បានចូលធ្វើការ! មានថ្ងៃធ្វើការល្អ 👋');
+    } else {
+      const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      attendanceHistory.unshift({
+        date: dateStr,
+        in: attendanceState.checkInTime,
+        out: timeStr,
+        hours: '—'
+      });
+      attendanceState.checkedIn = false;
+      attendanceState.checkInTime = null;
+      saveToStorage('attendanceState', attendanceState);
+      saveToStorage('attendanceHistory', attendanceHistory);
+      updateAttendanceUI();
+      renderAttendanceHistory();
+      showPosToast('បានចេញពីការងារ! អរគុណសម្រាប់ថ្ងៃនេះ 🙏');
+    }
+  }
+
+  function submitLeaveRequest() {
+    const startInput = document.getElementById('leave-start');
+    const endInput = document.getElementById('leave-end');
+    const reasonInput = document.getElementById('leave-reason');
+
+    const start = startInput.value;
+    const end = endInput.value;
+    const reason = reasonInput.value.trim();
+
+    if (!start || !end || !reason) {
+      showPosToast('សូមបំពេញកាលបរិច្ឆេទ និងមូលហេតុឲ្យគ្រប់');
+      return;
+    }
+
+    leaveRequests.unshift({ start, end, reason, status: 'កំពុងរង់ចាំអនុម័ត' });
+    saveToStorage('leaveRequests', leaveRequests);
+
+    startInput.value = '';
+    endInput.value = '';
+    reasonInput.value = '';
+
+    renderLeaveRequests();
+    showPosToast('បានដាក់សំណើសុំច្បាប់រួចរាល់! 📋');
+  }
+
+  // Initialize Communication & Attendance panels
+  renderCommHistory();
+  renderAnnouncements();
+  renderWorkSchedule();
+  renderAttendanceHistory();
+  renderLeaveRequests();
+  updateAttendanceUI();
+
+  const attCurrentDateEl = document.getElementById('att-current-date');
+  if (attCurrentDateEl) {
+    attCurrentDateEl.textContent = new Date().toLocaleDateString('en-GB', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+  }
+
+
+// Mobile sidebar toggle (kept local to staff.html, no other files touched) -->
+  
+      (function () {
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.getElementById('sidebarToggleBtn');
+        const closeBtn = document.getElementById('sidebarCloseBtn');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        if (!sidebar || !toggleBtn || !backdrop) return;
+
+        function openSidebar() {
+          sidebar.classList.add('sidebar-open');
+          backdrop.classList.add('show');
+        }
+        function closeSidebar() {
+          sidebar.classList.remove('sidebar-open');
+          backdrop.classList.remove('show');
+        }
+
+        toggleBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        backdrop.addEventListener('click', closeSidebar);
+
+        // Close the mobile drawer automatically after picking a menu item
+        sidebar.querySelectorAll('.nav-link[data-tab]').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 992) closeSidebar();
+          });
+        });
+
+        // If the window is resized back up to desktop width, make sure the drawer state resets
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 992) closeSidebar();
+        });
+      })();
+   
    
